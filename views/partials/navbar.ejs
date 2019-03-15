@@ -1,8 +1,10 @@
-
 <ul id="menu" class="nav">
-    <li><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Login</a></li>
-    <li><a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a></li>
-    <li><a class="login"href="#" style="width:auto;">Logout</a></li>
+    <%if (!auth){%>
+        <li><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Login</a></li>
+        <li><a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a></li>
+    <%} else {%>
+        <li><a class="login"href="/" style="width:auto;">Logout</a></li>
+    <%}%>
     <li><a class="icon fas fa-bookmark" id="uno" href="/"> Начало</a></li>
     <li><a class="icon fas fa-book" id="dos" href="/projects/1"> Книги</a></li>
     <li><a class="icon fas fa-pen-fancy" id="tres" href="/write"> Сътвори</a></li>

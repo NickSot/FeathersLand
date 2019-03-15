@@ -7,7 +7,7 @@ var bcryptSaltRounds = 10;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Writer\'s den', messages: req.flash() });
+  res.render('index', { title: 'Writer\'s den', messages: req.flash(), auth: req.session.authenticated});
 });
 
 router.post('/', (req, res) => {
@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
     db.query(query, [lusername], (err, result) => {
       if(err) throw err;
       if(result.length == 0){
-        res.render('index'); 
+        res.redirect('/'); 
       }else{
         bcrypt.compare(lpwd, result[0].pass, (err, isPasswordCorrect) => {
           if(isPasswordCorrect){
@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
   }
   else if (lusername == undefined && lpwd == undefined){ // REGISTER HANDLE
     if (rreppsw != rpwd){
-      res.render('index');
+      res.redirect('/');
     }
     else{
 
@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
 
         if (result.length != 0){
           req.flash('error', "Вече има съществуващ акаунт с този мейл или никнейм!");
-          res.render('index');
+          res.redirect('/');
         }
         else{
           console.log("Correct Register!");
@@ -62,7 +62,7 @@ router.post('/', (req, res) => {
               
               console.log(result);
               req.flash('success', "Успешна регистрация! Приятно писане!");
-              res.render('index');
+              res.redirect('/');
             });
           });
         }
@@ -70,10 +70,11 @@ router.post('/', (req, res) => {
     }
   }
   else{ // LOGOUT HANDLE
-    req.session = null;
+    req.session.authenticated = false;
+    req.session.userId = null;
 
     req.flash('info', 'Успешно отписване!');
-    res.render('index');
+    res.redirect('/');
   }
 });
 

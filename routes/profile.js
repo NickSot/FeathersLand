@@ -12,13 +12,13 @@ router.get('/', function(req, res, next) {
                 throw err;
             }
 
-            res.render('profile', {'user': result[0]});
+            res.render('profile', {'user': result[0], auth: req.session.authenticated});
         });
     }
     else{
         req.flash('info', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);
 
-        res.render('index');
+        res.render('index', {'user': result[0], auth: req.session.authenticated});
     }
 });
 
