@@ -5,8 +5,6 @@ var db = require('../config/database');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Writer\'s den', messages: req.flash() });
-
-  req.flash('info', 'Welcome');
 });
 
 router.post('/', (req, res) => {
@@ -23,10 +21,11 @@ router.post('/', (req, res) => {
       if(err) throw err;
       if(result.length == 0){
         req.flash('info', "No such user!");
-        res.redirect('/'); 
+        res.render('index'); 
       }else{
         req.flash('info', `Welcome ${lusername}!`);
         req.session.authenticated = true;
+        res.render('index')
       }
     });
   }
