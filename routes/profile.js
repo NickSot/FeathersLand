@@ -11,7 +11,8 @@ router.get('/', function(req, res, next) {
             if (err){
                 throw err;
             }
-
+            
+            res.locals.authenticated = req.session.authenticated;
             res.render('profile', {'user': result[0], obj: req.session});
         });
     }
@@ -19,8 +20,8 @@ router.get('/', function(req, res, next) {
         req.flash('info', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);
 
         req.session.authenticated = false;
-
-        res.render('index', {'user': res[0], obj: req.session});
+        res.locals.authenticated = req.session.authenticated;
+        res.render('index', {'user': res[0]});
     }
 });
 
@@ -38,14 +39,15 @@ router.post('/', (req, res) => {
             if (err){
                 throw err;
             }
-
-            res.render('profile', {'user': result[0], obj: req.session});
+            
+            res.locals.authenticated = req.session.authenticated;
+            res.render('profile', {'user': result[0]});
         });
     }
     else{
         req.flash('info', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);
-
-        res.render('index', {obj: req.session});
+        res.locals.authenticated = req.session.authenticated;
+        res.render('index');
     }
 });
 

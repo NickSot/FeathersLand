@@ -12,12 +12,12 @@ router.get('/:page', function(req, res, next) {
         if(err) throw err;
 
         if(result > 0){
+            res.locals.authenticated = req.session.authenticated;
             res.render('projects', {books : result});
         }else{
             req.flash('error', "Изглежда сме в непродуктивен период...");
             res.redirect('/');
         }
-
     });
 
 });

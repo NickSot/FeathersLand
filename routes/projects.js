@@ -12,8 +12,8 @@ router.get('/:page', function(req, res, next) {
         if(err) throw err;
 
         if(result.length > 0){
-            console.log("Ami ne wliza w twa");  
-            res.render('projects', {books : result, obj:req.session});
+            res.locals.authenticated = req.session.authenticated;
+            res.render('projects', {books : result});
         }else{
             req.flash('error', "Все още нямаш книги!");
             res.redirect('/');
