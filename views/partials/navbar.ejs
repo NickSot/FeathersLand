@@ -2,9 +2,9 @@
 
 <ul id="menu" class="nav">
     <%if (!obj.authenticated) {%>
-        <li><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Login</a><span style="color:white">/</span><a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a></li>
+        <li><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Вход</a><span style="color:white">/</span><br><a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Регистрация</a></li>
     <%} else {%>
-        <li><a class="login"href="/logout" style="width:auto;">Logout</a></li>
+        <li><a class="login"href="/logout" style="width:auto;">Изход</a></li>
     <%}%>
     <li class="icon fas fa-bookmark" id="uno"><a class="link"  href="/"> Начало</a></li>
     <li class="icon fas fa-book" id="dos"><a class="link"  href="/books/1"> Книги</a></li>

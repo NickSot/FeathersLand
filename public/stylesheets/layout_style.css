@@ -2,7 +2,7 @@ body {
   background-image: url("/imgs/back.png");
 }
 
-li{
+ul#menu li{
     margin-top: 2em;
 }
 

@@ -9,20 +9,26 @@ input[type=text], input[type=password] {
 }
 
 a.login1 {
-  text-decoration: none;
+
+  font-size: 130%;
+  color: black;
+
+}
+
+span{
   font-size: 130%;
 }
 
 
 #login_register{
-  margin-left: 40%;
-  margin-top: 40%;
+  margin-left: 22%;
+  margin-top: 19%;
 }
 
 #feather{
   width: 300px;
   margin-left: 69%;
-  margin-top: -35%;
+  margin-top: -30%;
 
 }
 
@@ -33,7 +39,7 @@ img {
 #main{
   width: 750px;
   margin-left: 1%;
-  margin-top: 5%;
+  margin-top: 8.5%;
 }
 
 h1{
@@ -46,7 +52,7 @@ h3{
 
 p{
   margin-left: 7%;
-  font-size:20px;
+  font-size:150%;
 }
 
 button {
