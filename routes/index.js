@@ -20,10 +20,10 @@ router.post('/', (req, res) => {
     db.query(query, [lusername, lpwd], (err, result, fields) => {
       if(err) throw err;
       if(result.length == 0){
-        req.flash('info', "Няма такъв потребител!");
+        req.flash('error', "Няма такъв потребител!");
         res.render('index'); 
       }else{
-        req.flash('info', `Добре дошъл/ла, ${lusername}!`);
+        req.flash('success', `Добре дошъл/ла отново, ${lusername}!`);
         req.session.authenticated = true;
         req.session.userId = result[0].ID;
         console.log(fields);
@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
         console.log(result);
 
         if (result.length != 0){
-          req.flash('info', "Вече има съществуващ акаунт с този мейл или никнейм!");
+          req.flash('error', "Вече има съществуващ акаунт с този мейл или никнейм!");
           res.render('index');
         }
         else{
@@ -53,7 +53,7 @@ router.post('/', (req, res) => {
             if (err) throw err;
       
             console.log(result);
-            req.flash('info', "Успешно влезе в профила си! Приятелю, писателю мой добър!");
+            req.flash('success', "Успешно влезе в профила си! Приятно писане!");
             res.render('index');
           });
         }
