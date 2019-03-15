@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
         res.render('write');
     }
     else{
-        res.flash('info', 'Трябва да си влязъл/ла в профила си, за да достъпиш тази опция!');
+        req.flash('info', 'Трябва да си влязъл/ла в профила си, за да достъпиш тази опция!');
         res.render('index');
     }
 });

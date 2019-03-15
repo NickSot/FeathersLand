@@ -14,7 +14,7 @@ router.get('/:page', function(req, res, next) {
         if(result > 0){
             res.render('projects', {books : result});
         }else{
-            req.flash('error', "No masterpieces yet...");
+            req.flash('error', "Все още нямаш книги!");
             res.redirect('/');
         }
 

@@ -26,11 +26,6 @@ router.post('/', (req, res) => {
       if(result.length == 0){
         res.render('index'); 
       }else{
-        // req.flash('success', `Добре дошъл/ла отново, ${lusername}!`);
-        // req.session.authenticated = true;
-        // req.session.userId = result[0].ID;
-        // res.render('index');
-        // console.log("Comparing: " + lpwd + " with: " +  result[0].pass);
         bcrypt.compare(lpwd, result[0].pass, (err, isPasswordCorrect) => {
           if(isPasswordCorrect){
             req.flash('success', `Добре дошъл/ла отново, ${lusername}!`);
@@ -45,7 +40,7 @@ router.post('/', (req, res) => {
       }
     });
   }
-  else if (lusername == undefined && lpwd == undefined){
+  else if (lusername == undefined && lpwd == undefined){ // REGISTER HANDLE
     if (rreppsw != rpwd){
       res.render('index');
     }
@@ -74,7 +69,7 @@ router.post('/', (req, res) => {
       });
     }
   }
-  else{
+  else{ // LOGOUT HANDLE
     req.session = null;
 
     req.flash('info', 'Успешно отписване!');
