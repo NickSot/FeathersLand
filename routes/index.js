@@ -8,6 +8,21 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', (req, res) => {
+  let rusername = req.body.runame;
+
+  let rpwd = req.body.rpsw;
+
+  let lusername = req.body.luname;
+
+  let lpwd = req.body.lpsw;
+
+  if (rusername == undefined && rpwd == undefined){
+    //Login part
+  }
+  else{
+    //Register part
+  }
+
   db.query('Select * From Books', (err, result) => {
     console.log(result);
   })
