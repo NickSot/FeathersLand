@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
         req.flash('info', "No such user!");
         res.render('index'); 
       }else{
-        req.flash('info', `Welcome ${lusername}!`);
+        req.flash('info', `Добре дошъл/ла, ${lusername}!`);
         req.session.authenticated = true;
         req.session.userId = result[0].ID;
         console.log(fields);
@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
         console.log(result);
 
         if (result.length != 0){
-          req.flash('info', "There is already a user with that username or email!");
+          req.flash('info', "Вече има съществуващ акаунт с този мейл или никнейм!");
           res.render('index');
         }
         else{
