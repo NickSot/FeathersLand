@@ -4,26 +4,30 @@ var db = require('../config/database');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Writer\'s den' });
+  res.render('index', { title: 'Writer\'s den', messages: req.flash() });
 
-  res.flash('info', 'Welcome');
+  req.flash('info', 'Welcome');
 });
 
 router.post('/', (req, res) => {
-  console.log('HERE');
-
   let rusername = req.body.runame;
-
   let rpwd = req.body.rpsw;
-
   let lusername = req.body.luname;
-
   let lpwd = req.body.lpsw;
-
   let rreppsw = req.body.rreppsw;
 
   if (rusername == undefined && rpwd == undefined){
-    //Login part
+    let query = `Select * from Users WHERE username = ? AND pass = ?`;
+    db.query(query, [lusername, lpwd], (err, result) => {
+      if(err) throw err;
+      if(result.length == 0){
+        req.flash('info', "No such user!");
+        res.redirect('/'); 
+      }else{
+        req.flash('info', `Welcome ${lusername}!`);
+        req.session.authenticated = true;
+      }
+    });
   }
   else{
     if (rreppsw != rpwd){
