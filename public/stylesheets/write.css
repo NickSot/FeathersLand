@@ -1,0 +1,49 @@
+.split {
+height: 100%;
+width: 50%;
+position: fixed;
+z-index: 1;
+top: 0;
+overflow-x: hidden;
+padding-top: 20px;
+}
+.left {
+left: 0;
+}
+.right {
+right: 0;
+}
+#writingResult {
+font-family: 'Open Sans', sans-serif;
+word-wrap: break-word;
+color: #433b3b;
+font-weight: 300;
+font-size:40px;
+margin-left:15%;
+margin-right:20%;
+margin-top: 5%;
+}
+div[contenteditable]{
+  font-family: 'Open Sans', sans-serif;
+  height: 80%;
+  color: #433b3b;
+  font-weight: 300;
+  font-size:40px;
+    margin-left:15%;
+    margin-right:20%;
+    margin-top: 5%;
+}
+#writeButton {
+  position: absolute;
+  top: 30;
+  right: 30;
+}
+div[contenteditable]:focus{
+  outline: none;
+}
+body {
+  background-image: url("back.png");
+}
+* {
+  font-family: 'open sans', 'lato', 'helvetica', sans-serif;
+}
