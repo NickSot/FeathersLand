@@ -7,6 +7,7 @@ var bodyParser = require('body-parser')
 var expressLayout = require("express-ejs-layouts");
 var db = require("./config/database");
 var flash = require('express-flash');
+var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -22,8 +23,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
+app.use(cookieParser(''));
 app.use(express.static(__dirname + '/public'));
+app.use(session({
+  secret: 'Writer, my friend',
+  resave: true,
+  saveUninitialized: false
+})
 
 
 app.use(flash());

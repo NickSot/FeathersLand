@@ -5,6 +5,8 @@ var db = require('../config/database');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Writer\'s den' });
+
+  res.flash('info', 'Welcome');
 });
 
 router.post('/', (req, res) => {
@@ -37,6 +39,7 @@ router.post('/', (req, res) => {
 
         if (result.length){
           res.render('index');
+
         }
         else{
           db.query('Insert Into Users (username, pass) Values (?, ?)', [rusername, rpwd], (err, result) => {
