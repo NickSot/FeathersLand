@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
     db.query(query, [lusername, lpwd], (err, result, fields) => {
       if(err) throw err;
       if(result.length == 0){
-        req.flash('info', "No such user!");
+        req.flash('info', "Няма такъв потребител!");
         res.render('index'); 
       }else{
         req.flash('info', `Добре дошъл/ла, ${lusername}!`);
@@ -53,7 +53,7 @@ router.post('/', (req, res) => {
             if (err) throw err;
       
             console.log(result);
-            req.flash('info', "Successfully logged in! Now login!");
+            req.flash('info', "Успешно влезе в профила си! Приятелю, писателю мой добър!");
             res.render('index');
           });
         }
