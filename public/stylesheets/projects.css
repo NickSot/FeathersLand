@@ -1,0 +1,15 @@
+#projectsContainer {
+  margin-left: 10%;
+  text-align: center;
+  margin-top: 10%;
+
+}
+#project {
+  margin-top: 3%;
+  width: 50%;
+  background-color: white; border-radius: 60px; padding: 20px;
+}
+.projectTitle {
+  color: #5f859b;
+  text-align: center;
+}
