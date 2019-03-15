@@ -6,12 +6,13 @@ const booksOnPage = 30;
 
 router.get('/:page', function(req, res, next) {
     let offset = req.params.page * 10;
-    let query = "Select * from Books WHERE authorId = ? order by Rating desc LIMIT " + booksOnPage + " OFFSET " + offset;
+    let query = "Select * from Books WHERE AuthorId = ? order by Rating desc LIMIT " + booksOnPage + " OFFSET " + offset;
 
     db.query(query, [req.session.userId], (err, result) => {
         if(err) throw err;
 
-        if(result > 0){
+        if(result.length > 0){
+            console.log("Ami ne wliza w twa");  
             res.render('projects', {books : result, obj:req.session});
         }else{
             req.flash('error', "Все още нямаш книги!");
