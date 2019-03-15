@@ -5,3 +5,12 @@
   </div>
   <center><a href="#"><img src="/imgs/plusbutton.png" id = "addButton"></a></center>
 <%};%>
+
+
+<footer>
+  <div style="text-align: center">
+    <%for(let i = 1; i <= numPages; i++){%>
+      <a href=<%-"/books/?page="+i %> > <%- i %></a>
+    <%}%>
+  </div>
+</footer>
