@@ -7,6 +7,7 @@ var bcryptSaltRounds = 10;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  console.log(req.session.authenticated);
   res.render('index', { title: 'Writer\'s den', messages: req.flash(), obj: req.session});
 });
 
@@ -70,13 +71,6 @@ router.post('/', (req, res) => {
         });
       }
     }
-  }
-  else{ // LOGOUT HANDLE
-    req.session.authenticated = null;
-    req.session.userId = null;
-    console.log(req.session);
-    req.flash('info', 'Успешно отписване!');
-    res.render('index', {obj: req.session});
   }
 });
 
