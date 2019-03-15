@@ -39,13 +39,13 @@ router.post('/', (req, res) => {
                 throw err;
             }
 
-            res.render('profile', {'user': result[0]});
+            res.render('profile', {'user': result[0], obj: req.session});
         });
     }
     else{
         req.flash('info', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);
 
-        res.render('index');
+        res.render('index', {obj: req.session});
     }
 });
 
