@@ -1,19 +1,19 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
 <h1>Hello world</h1>
 <p></p>
-<ul id="#login_and_register" style="margin-left:45%;">
-  <li style="display:inline"><button onclick="document.getElementById('id01').style.display='block'" style="width:auto">Login</button></li>
-  <li style="display:inline"><button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</button></li>
+<ul id="#login_and_register">
+  <li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto">Login</button></li>
+  <li><button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</button></li>
 </ul>
 
 <div id="id01" class="modal">
   <form class="modal-content animate" action="/">
     <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <label for="luname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="luname" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <label for="lpsw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="lpsw" required>
 
       <button type="submit">Login</button>
       <label>
@@ -33,22 +33,20 @@
   <form class="modal-content animate" action="/">
 
     <div class="container">
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
+      <label for="remail"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="remail" required>
 
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <label for="runame"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="runame" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <label for="rpsw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="rpsw" required>
 
-      <label for="reppsw"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="reppsw" required>
+      <label for="rreppsw"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="rreppsw" required>
 
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+      <button type="submit">Register</button>
+
     </div>
 
     <div class="container" style="background-color:#f1f1f1">

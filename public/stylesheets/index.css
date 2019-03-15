@@ -1,7 +1,14 @@
 h1 {
-  margin-left:48%;
+  margin-left:47%;
 }
 
+ul{
+  margin-left:45%;
+}
+
+li{
+  display:inline;
+}
 
 input[type=text], input[type=password] {
   width: 100%;
