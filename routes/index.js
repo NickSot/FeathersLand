@@ -24,7 +24,6 @@ router.post('/', (req, res) => {
     db.query(query, [lusername], (err, result) => {
       if(err) throw err;
       if(result.length == 0){
-        req.flash('error', "Няма такъв потребител!");
         res.render('index'); 
       }else{
         // req.flash('success', `Добре дошъл/ла отново, ${lusername}!`);
@@ -46,8 +45,7 @@ router.post('/', (req, res) => {
       }
     });
   }
-  else // REGISTER HANDLE
-  {
+  else if (lusername == undefined && lpwd == undefined){
     if (rreppsw != rpwd){
       res.render('index');
     }
@@ -75,6 +73,12 @@ router.post('/', (req, res) => {
         }
       });
     }
+  }
+  else{
+    req.session = null;
+
+    req.flash('info', 'Успешно отписване!');
+    res.render('index');
   }
 });
 
