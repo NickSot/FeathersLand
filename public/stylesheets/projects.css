@@ -7,9 +7,11 @@
 #project {
   margin-top: 3%;
   width: 50%;
+  border-radius: 60px;
   background-color: white; border-radius: 60px; padding: 20px;
 }
 .projectTitle {
   color: #5f859b;
   text-align: center;
+  font-size: 64px;
 }
