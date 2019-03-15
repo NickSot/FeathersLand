@@ -26,4 +26,4 @@ coverage
 # Benchmarking
 benchmarks/graphs
 
-password.json
+password.jsonconfig/password.js
