@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
     else{
         req.flash('info', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);
 
-        res.render('index', {'user': result[0], auth: req.session.authenticated});
+        res.render('index', {'user': res[0], auth: req.session.authenticated});
     }
 });
 
