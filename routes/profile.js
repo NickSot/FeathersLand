@@ -4,8 +4,9 @@ var router = express.Router();
 var db = require('../config/database');
 
 router.get('/', function(req, res, next) {
+    let user = req.session.user;
+
     if (req.session.authenticated){
-        let user = req.session.user;
 
         res.locals.authenticated = req.session.authenticated;
         res.render('profile', {'user': user});
@@ -15,7 +16,7 @@ router.get('/', function(req, res, next) {
 
         req.session.authenticated = false;
         res.locals.authenticated = req.session.authenticated;
-        res.render('index', {'user': res[0]});
+        res.render('index', {'user': user});
     }
 });
 
@@ -23,20 +24,16 @@ router.post('/', (req, res) => {
     if (req.session.authenticated){
         userBio = req.body.userBio;
 
-        db.query('Update Users Set Bio = ? Where ID = ?', [userBio, req.session.userId], (err, result) => {
+        let user = req.session.user;
+
+        db.query('Update Users Set Bio = ? Where ID = ?', [userBio, req.session.user.ID], (err, result) => {
             if (err){
                 throw err
             }
         });
-
-        db.query('Select * From Users Where ID = ?', [req.session.userId], (err, result, fields) => {
-            if (err){
-                throw err;
-            }
-            
-            res.locals.authenticated = req.session.authenticated;
-            res.render('profile', {'user': result[0]});
-        });
+        
+        res.locals.authenticated = req.session.authenticated;
+        res.render('profile', {'user': user});
     }
     else{
         req.flash('info', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);
