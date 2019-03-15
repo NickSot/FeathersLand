@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
             throw err;
         }
 
-        res.render('profile', {'user': fields});
+        res.render('profile', {'user': result[0]});
     });
 });
 
@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
             throw err;
         }
 
-        res.render('profile', {'user': fields});
+        res.render('profile', {'user': result[0]});
     });
 });
 

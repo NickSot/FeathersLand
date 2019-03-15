@@ -1,13 +1,23 @@
 
-<h3 id=name></h3>
+<h2 id=name>
+    <%=user.username%>
+</h2>
 
 <form action="/profile", method='POST'>
     <textarea name="userBio" id="" cols="30" rows="10">
         <%=user.Bio%>
     </textarea>
-    
+
     <button type='submit'>Edit</button>
 </form>
+
+<h3>
+    Оценка: <%=user.overallRating%>
+</h3>
+
+<h3>
+    Брой последователи: <%=user.followerCount%>
+</h3>
 
 <ul>
 
