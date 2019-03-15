@@ -1,0 +1,23 @@
+#info{
+  margin-left:50%;
+}
+#error{
+  margin-left:50%;
+  width: 225px;
+  height: 40px;
+  margin-top: 3%;
+  background-color: #ce7c6d;
+  color: #473431;
+}
+#success{
+  margin-left:50%;
+  color:green;
+}
+
+#err_msg{
+  font-size: 12px
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+
+}
