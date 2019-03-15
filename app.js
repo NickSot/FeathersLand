@@ -6,6 +6,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser')
 var expressLayout = require("express-ejs-layouts");
 var db = require("./config/database");
+var flash = require('express-flash');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -24,6 +25,8 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 
+
+app.use(flash());
 
 //ROUTES
 app.use('/', indexRouter);
