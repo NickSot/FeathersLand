@@ -12,47 +12,72 @@ a.login1 {
 
   font-size: 130%;
   color: black;
+  font-family: Open Sans;
 
 }
 
 span{
   font-size: 130%;
+  font-family: Open Sans;
 }
 
 
 #login_register{
   margin-left: 22%;
-  margin-top: 19%;
+  margin-top: 11%;
 }
 
 #feather{
   width: 300px;
-  margin-left: 69%;
+  margin-left: 71%;
   margin-top: -30%;
 
 }
 
-img {
+img#f {
   width: 300px;
+}
+
+img#l{
+  width: 264px;
+  height: 10px;
+}
+
+img#i{
+  width: 200px;
+  height: 200px;
+}
+
+#ink{
+  margin-left: 80%;
+  margin-top:-10%;
+}
+
+#line{
+  margin-left: 51%;
+  margin-top:-1.1%;
 }
 
 #main{
   width: 750px;
-  margin-left: 1%;
+  margin-left: 3%;
   margin-top: 8.5%;
 }
 
 h1{
-  margin-left: 19%;
+  margin-left: 20.5%;
+  font-family: Open Sans;
 }
 
 h3{
   margin-left: 23%;
+  font-family: Open Sans;
 }
 
 p{
   margin-left: 7%;
   font-size:150%;
+  font-family: Open Sans;
 }
 
 button {
@@ -115,6 +140,13 @@ span.psw {
 .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFUZ0bbck.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 
 @-webkit-keyframes animatezoom {
