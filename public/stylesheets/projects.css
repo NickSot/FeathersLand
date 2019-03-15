@@ -1,17 +1,28 @@
-#projectsContainer {
-  margin-left: 10%;
+.projectHolder {
+  margin-left: 30%;
   text-align: center;
-  margin-top: 10%;
-
-}
-#project {
-  margin-top: 3%;
-  width: 50%;
+  padding: 10px;
+  background-color: white;
   border-radius: 60px;
-  background-color: white; border-radius: 60px; padding: 20px;
+   width: 50%;
+   margin-top: 10vh;
+   display: flex;
+   justify-content:center;
+   align-content:center;
+   flex-direction:row;
+}
+.projectIcon{
+  margin-right: 4vw;
+  margin-top: 32px;
 }
 .projectTitle {
-  color: #5f859b;
-  text-align: center;
+  display: inline;
   font-size: 64px;
+  font-weight: 300;
+  color: #5f859b;
+  float: left;
+}
+#addButton {
+  margin-left: 10%;
+  width: 8%;
 }
