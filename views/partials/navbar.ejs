@@ -1,4 +1,5 @@
-<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+x<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+
 <ul id="menu" class="nav">
     <%if (!authenticated) {%>
         <li><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Вход</a><span style="color:white">/</span><br><a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Регистрация</a></li>
@@ -6,11 +7,11 @@
         <li><a class="login"href="/logout" style="width:auto;">Изход</a></li>
     <%}%>
     <li class="icon fas fa-bookmark" id="uno"><a class="link"  href="/"> Начало</a></li>
-    <li class="icon fas fa-book" id="dos"><a class="link"  href="/books?page=1"> Книги</a></li>
+    <li class="icon fas fa-book" id="dos"><a class="link"  href="/books/1"> Книги</a></li>
     <li class="icon fas fa-pen-fancy" id="tres"><a class="link" href="/write"> Сътвори</a></li>
     <!-- <li><a class="icon fas fa-address-book" id="cuatro" href="#t4"> Последователи</a></li> -->
     <li class="icon fas fa-user" id="sinco"><a class="link"  href="/profile"> Профил</a></li>
-    <li class="icon fas fa-user" id="seco"><a class="link"  href="/authors"> Творци</a></li>
+    <li class="icon fas fa-users" id="seco"><a class="link"  href="/authors"> Творци</a></li>
 </ul>
 
 
