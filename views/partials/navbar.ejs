@@ -1,15 +1,76 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+
 <ul id="menu" class="nav">
-    <%if (!auth){%>
-        <li><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Login</a></li>
-        <li><a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a></li>
-    <%} else {%>
-        <li><a class="login"href="/" style="width:auto;">Logout</a></li>
-    <%}%>
-    <li><a class="icon fas fa-bookmark" id="uno" href="/"> Начало</a></li>
-    <li><a class="icon fas fa-book" id="dos" href="/projects/1"> Книги</a></li>
+    <li><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Login</a></li>
+    <li><a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a></li>
+    <li><a class="login"href="#" style="width:auto;">Logout</a></li>
+    <li><a class="icon fas fa-bookmark" id="uno" href="#t1"> Начало</a></li>
+    <li><a class="icon fas fa-book" id="dos" href="/projects"> Проекти</a></li>
     <li><a class="icon fas fa-pen-fancy" id="tres" href="/write"> Сътвори</a></li>
     <!-- <li><a class="icon fas fa-address-book" id="cuatro" href="#t4"> Последователи</a></li> -->
     <li><a class="icon fas fa-user" id="sinco" href="/profile"> Профил</a></li>
 </ul>
 
+<div id="id01" class="modal">
 
+  <form class="modal-content animate" action="/" method='POST'>
+
+    <div class="container">
+      <label for="luname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="luname" required>
+
+      <label for="lpsw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="lpsw" required>
+
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<div id="id02" class="modal">
+  <form class="modal-content animate" action="/" method="POST">
+    <div class="container">
+      <label for="remail"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="remail" required>
+
+      <label for="runame"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="runame" required>
+
+      <label for="rpsw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="rpsw" required>
+
+      <label for="rreppsw"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="rreppsw" required>
+
+      <button type="submit">Register</button>
+
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<script>
+
+var modal = document.getElementById('id01');
+var modal2 = document.getElementById('id02');
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    } else if(event.target == modal2){
+        modal2.style.display = "none";
+    }
+}
+</script>
