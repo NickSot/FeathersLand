@@ -1,7 +1,14 @@
 
 <h3 id=name></h3>
-<p id="bio"></p>
-<button>Edit</button>
+
+<form action="/profile", method='POST'>
+    <textarea name="userBio" id="" cols="30" rows="10">
+        <%=user.Bio%>
+    </textarea>
+    
+    <button type='submit'>Edit</button>
+</form>
+
 <ul>
 
 </ul>

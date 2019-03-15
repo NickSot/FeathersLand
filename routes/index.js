@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
 
   if (rusername == undefined && rpwd == undefined){
     let query = `Select * from Users WHERE username = ? AND pass = ?`;
-    db.query(query, [lusername, lpwd], (err, result) => {
+    db.query(query, [lusername, lpwd], (err, result, fields) => {
       if(err) throw err;
       if(result.length == 0){
         req.flash('info', "No such user!");
@@ -25,6 +25,9 @@ router.post('/', (req, res) => {
       }else{
         req.flash('info', `Welcome ${lusername}!`);
         req.session.authenticated = true;
+        req.session.userId = result[0].ID;
+        console.log(fields);
+        console.log(result[0].ID);
         res.render('index')
       }
     });
