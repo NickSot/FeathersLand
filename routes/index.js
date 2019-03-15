@@ -19,6 +19,7 @@ router.post('/', (req, res) => {
   let rreppsw = req.body.rreppsw;
   let lusername = req.body.luname;
   let lpwd = req.body.lpsw;
+  
   if (!req.session.authenticated){
     if (rusername == undefined && rpwd == undefined){ /// LOGIN HANDLE
 
@@ -61,9 +62,7 @@ router.post('/', (req, res) => {
             bcrypt.hash(rpwd, bcryptSaltRounds, (err, hash) => {
               if(err) throw err;
               db.query('Insert Into Users (username, pass, email) Values (?, ?, ?)', [rusername, hash, remail], (err, result) => {
-                if (err) throw err;
-                
-                console.log(result);
+                if (err) throw err;                
                 req.flash('success', "Успешна регистрация! Приятно писане!");
                 res.redirect('/');
               });

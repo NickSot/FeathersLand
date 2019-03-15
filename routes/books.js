@@ -5,15 +5,17 @@ var db = require("../config/database");
 const booksOnPage = 30;
 
 router.get('/:page', function(req, res, next) {
-    let offset = req.params.page * 10;
-    let query = "Select * from Books order by Rating desc LIMIT " + booksOnPage + " OFFSET " + offset;
-
+    let offset = (req.params.page - 1) * 10;
+    let query = 'select * from Books order by Rating desc LIMIT ' + booksOnPage + ' OFFSET ' +  offset;
+    // console.log("Query is:" + query);
     db.query(query, (err, result) => {
+        console.log("Offset is:", offset);
         if(err) throw err;
+        if(result.length > 0){
 
-        if(result > 0){
             res.locals.authenticated = req.session.authenticated;
-            res.render('projects', {books : result});
+            res.render('books', {books : result});
+
         }else{
             req.flash('error', "Изглежда сме в непродуктивен период...");
             res.redirect('/');
