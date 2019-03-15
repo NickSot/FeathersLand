@@ -2,17 +2,15 @@
 
 <ul id="menu" class="nav">
     <%if (!obj.authenticated) {%>
-        <li><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Login/</a>
-          <a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a></li>
-        <li></li>
+        <li><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Login</a><span style="color:white">/</span><a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a></li>
     <%} else {%>
         <li><a class="login"href="/logout" style="width:auto;">Logout</a></li>
     <%}%>
-    <li><a class="icon fas fa-bookmark" id="uno" href="/"> Начало</a></li>
-    <li><a class="icon fas fa-book" id="dos" href="/books/1"> Книги</a></li>
-    <li><a class="icon fas fa-pen-fancy" id="tres" href="/write"> Сътвори</a></li>
+    <li class="icon fas fa-bookmark" id="uno"><a class="link"  href="/"> Начало</a></li>
+    <li class="icon fas fa-book" id="dos"><a class="link"  href="/books/1"> Книги</a></li>
+    <li class="icon fas fa-pen-fancy" id="tres"><a class="link" href="/write"> Сътвори</a></li>
     <!-- <li><a class="icon fas fa-address-book" id="cuatro" href="#t4"> Последователи</a></li> -->
-    <li><a class="icon fas fa-user" id="sinco" href="/profile"> Профил</a></li>
+    <li class="icon fas fa-user" id="sinco"><a class="link"  href="/profile"> Профил</a></li>
 </ul>
 
 
@@ -66,6 +64,8 @@
     </div>
   </form>
 </div>
+
+
 
 <script>
 

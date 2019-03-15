@@ -8,15 +8,31 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-#feather{
-  width: 350px;
-  margin-left: 69%;
-  margin-top: -10%;
+a.login1 {
+  text-decoration: none;
+  font-size: 130%;
+}
 
+
+#login_register{
+  margin-left: 40%;
+  margin-top: 40%;
+}
+
+#feather{
+  width: 300px;
+  margin-left: 69%;
+  margin-top: -35%;
+
+}
+
+img {
+  width: 300px;
 }
 
 #main{
   width: 750px;
+  margin-left: 1%;
   margin-top: 5%;
 }
 
