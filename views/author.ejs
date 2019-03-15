@@ -2,13 +2,9 @@
     <%=user.username%>
 </h2>
 
-<form action="/profile", method='POST'>
-    <div name="userBio" id="" cols="30" rows="10">
-        <%=user.Bio%>
-    </div>
-
-    <button type='submit'>Edit</button>
-</form>
+<div name="userBio" id="" cols="30" rows="10">
+    <%=user.Bio%>
+</div>
 
 <h3>
     Оценка: <%=user.overallRating%>
@@ -17,6 +13,11 @@
 <h3>
     Брой последователи: <%=user.followerCount%>
 </h3>
+
+<form action="<%-'/author/' + user.ID + '/show'-%>" method='POST'>
+    <input type="hidden" name='user' value='<%-user-%>'>
+    <button type='submit'>Абонирай се!</button>
+</form>
 
 <ul>
 
