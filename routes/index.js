@@ -12,9 +12,10 @@ router.get('/', function(req, res, next) {
 router.post('/', (req, res) => {
   let rusername = req.body.runame;
   let rpwd = req.body.rpsw;
+  let remail = req.body.remail;
+  let rreppsw = req.body.rreppsw;
   let lusername = req.body.luname;
   let lpwd = req.body.lpsw;
-  let rreppsw = req.body.rreppsw;
 
   if (rusername == undefined && rpwd == undefined){
     let query = `Select * from Users WHERE username = ? AND pass = ?`;
@@ -43,10 +44,10 @@ router.post('/', (req, res) => {
 
         if (result.length){
           res.render('index');
-
+          
         }
         else{
-          db.query('Insert Into Users (username, pass) Values (?, ?)', [rusername, rpwd], (err, result) => {
+          db.query('Insert Into Users (username, pass, email) Values (?, ?, ?)', [rusername, rpwd, remail], (err, result) => {
             if (err) throw err;
       
             console.log(result);
