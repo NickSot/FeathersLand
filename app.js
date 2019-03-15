@@ -29,7 +29,7 @@ app.use(session({
   secret: 'Writer, my friend',
   resave: true,
   saveUninitialized: false
-})
+}));
 
 
 app.use(flash());
