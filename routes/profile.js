@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
                 throw err;
             }
 
-            res.render('profile', {'user': result[0], auth: req.session.authenticated});
+            res.render('profile', {'user': result[0], obj: req.session});
         });
     }
     else{

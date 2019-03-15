@@ -1,12 +1,15 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
 
 <ul id="menu" class="nav">
-    <li><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Login</a></li>
-    <li><a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a></li>
-    <li><a class="login"href="#" style="width:auto;">Logout</a></li>
+
+    <%if (!obj.authenticated) {%>
+        <li><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Login</a></li>
+        <li><a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a></li>
+    <%} else {%>
+        <li><a class="login"href="/" style="width:auto;">Logout</a></li>
+    <%}%>
     <li><a class="icon fas fa-bookmark" id="uno" href="/"> Начало</a></li>
     <li><a class="icon fas fa-book" id="dos" href="/books/1"> Книги</a></li>
-
     <li><a class="icon fas fa-pen-fancy" id="tres" href="/write"> Сътвори</a></li>
     <!-- <li><a class="icon fas fa-address-book" id="cuatro" href="#t4"> Последователи</a></li> -->
     <li><a class="icon fas fa-user" id="sinco" href="/profile"> Профил</a></li>
