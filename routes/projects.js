@@ -12,7 +12,7 @@ router.get('/:page', function(req, res, next) {
         if(err) throw err;
 
         if(result > 0){
-            res.render('projects', {books : result});
+            res.render('projects', {books : result, obj:req.session});
         }else{
             req.flash('error', "Все още нямаш книги!");
             res.redirect('/');
