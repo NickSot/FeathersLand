@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', (req, res) => {
-    if (req.session.authenticated){
+    if (req.session.authenticated){x
         userBio = req.body.userBio;
 
         db.query('Update Users Set Bio = ? Where ID = ?', [userBio, req.session.userId], (err, result) => {

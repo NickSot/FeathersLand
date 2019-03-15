@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
         req.session.userId = result[0].ID;
         console.log(fields);
         console.log(result[0].ID);
-        res.render('index')
+        res.render('index');
       }
     });
   }
