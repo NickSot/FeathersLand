@@ -80,7 +80,7 @@ p{
   font-family: Open Sans;
 }
 
-button {
+button.submit {
   background-color: #dbb962;
   background: none
   color: white;
@@ -88,6 +88,10 @@ button {
   margin: 8px 0;
   border: none;
   cursor: pointer;
+  width: 100%;
+}
+
+#cncl{
   width: 100%;
 }
 
@@ -130,9 +134,9 @@ span.psw {
 
 .modal-content {
   background-color: #fefefe;
-  margin: 5% auto 15% auto;
+  margin-left:34%;
   border: 1px solid #888;
-  width: 80%;
+  width: 40%;
 }
 
 
