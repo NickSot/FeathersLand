@@ -3,11 +3,12 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
     req.session.authenticated = false;
-    req.session.userId = null;
+    res.locals.authenticated = req.session.authenticated;
+    req.session.user = null;
     console.log(req.session);
     req.flash('info', 'Успешно отписване!');
 
-    res.render('index', {obj: req.session});
+    res.render('index');
 });
 
 module.exports = router;
