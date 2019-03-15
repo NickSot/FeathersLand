@@ -9,6 +9,7 @@ var db = require("./config/database");
 var flash = require('express-flash');
 var session = require('express-session');
 
+// route vars
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var projectsRouter = require('./routes/projects');
