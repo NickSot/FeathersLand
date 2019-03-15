@@ -18,6 +18,7 @@ var profileRouter = require('./routes/profile');
 var bookRouter = require('./routes/books');
 var logoutRouter = require('./routes/logout');
 var authorsRouter = require('./routes/authors');
+var authorRouter = require('./routes/author');
 
 var app = express();
 
@@ -49,6 +50,7 @@ app.use('/profile', profileRouter);
 app.use('/books', bookRouter);
 app.use('/logout', logoutRouter);
 app.use('/authors', authorsRouter);
+app.use('/author', authorRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
