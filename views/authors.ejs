@@ -2,7 +2,7 @@
     <%users.forEach((user) => {%>
         <li>
             <a href="<%-'/authors/' + user.ID + '/show/'-%>">
-                user.username
+                <%=user.username%>
             </a>
         </li>
     <%});%>

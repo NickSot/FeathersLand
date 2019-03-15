@@ -5,16 +5,10 @@ var db = require('../config/database');
 
 router.get('/', function(req, res, next) {
     if (req.session.authenticated){
-        let id = req.session.userId;
+        let user = req.session.user;
 
-        db.query('Select * From Users Where Id = ?', [id], (err, result, fields) => {
-            if (err){
-                throw err;
-            }
-            
-            res.locals.authenticated = req.session.authenticated;
-            res.render('profile', {'user': result[0], obj: req.session});
-        });
+        res.locals.authenticated = req.session.authenticated;
+        res.render('profile', {'user': user});
     }
     else{
         req.flash('info', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);

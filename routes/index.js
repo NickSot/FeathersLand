@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
     if (rusername == undefined && rpwd == undefined){ /// LOGIN HANDLE
 
       let query = `Select * from Users WHERE username = ?`;
+
       db.query(query, [lusername], (err, result) => {
         if(err) throw err;
 
@@ -33,7 +34,7 @@ router.post('/', (req, res) => {
             if(isPasswordCorrect){
               req.flash('success', `Добре дошъл/ла отново, ${lusername}!`);
               req.session.authenticated = true;
-              req.session.userId = result[0].ID;
+              req.session.user = result[0];
               res.redirect('/profile');
             }else{
               req.flash('error', 'Няма такъв потребител!');

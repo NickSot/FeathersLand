@@ -8,7 +8,7 @@ router.get('/:page', function(req, res, next) {
     let offset = req.params.page * 10;
     let query = "Select * from Books WHERE AuthorId = ? order by Rating desc LIMIT " + booksOnPage + " OFFSET " + offset;
 
-    db.query(query, [req.session.userId], (err, result) => {
+    db.query(query, [req.session.user.ID], (err, result) => {
         if(err) throw err;
 
         if(result.length > 0){
