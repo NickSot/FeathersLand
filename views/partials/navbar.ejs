@@ -26,7 +26,7 @@
       <label for="lpsw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="lpsw" required>
 
-      <button type="submit">Login</button>
+      <button class="submit" type="submit">Login</button>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
@@ -54,13 +54,12 @@
       <label for="rreppsw"><b>Repeat Password</b></label>
       <input type="password" placeholder="Repeat Password" name="rreppsw" required>
 
-      <button type="submit">Register</button>
+      <button class="submit" type="submit">Register</button>
 
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
+      <button id="cncl" type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
     </div>
   </form>
 </div>
