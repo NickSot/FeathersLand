@@ -36,31 +36,27 @@ router.post('/', (req, res) => {
     else{
       console.log('HERE');
 
-      db.query('Select * From Users Where username = ?', [rusername], (err, result) => {
+      db.query('Select * From Users Where username = ? Or email = ?', [rusername, remail], (err, result) => {
         if (err) throw err;
 
         console.log(result);
 
-        if (result.length){
+        if (result.length != 0){
+          req.flash('info', "There is already a user with that username or email!");
           res.render('index');
-          
         }
         else{
           db.query('Insert Into Users (username, pass, email) Values (?, ?, ?)', [rusername, rpwd, remail], (err, result) => {
             if (err) throw err;
       
             console.log(result);
-
+            req.flash('info', "Successfully logged in! Now login!");
             res.render('index');
           });
         }
       });
     }
   }
-
-  db.query('Select * From Books', (err, result) => {
-    console.log(result);
-  })
 });
 
 module.exports = router;
