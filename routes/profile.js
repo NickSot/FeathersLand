@@ -23,15 +23,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', (req, res) => {
-    if (req.session.authenticated){x
+    if (req.session.authenticated){
         userBio = req.body.userBio;
 
         db.query('Update Users Set Bio = ? Where ID = ?', [userBio, req.session.userId], (err, result) => {
             if (err){
                 throw err
             }
-
-            console.log(req.session.userId);
         });
 
         db.query('Select * From Users Where ID = ?', [req.session.userId], (err, result, fields) => {
