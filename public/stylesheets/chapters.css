@@ -1,0 +1,71 @@
+  .chapterImage {
+    width: 40px;
+    height: 50px;
+    display: inline;
+  }
+  .chapterTitle{
+    display: inline;
+    font-size: 40px;
+    font-weight: 300;
+    color: #5f859b;
+    margin-left: 30px;
+  }
+  .chapterHolder{
+    border-radius: 20px;
+    padding: 10px;
+    text-align: left;
+    background-color: white;
+    width: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  #headingChapters {
+    text-align: center;
+    margin: 30px;
+    font-weight: 400;
+    font-size: 55px;
+    color: #5f859b;
+  }
+  #commentArea {
+    border: none;
+    border-radius: 10px;
+    width: 50%;
+    height: 200px;
+    padding: 30px;
+
+  }
+  textarea:focus{
+  outline: none;
+}
+
+
+  .author {
+    font-size: 20px;
+    padding: 20px;
+  }
+  .comment {
+    padding: 20px;
+  }
+  #commentAnnounce {
+    text-align: center;
+    color: #5f859b;
+  }
+  #commentButton {
+    background-color: #5f859b;
+    border: none;
+    border-radius: 60px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  a {text-decoration: none;}
+  .com {
+    width: 50%;
+    background-color: white;
+    margin-top: 10px;
+    display: table;
+  }
