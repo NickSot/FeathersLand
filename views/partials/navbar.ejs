@@ -2,8 +2,9 @@
 
 <ul id="menu" class="nav">
     <%if (!obj.authenticated) {%>
-        <li><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Login</a></li>
-        <li><a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a></li>
+        <li><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Login/</a>
+          <a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</a></li>
+        <li></li>
     <%} else {%>
         <li><a class="login"href="/logout" style="width:auto;">Logout</a></li>
     <%}%>

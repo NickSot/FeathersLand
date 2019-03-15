@@ -2,6 +2,9 @@ body {
   background-image: url("/imgs/back.png");
 }
 
+li{
+    margin-top: 2em;
+}
 
 .page {
   position: absolute;
@@ -45,19 +48,20 @@ ul.nav {
   -webkit-transition: all .5s ease-out;
   -moz-transition: all .5s ease-out;
   -o-transition: all .5s ease-out;
+
+}
+
+#menu{
+  list-style-type:none;
 }
 
 a {
   text-decoration: none;
   color:white;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 
 .icon {
-  font-size: 25px;
-}
-
-#tres {
-  font-size: 25px;
+  font-size: 20px;
 }
