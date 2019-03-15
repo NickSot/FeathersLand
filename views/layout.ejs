@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/stylesheets/layout_style.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/font.css">
@@ -13,6 +14,70 @@
   <%- include ./partials/locals.messages.ejs%>
       <%- include ./partials/navbar.ejs%>
       <div style="margin-left:10%;">  <%- body %></div>
+
+      <div id="id01" class="modal">
+
+        <form class="modal-content animate" action="/" method='POST'>
+
+          <div class="container">
+            <label for="luname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="luname" required>
+
+            <label for="lpsw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="lpsw" required>
+
+            <button type="submit">Login</button>
+            <label>
+              <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+          </div>
+
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+        </form>
+      </div>
+
+      <div id="id02" class="modal">
+        <form class="modal-content animate" action="/" method="POST">
+          <div class="container">
+            <label for="remail"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="remail" required>
+
+            <label for="runame"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="runame" required>
+
+            <label for="rpsw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="rpsw" required>
+
+            <label for="rreppsw"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="rreppsw" required>
+
+            <button type="submit">Register</button>
+
+          </div>
+
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+        </form>
+      </div>
+
+      <script>
+
+      var modal = document.getElementById('id01');
+      var modal2 = document.getElementById('id02');
+
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          } else if(event.target == modal2){
+              modal2.style.display = "none";
+          }
+      }
+      </script>
 
 </body>
 </html>
