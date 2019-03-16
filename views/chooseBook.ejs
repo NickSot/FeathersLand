@@ -1,0 +1,7 @@
+<% books.forEach(book =>{ %>
+    <a  href= <%- "/write/mybook?bookId=" + book.Id%> >
+        <div>
+            <h4><%- book.Title %></h4>
+        </div>  
+    </a>
+<%});%>

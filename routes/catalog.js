@@ -39,7 +39,6 @@ router.post('/', (req, res) => {
         res.locals.authenticated = req.session.authenticated;
         if(err) throw err;
         console.log("Incoming!");
-        console.log(result);
         res.render("catalog", {books: result, numPages: pagesCount(result.length), startIdx: startIdx, endIdx: endIdx});
     });
 
