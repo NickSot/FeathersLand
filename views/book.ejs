@@ -9,47 +9,41 @@
 <body>      
     <% console.log(book.Title);%>
     <h1 id = "headingChapters"> <%- book.Title %> </h1>
-    <% for(let i = 0; i < chapters.length; i++ ){ %>
+    <%if(chapters){%>
+      <% for(let i = 0; i < chapters.length; i++ ){ %>
 
-      <center>
-        <a href = "#">
-          <div class = "chapterHolder">
-            <% console.log("Doing stuff")%>
-            <% console.log(chapters[i].Title) %>
-            <h1 class = "chapterTitle"><img src = "/imgs/manuscript.png" class = "chapterImage"> <%- chapters[i].Title %></h1>
-          </div>
-        </a>
-      </center>
-    <% } %>
-    
-    <h2 id = "commentAnnounce"> Коментари </h2>
-    <form action='/book/<%- book.Id %>/' method="POST">
         <center>
-        <textarea id = "commentArea" placeholder="Напиши коментар!" name='comment'>
-
-        </textarea>
-        <br></br>
-        <input type="submit" value = "Коментирай" id = "commentButton">
-    </form>
-        
-    <div class="row com">
-      <%comments.forEach((comment) => {%>
-        <div class="col author"><%=comment.username%></div>
-        <div class="col comment"><%=comment.Content%></div>
-        </div>
-        <br></br>
-      <%})%>
+          <a href = "#">
+            <div class = "chapterHolder">
+              <% console.log("Doing stuff")%>
+              <% console.log(chapters[i].Title) %>
+              <h1 class = "chapterTitle"><img src = "/imgs/manuscript.png" class = "chapterImage"> <%- chapters[i].Title %></h1>
+            </div>
+          </a>
+        </center>
+      <% } %>
       
-    </center>
-    </div>
-      <!-- 
-        <div class="row com">
-          <div class="col author">Пенка</div>
-          <div class="col comment" style="word-wrap: break-word;display: table-cell;vertical-align: middle;">
-          Не ми хареса толкова...
+      <h2 id = "commentAnnounce"> Коментари </h2>
+      <form action='/book/<%- book.Id %>/' method="POST">
+          <center>
+          <textarea id = "commentArea" placeholder="Напиши коментар!" name='comment'>
+
+          </textarea>
+          <br></br>
+          <input type="submit" value = "Коментирай" id = "commentButton">
+      </form>
+          
+      <div class="row com">
+        <%comments.forEach((comment) => {%>
+          <div class="col author"><%=comment.username%></div>
+          <div class="col comment"><%=comment.Content%></div>
           </div>
-        </div>
-      </div> -->
-    </center>
+          <br></br>
+        <%})%>
+    <%}else{%>
+      <h1>Nothing to show here...</h1>
+      //NO CHAPTERS, THEREFORE BUTTON FOR JUMPING FIELD FOR FORM WITH A TITLE OF NEW CHAPTER  
+    <%}%>
+
 </body>
 </html>
