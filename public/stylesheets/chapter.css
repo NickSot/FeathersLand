@@ -37,3 +37,9 @@ body {
     top: 0;
     left: 0;
   }
+  .com {
+    border-radius: 30px;
+  }
+  .author, .comment {
+    border: 3px #d1fffd;
+  }
