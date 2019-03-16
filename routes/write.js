@@ -63,6 +63,8 @@ router.post('/', (req, res) => {
 
     let markdown = req.body.markdown;
 
+    console.log(markdown);
+
     pandoc(markdown, '-f markdown -t html5', (err, result) => {
         if (err) throw err;
 
@@ -70,10 +72,6 @@ router.post('/', (req, res) => {
             if (err){
                 throw err;
             }
-           
-            console.log(chapter);
-
-            console.log('Updated!');
 
             res.json({'result': result, chapter: chapter});
         });
