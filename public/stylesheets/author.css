@@ -36,3 +36,8 @@ text-align: center;
 text-align: center;
 font-size: 30px;
 }
+#userBio {
+  background-color: color;
+  border-radius: 20px;
+  padding: 10px;
+}
