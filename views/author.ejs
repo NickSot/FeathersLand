@@ -17,14 +17,14 @@
   <h3>
       Брой последователи: <%=user.followerCount%>
   </h3>
+
 </div>
 </div>
 
-<div class="split right">
-<div class="centered">
+<div id="listbooks" class="centered split right">
   <% books.forEach(book => { %>
     <a href = "/book/<%-book.Id%>"><div class = "bHolder">
-      <img src="/imgs/book.png" width="100px" height="100px" alt = "icon" class="projectIcon">
+      <img src="/imgs/otherbook.png" width="100px" height="100px" alt = "icon" class="projectIcon">
         <h1 class = "projectTitle"><%- book.Title %></h1>
     </div></a>
   <%});%>

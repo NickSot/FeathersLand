@@ -69,9 +69,12 @@ h1#title{
   font-family: Open Sans;
 }
 
-h3{
+h3#subtitle{
   margin-left: 19%;
-  font-size:4vh;
+}
+
+h3{
+  font-size:2.5vh;
   font-family: Open Sans;
 }
 

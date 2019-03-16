@@ -10,6 +10,7 @@
   left: 15%;
   width: 30%;
   background-color: none;
+  margin-top: 3%;
 }
 .right {
   width: 50%;
@@ -22,7 +23,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+
 }
+
+#listbooks{
+  max-height: 65vh;
+  overflow-y: scroll;
+  margin-left: 20%;
+  margin-top: 4%;
+}
+
 #profilePic {
   width: 150px;
 }
