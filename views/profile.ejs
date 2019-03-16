@@ -4,10 +4,12 @@
 <div class="split left">
   <img src = "/imgs/picture.png">
   <h1> <%=user.username%> </h1>
+  
   <h3>
       Оценка: <%=user.overallRating%> <br/>
       Брой последователи: <%=user.followerCount%>
   </h3>
+
   <div id = "authorBio">
     <form id="bioForm" action="/profile", method='POST'>
         <textarea name="userBio" id="bio" cols="30" rows="7">
