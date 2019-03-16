@@ -30,17 +30,17 @@ router.post('/', (req, res) => {
         if(err) throw err;
 
         if(result.length == 0){
-          res.redirect('/'); 
+          res.redirect('back'); 
         }else{
           bcrypt.compare(lpwd, result[0].pass, (err, isPasswordCorrect) => {
             if(isPasswordCorrect){
               req.flash('success', `Добре дошъл/ла отново, ${lusername}!`);
               req.session.authenticated = true;
               req.session.user = result[0];
-              res.redirect('/profile');
+              res.redirect('back');
             }else{
               req.flash('error', 'Грешен никнейм, мейл или парола!');
-              res.redirect('/');
+              res.redirect('back');
             }
           });
         }
@@ -49,7 +49,7 @@ router.post('/', (req, res) => {
     else if (lusername == undefined && lpwd == undefined){ // REGISTER HANDLE
       if (rreppsw != rpwd){
         req.flash('info', 'Паролите не съответстват!');
-        res.redirect('/');
+        res.redirect('back');
       }
       else{
 
@@ -58,7 +58,7 @@ router.post('/', (req, res) => {
 
           if (result.length != 0){
             req.flash('error', "Вече има съществуващ акаунт с този мейл или никнейм!");
-            res.redirect('/');
+            res.redirect('back');
           }
           else{
             bcrypt.hash(rpwd, bcryptSaltRounds, (err, hash) => {
@@ -86,7 +86,7 @@ router.post('/', (req, res) => {
 
                 req.flash('success', `Успешна регистрация! Изпратихме ти мейл за верификация на регистрацията! Приятно писане!`);
 
-                res.redirect('/');
+                res.redirect('back');
               });
             });
           }
