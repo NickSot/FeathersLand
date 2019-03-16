@@ -24,10 +24,20 @@ router.get('/:id/show', function(req, res, next) {
                     if (err) throw err;
 
                     if (result.length == 0){
-                        res.render('author', {user: result[0], followers: null, books: books});
+                        if (books.length == 0){
+                            res.render('author', {user: result[0], followers: null, books: null});
+                        }
+                        else{
+                            res.render('author', {user: result[0], followers: null, books: books});
+                        }
                     }
                     else{
-                        res.render('author', {user: result[0], followers: followersResult, books : books});
+                        if (books.length == 0){
+                            res.render('author', {user: result[0], followers: null, books: null});
+                        }
+                        else{
+                            res.render('author', {user: result[0], followers: followersResult, books : books});
+                        }
                     }
                 });
             });
