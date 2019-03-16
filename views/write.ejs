@@ -10,19 +10,37 @@
 </head>
 <body>
   <script>
-    var markdownFunc = <%-markdown%>;
-    console.log("" + markdownFunc("bau"));
-    setInterval(function update(){
-      // console.log(thing);
-      document.getElementById("writingResult").innerHTML =  markdownFunc(document.getElementById("writingInProgress").innerHTML);
-    }, 50);
+    var res = `<%-result-%>`;
+
+    setInterval(() => {
+      
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = () => {
+        if (this.readyState == 4 && this.status == 200){
+          document.getElementById("writeingResult").innerHTML = this.responseText;
+          document.getElementById('writingResult').innerHTML = res;
+        }
+      };
+
+      xhttp.open('GET', '/write/?markdown=' + document.getElementById('writingInProgress').innerText, true);
+      xhttp.send();
+
+      res = `<%-result-%>`;
+      console.log(res);
+      // document.getElementById('writingResult').innerHTML = res;
+    }, 1000);
+
   </script>
   <div class="split left">
-    <div contenteditable id = "writingInProgress"></div>
+    <div contenteditable id = "writingInProgress">
+
+    </div>
 </div>
 <div class="split right">
 <a href="#" id = "writeButton"><img src="/imgs/ready.png" id = "readyButton" alt = "ready"></a>
-  <div id = "writingResult"></div>
+  <div id = "writingResult">
+
+  </div>
 </div>
 </body>
 </html>
