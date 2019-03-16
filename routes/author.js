@@ -10,13 +10,23 @@ router.get('/:id/show', function(req, res, next) {
     authorId = req.params.id;
 
     db.query('Select * From Users Where ID = ?', [authorId], (err, result) => {
+        if (err) throw err;
+
         if (result.length == 0){
             req.flash('info', 'Няма такъв автор! Моля, не се опитвайте да чупите механизма на сайта!');
             res.redirect('/authors');
         }
         else{
-            console.log(result);
-            res.render('author', {user: result[0]});
+            db.query('Select Users.* From Users Inner Join Followers On Followers.FollowerId = Users.ID Where Followers.FollowingId = ?', [authorId], (err, followersResult) => {
+                if (err) throw err;
+
+                if (result.length == 0){
+                    res.render('author', {user: result[0], followers: null});
+                }
+                else{
+                    res.render('author', {user: result[0], followers: followersResult});
+                }
+            });
         }
     });
 });
@@ -44,7 +54,8 @@ router.post('/:id/show', (req, res) => {
                 req.flash('info', 'Успешно абониране за автора!');
                 db.query('Insert Into Followers (FollowerId, FollowingId) Values (?, ?)', [req.session.user.ID, authorId], (err, result) => {
                     req.flash('info', 'Успешно абониране!');
-                    res.redirect('/authors');
+                    db.query('Update Users Set followerCount = followerCount + 1 Where ID = ?', [authorId]);
+                    res.redirect('/author/' + authorId + '/show');
                 });
             }
         });

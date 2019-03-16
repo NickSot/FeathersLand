@@ -15,10 +15,18 @@
 </h3>
 
 <form action="<%-'/author/' + user.ID + '/show'-%>" method='POST'>
-    <input type="hidden" name='user' value='<%-user-%>'>
     <button type='submit'>Последвай!</button>
 </form>
 
+Followers:
 <ul>
-
+    <%if (followers.length > 0){%>
+        <%followers.forEach((follower) => {%>
+            <li>
+                <a href="/author/<%-follower.ID-%>/show">
+                    <%=follower.username%>
+                </a>
+            </li>
+        <%})%>
+    <%}%>
 </ul>
