@@ -1,0 +1,72 @@
+body {
+  background-image: url("back.png");
+}
+#listOfUsers {
+  list-style-type: none;
+  width: 50%;
+  text-align: left;
+}
+.userHolder {
+  background-color: white;
+  font-size: 3em;
+  padding: 20px;
+  border-radius: 40px;
+  text-align: left;
+  display: inline-block;
+  margin: 10px;
+  padding-bottom: 30px;
+}
+.search-container{
+
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 50px;
+  border-radius: 30px;
+}
+
+input#search-bar{
+  display:block;
+  width: 100%;
+  box-sizing: border-box
+  margin: 0 auto;
+  padding: 10 20px;
+  font-size: 2rem;
+  border: 0px;
+  border-radius: 30px;
+  outline: none;
+  &:focus{
+    border: 0px;
+    transition: 0.35s ease;
+    color: #008ABF;
+    &::-webkit-input-placeholder{
+      transition: opacity 0.45s ease;
+      opacity: 0;
+     }
+    &::-moz-placeholder {
+      transition: opacity 0.45s ease;
+      opacity: 0;
+     }
+    &:-ms-placeholder {
+     transition: opacity 0.45s ease;
+     opacity: 0;
+     }
+   }
+ }
+ a {
+   text-decoration: none;
+   color: black;
+ }
+.search-icon{
+  width: 9vh;
+  position: absolute;
+  height: 9vh;
+  top: 0;
+  right: 0;
+
+}
+.authorIcon {
+  font-size: 80px;
+  margin-right: 20px;
+}

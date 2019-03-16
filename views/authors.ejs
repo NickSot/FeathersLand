@@ -1,19 +1,30 @@
-<ul>
-    <%if (users != null){%>
-        <%users.forEach((user) => {%>
-            <li>
-                <a href="<%-'/author/' + user.ID + '/show/'-%>">
-                    <%=user.username%>
-                </a>
-            </li>
-        <%});%>
-    <%}%>
-</ul>
+<link rel="stylesheet" href = "/stylesheets/authors.css">
+<div id = "searchDiv">
+  <form class="search-container">
+    <input type="text" id="search-bar" placeholder="Търси автори">
+    <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+  </form>
+</div>
+      <center>
+        <ul id = "listOfUsers">
+            <%if (users != null){%>
+                <%users.forEach((user) => {%>
+                    <li class = "userHolder">
 
-<footer>
-    <div style="text-align: center">
-        <%for(let i = 1; i <= numPages; i++){%>
-            <a href=<%-"/authors/" + i %> > <%- i %></a>
-        <%}%>
-    </div>
-</footer>
+                        <a href="<%-'/author/' + user.ID + '/show/'-%>">
+                          <i class="fas fa-feather-alt authorIcon"></i>
+                            <%=user.username%>
+                        </a>
+                    </li>
+                <%});%>
+            <%}%>
+        </ul>
+      </center>
+
+        <footer>
+            <div style="text-align: center">
+                <%for(let i = 1; i <= numPages; i++){%>
+                    <a href=<%-"/authors/" + i %> > <%- i %></a>
+                <%}%>
+            </div>
+        </footer>
