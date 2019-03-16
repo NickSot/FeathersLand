@@ -1,33 +1,38 @@
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
-<div id="container">
-<h2 id=name>
-    <%=user.username%>
-</h2>
-
-<form id="bioForm" action="/profile", method='POST'>
-    <img id="pic" src="/imgs/picture.png" alt="something">
-    <textarea name="userBio" id="bio" cols="30" rows="10">
-        <%=user.Bio%>
-    </textarea>
-    <button id="submitbtn" type='submit'>Edit</button>
-</form>
-
-<h3>
-    Оценка: <%=user.overallRating%>
-</h3>
-
-<h3>
-    Брой последователи: <%=user.followerCount%>
-</h3>
+<div class="split left">
+  <img src = "/imgs/picture.png">
+  <h1> <%=user.username%> </h1>
+  <h3>
+      Оценка: <%=user.overallRating%> <br/>
+      Брой последователи: <%=user.followerCount%>
+  </h3>
+  <div id = "authorBio">
+    <form id="bioForm" action="/profile", method='POST'>
+        <textarea name="userBio" id="bio" cols="30" rows="10">
+            <%=user.Bio%>
+        </textarea><br></br>
+        <button id="submitbtn" class = "button" type='submit'>Edit</button>
+    </form>
+   </div>
 </div>
 
-
-<ul id="books">
-    <%books.forEach((book) => {%>
-        <li class = "projectHolder">
-              <img src="/imgs/book.png" width="100px" height="100px" alt = "icon" class="projectIcon">
-              <a href="#" class = "projectTitle"><%- book.Title %></a>
-          </li>
-    <%})%>
-</ul>
+<div class="split right">
+  <h1> Произведения </h1>
+  <div id="listbooks">
+    <% books.forEach(book => { %>
+      <a href = "/book/<%-book.Id%>"><div class = "bHolder">
+        <img src="/imgs/otherbook.png" width="100px" height="100px" alt = "icon" class="projectIcon">
+          <h1 class = "projectTitle"><%- book.Title %></h1>
+      </div></a>
+      <a href = "/book/<%-book.Id%>"><div class = "bHolder">
+        <img src="/imgs/otherbook.png" width="100px" height="100px" alt = "icon" class="projectIcon">
+          <h1 class = "projectTitle"><%- book.Title %></h1>
+      </div></a>
+      <a href = "/book/<%-book.Id%>"><div class = "bHolder">
+        <img src="/imgs/otherbook.png" width="100px" height="100px" alt = "icon" class="projectIcon">
+          <h1 class = "projectTitle"><%- book.Title %></h1>
+      </div></a>
+    <%});%>
+  </div>
+</div>
