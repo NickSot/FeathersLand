@@ -1,0 +1,26 @@
+input {
+border: 0;
+outline: 0;
+background: transparent;
+border-bottom: 2px solid #afa6a1;
+font-size: 60px;
+text-align: center;
+}
+#formholder{
+text-align: center;
+margin-top: 20%;
+}
+#createBook {
+background-color: #542207;
+border: none;
+margin-left: 20px;
+border-radius: 60px;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 18px;
+font-weight: 600;
+margin-top: 20px;
+}
