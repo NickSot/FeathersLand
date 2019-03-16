@@ -1,14 +1,14 @@
-
+<link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
 <h2 id=name>
     <%=user.username%>
 </h2>
 
-<form action="/profile", method='POST'>
-    <textarea name="userBio" id="" cols="30" rows="10">
-        <%=user.Bio%>
-    </textarea>
+<form id="bioForm" action="/profile", method='POST'>
+    <div contenteditable name="userBio" id="bio" cols="30" rows="10">
+        <p><%=user.Bio%></p>
+    </div>
 
-    <button type='submit'>Edit</button>
+    <button id="submitbtn" type='submit'>Edit</button>
 </form>
 
 <h3>
