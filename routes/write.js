@@ -54,17 +54,25 @@ router.get('/:chapterId', (req, res) => {
         res.redirect('/');
     }
     else{
-        console.log("Id: " + req.session.user.ID);
 
         let userId = req.session.user.ID;
         chapterId = req.params.chapterId;
-        let query = `SELECT Users
-        FROM Chapters AS ch
-        INNER JOIN Books AS b ON ch.BookId = b.Id 
-        Inner Join Users As u On b.authorId = u.ID
-        Where ch.Id = ?`;
+        let query = `SELECT *
+        FROM Chapters
+        INNER JOIN Books ON Chapters.BookId = Books.Id 
+        Inner Join Users On Books.AuthorId = Users.ID
+        Where Chapters.Id = ?`;
         db.query(query, [chapterId], (err, result) => {
-            if (result.ID == userId) {
+            if (result == undefined){
+                req.flash('warning', 'Неправилен url!');
+                res.redirect('/');
+                return;
+            }
+
+            console.log("Session: " + userId);
+            console.log("Result: " + result[0].ID);
+
+            if (result[0].ID != userId) {
                 req.flash('warning', 'Неправилен url!');
                 res.redirect('/');
             }
