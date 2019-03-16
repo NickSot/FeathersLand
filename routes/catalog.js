@@ -4,42 +4,43 @@ var db = require("../config/database");
 
 const booksOnPage = 20 ;
 
+function pagesCount(booksCount){
+    return Math.ceil(booksCount / booksOnPage);
+}
+
 router.get('/', function(req, res, next) {
     let offset = (req.query.page - 1) * booksOnPage;
-    let selectQuery = 'select * from Books order by Rating desc LIMIT ' + booksOnPage + ' OFFSET ' +  offset;
-    let countQuery = 'select count(*) from Books';
-    let booksCount;
-    db.query(countQuery, (err, result) => {
-        if(err) throw err;
-        booksCount = result[0]['count(*)'];
-    });
-
+    let selectQuery = 'select * from Books order by Rating desc';
+    let startIdx, endIdx;
     db.query(selectQuery, (err, result) => {
         if(err) throw err;
         if(result.length > 0){
-            // console.log("result: " + result.length);
+            startIdx = (req.query.page-1)*booksOnPage;
+            endIdx = req.query.page * booksOnPage;
             res.locals.authenticated = req.session.authenticated;
-            // console.log("In the end: " + Math.ceil(booksCount / booksOnPage))
-            res.render('catalog', {books : result, numPages : Math.ceil(booksCount / booksOnPage)});
+            res.render('catalog', {books : result, numPages : pagesCount(result.length), startIdx: startIdx, endIdx: endIdx});
         }else{
-            req.flash('error', "Изглежда свършиха книгите...");
+            req.flash('error', "Изглежда на тази страница няма книги...");
             res.redirect('/');
         }
     });
-
 });
 
+
+
 router.post('/', (req, res) => {
-    let searchInput = req.body.search;
-    let query = "Select * from Books INNER JOIN Users as u on AuthorId = u.Id where Title Like ? OR u.username Like ?";
+    let searchInput = "%" + req.body.search + "%";
+    console.log(searchInput);
+    let query = "Select * from Books INNER JOIN Users as u on AuthorId = u.Id where Title Like ?";
 
-    db.query(query, [searchInput, searchInput], (err, result) => {
+    startIdx = (req.query.page-1)*booksOnPage;
+    endIdx = req.query.page * booksOnPage;
+    db.query(query, [searchInput], (err, result) => {
+        res.locals.authenticated = req.session.authenticated;
         if(err) throw err;
-
-        if(result.length === 0){
-
-        }
-
+        console.log("Incoming!");
+        console.log(result);
+        res.render("catalog", {books: result, numPages: pagesCount(result.length), startIdx: startIdx, endIdx: endIdx});
     });
 
 });
