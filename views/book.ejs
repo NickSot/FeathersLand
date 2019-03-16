@@ -6,7 +6,7 @@
   <link rel = "stylesheet" href = "/stylesheets/font.css">
   <link rel = "stylesheet" href = "/stylesheets/book.css">
 </head>
-<body>
+<body>      
     <% console.log(book.Title);%>
     <h1 id = "headingChapters"> <%- book.Title %> </h1>
     <% for(let i = 0; i < chapters.length; i++ ){ %>
@@ -21,7 +21,7 @@
         </a>
       </center>
     <% } %>
-
+    
     <h2 id = "commentAnnounce"> Коментари </h2>
     <form action='/book/<%- book.Id %>/' method="POST">
         <center>
@@ -31,18 +31,18 @@
         <br></br>
         <input type="submit" value = "Коментирай" id = "commentButton">
     </form>
-
+        
     <div class="row com">
       <%comments.forEach((comment) => {%>
-        <div class="row com">
         <div class="col author"><%=comment.username%></div>
         <div class="col comment"><%=comment.Content%></div>
         </div>
         <br></br>
       <%})%>
-
+      
     </center>
-      <!--
+    </div>
+      <!-- 
         <div class="row com">
           <div class="col author">Пенка</div>
           <div class="col comment" style="word-wrap: break-word;display: table-cell;vertical-align: middle;">
