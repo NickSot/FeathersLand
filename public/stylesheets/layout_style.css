@@ -58,7 +58,12 @@ ul.nav {
 a.login, .link {
   text-decoration: none;
   color:white;
-  font-size: 17px;
+  font-size: 110%;
+  font-family: Open Sans;
+}
+
+a.login{
+  font-size: 150%;
 }
 
 
