@@ -20,6 +20,7 @@ var catalogRouter = require('./routes/catalog');
 var logoutRouter = require('./routes/logout');
 var authorsRouter = require('./routes/authors');
 var authorRouter = require('./routes/author');
+var verifyRouter = require('./routes/verify');
 
 var app = express();
 
@@ -53,6 +54,7 @@ app.use('/catalog', catalogRouter);
 app.use('/logout', logoutRouter);
 app.use('/authors', authorsRouter);
 app.use('/author', authorRouter);
+app.use('/verify', verifyRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
