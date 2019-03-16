@@ -1,5 +1,4 @@
 .projectHolder {
-  margin-left: 35%;
   text-align: center;
   padding: 10px;
   background-color: white;
@@ -23,7 +22,6 @@
   float: left;
 }
 #addButton {
-  margin-left: 10%;
   width: 8%;
 }
 input {
