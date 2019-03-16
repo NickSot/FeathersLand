@@ -3,6 +3,10 @@
     <%=user.username%>
 </h2>
 
+<div id="picture" cols="30" rows="10">
+    <img id="picture" src="/imgs/picture.png" alt="something">
+</div>
+
 <form id="bioForm" action="/profile", method='POST'>
     <div contenteditable name="userBio" id="bio" cols="30" rows="10">
         <p><%=user.Bio%></p>
