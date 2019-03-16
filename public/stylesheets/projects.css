@@ -1,0 +1,28 @@
+.projectHolder {
+  margin-left: 35%;
+  text-align: center;
+  padding: 10px;
+  background-color: white;
+  border-radius: 60px;
+   width: 40%;
+   margin-top: 10vh;
+   display: flex;
+   justify-content:center;
+   align-content:center;
+   flex-direction:row;
+}
+.projectIcon{
+  margin-right: 2vw;
+  margin-top: 12px;
+}
+.projectTitle {
+  display: inline;
+  font-size: 44px;
+  font-weight: 300;
+  color: #5f859b;
+  float: left;
+}
+#addButton {
+  margin-left: 10%;
+  width: 8%;
+}
