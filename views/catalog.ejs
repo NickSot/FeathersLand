@@ -1,5 +1,5 @@
 <link rel="stylesheet" href = "/stylesheets/catalog.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 <div id = "searchDiv">
   <form class="search-container" action="/catalog?page=1" method="POST">
     <input type="text" id="search-bar" placeholder="Търси автори" name="search">
@@ -10,7 +10,7 @@
 
 <% for(let i = startIdx; i < endIdx && i < books.length ; i++){ %>
   <% if(i % 4 == 0){ %>
-    <div class="w-100"></div>
+    <br></br>
   <% } %>
   <div class = "projectHolder">
     <a href = "/book/<%-books[i].Id%>" class = "bookLink">
