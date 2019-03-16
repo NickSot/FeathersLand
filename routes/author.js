@@ -46,6 +46,8 @@ router.get('/:id/show', function(req, res, next) {
 });
 
 router.post('/:id/show', (req, res) => {
+    console.log('HERE');
+
     if (!req.session.authenticated){
         req.flash('info', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);
         req.session.authenticated = false;
