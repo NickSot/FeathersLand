@@ -62,6 +62,7 @@ input#search-bar{
   width: 9vh;
   height: 9vh;
   margin: 0;
+  float: right;
   position: absolute;
   top: 50%;
   -ms-transform: translateY(-50%);
