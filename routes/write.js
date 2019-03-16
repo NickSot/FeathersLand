@@ -5,7 +5,7 @@ var db = require('../config/database');
 
 router.get('/mybook', (req, res) => {
     let bookId = req.query.bookId;
-    let query = `SELECT ch.Title
+    let query = `SELECT *
     FROM Chapters AS ch 
     WHERE ch.BookId = ?`;
     let bookQuery = `SELECT * FROM Books WHERE Id = ?`
@@ -46,7 +46,7 @@ router.get('/', (req, res) => {
         db.query(query, [session.user.ID], (err, userBooks) => {
             if(err) throw err;
             console.log(userBooks);
-            res.render('chooseBook', {books : userBooks });
+            res.render('chooseBook', {layout:false, books : userBooks });
         });
     }
 });

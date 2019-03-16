@@ -25,13 +25,12 @@ router.get('/:id', function(req, res, next) {
                 else{
                     res.locals.authenticated = req.session.authenticated;
                     res.locals.chapters = chapters;
-                    console.log(chapters.length);
-                    console.log(book[0]);
 
                     if (commentsUsers.length == 0){
                         commentsUsers = [];
                     }
-
+                    console.log("Look Here!");
+                    console.log(chapters);
                     res.render('book', { chapters : chapters, book :  book[0], comments: commentsUsers});  
                 }
             });
