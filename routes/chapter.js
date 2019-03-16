@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../config/database');
+var nodePandoc = require('node-pandoc');
 
 var chapterId;
 
@@ -15,7 +16,9 @@ router.get('/:id', (req, res) => {
         `, [chapterId], (err, result) => {
             let chapter = chapters[0];
 
-            res.render('chapter', {layout: false, chapter: chapter, commentUsers: result});
+            nodePandoc(chapter.Content, '-f markdown -t html5', (err, htmlContent) => {
+                res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: htmlContent});
+            });
         });
     });
 });

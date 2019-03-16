@@ -60,7 +60,6 @@ router.get('/:chapterId', (req, res) => {
         res.redirect('/');
     }
     else{
-
         let userId = req.session.user.ID;
         chapterId = req.params.chapterId;
         let query = `SELECT *
