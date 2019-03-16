@@ -23,8 +23,13 @@ h3 {
   width: 300px;
 }
 
+ul#books li{
+  list-style-type: none;
+}
+
 #bookshelf{
   width: 500px;
-  margin-left: 30%;
+  margin-left: 50%;
+  margin-top: -36.2%;
   background-color: white;
 }

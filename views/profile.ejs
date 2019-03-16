@@ -20,9 +20,9 @@
 </h3>
 
 <div id="bookshelf" cols="30" rows="10">
-    <ul>
+    <ul id="books">
         <%books.forEach((book) => {%>
-            <a><%=book.Title%></a>
+            <li><a><%=book.Title%></a></li>
         <%})%>
     </ul>
 </div>
