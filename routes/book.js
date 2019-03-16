@@ -4,8 +4,13 @@ var db = require('../config/database');
 
 router.get('/:id', function(req, res, next) {
     res.locals.authenticated = req.session.authenticated;
-
-    db.query('Select * ');
+    let id = req.params["id"];
+    db.query('Select * From Chapters Where BookId = ?', id, (err, result) => {
+        if(err) throw err;
+        res.locals.authenticated = req.session.authenticated;
+        console.log(result[0]);
+        res.render('book', {book: result[0]})
+    } );
 
     res.render('book');
 });
