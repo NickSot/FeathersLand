@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <ul id="menu" class="nav">
-    <li class="icon"><img id="logo" src=/imgs/logo.png alt="Something"></li>
+    <li class="icon"><a href="/"><img id="logo" src=/imgs/logo.png alt="Something"></a></li>
     <%if (!authenticated) {%>
         <li class="icon"><a class="login" href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto">Вход</a><span style="color:white">/</span><br><a class="login" href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Регистрация</a></li>
     <%} else {%>
