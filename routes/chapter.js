@@ -16,6 +16,12 @@ router.get('/:id', (req, res) => {
         `, [chapterId], (err, result) => {
             let chapter = chapters[0];
 
+            if (chapter == undefined){
+                req.flash('warning', 'Няма таквъв url!');
+                res.redirect('/');
+                return;
+            }
+
             nodePandoc(chapter.Content, '-f markdown -t html5', (err, htmlContent) => {
                 res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: htmlContent});
             });
