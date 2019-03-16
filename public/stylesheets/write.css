@@ -12,21 +12,22 @@ padding-top: 20px;
   height:80px;
 }
 .left {
-left: 0;
+  left: 0;
 }
 .right {
-right: 0;
+  right: 0;
 }
 #writingResult {
-font-family: 'Open Sans', sans-serif;
-word-wrap: break-word;
-color: #433b3b;
-font-weight: 300;
-font-size:40px;
-margin-left:15%;
-margin-right:20%;
-margin-top: 5%;
+  font-family: 'Open Sans', sans-serif;
+  word-wrap: break-word;
+  color: #433b3b;
+  font-weight: 300;
+  font-size:40px;
+  margin-left:15%;
+  margin-right:20%;
+  margin-top: 5%;
 }
+
 div[contenteditable]{
   font-family: 'Open Sans', sans-serif;
   height: 80%;

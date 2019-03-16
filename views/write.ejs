@@ -3,7 +3,7 @@
 <head>
   <link rel="stylesheet" href = "/stylesheets/write.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
   <title> Feather's Land </title>
 <meta charset="UTF-8">
@@ -18,8 +18,8 @@
       console.log(`<%=result%>`);
 
       xhttp.onreadystatechange = () => {
-        if (this.readyState == 4 && this.status == 200){
-          document.getElementById('writingResult').innerHTML = res;
+        if (xhttp.readyState == 4 && xhttp.status == 200){
+          document.getElementById('writingResult').innerHTML = JSON.parse(xhttp.responseText).result;
         }
       };
 
@@ -39,7 +39,7 @@
 <div class="split right">
 <a href="#" id = "writeButton"><img src="/imgs/ready.png" id = "readyButton" alt = "ready"></a>
   <div id = "writingResult">
-    <%-result-%>
+    
   </div>
 </div>
 </body>
