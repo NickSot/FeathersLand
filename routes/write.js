@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
 
     pandoc(markdown, '-f markdown -t html5', (err, result) => {
         if (err) throw err;
-
+        
         res.redirect('/write/?result=' + result);
     });
 });

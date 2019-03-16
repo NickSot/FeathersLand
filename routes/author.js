@@ -19,13 +19,17 @@ router.get('/:id/show', function(req, res, next) {
         else{
             db.query('Select Users.* From Users Inner Join Followers On Followers.FollowerId = Users.ID Where Followers.FollowingId = ?', [authorId], (err, followersResult) => {
                 if (err) throw err;
+                
+                db.query('Select * From Books Where AuthorId = ?', [authorId], (err, books) => {
+                    if (err) throw err;
 
-                if (result.length == 0){
-                    res.render('author', {user: result[0], followers: null});
-                }
-                else{
-                    res.render('author', {user: result[0], followers: followersResult});
-                }
+                    if (result.length == 0){
+                        res.render('author', {user: result[0], followers: null, books: books});
+                    }
+                    else{
+                        res.render('author', {user: result[0], followers: followersResult, books : books});
+                    }
+                });
             });
         }
     });
