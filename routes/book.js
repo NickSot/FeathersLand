@@ -5,14 +5,22 @@ var db = require('../config/database');
 router.get('/:id', function(req, res, next) {
     res.locals.authenticated = req.session.authenticated;
     let id = req.params["id"];
-    db.query('Select * From Chapters Where BookId = ?', id, (err, result) => {
+    db.query('Select * From Books Where Id = ?', id, (err, book) => {
         if(err) throw err;
-        res.locals.authenticated = req.session.authenticated;
-        console.log(result[0]);
-        res.render('book', {book: result[0]})
-    } );
+        console.log(book[0]);
 
-    res.render('book');
+        db.query('Select * From Chapters Where BookId = ?', id, (err, chapters) => {
+            if(err) throw err;
+            if(chapters.length === 0){
+                req.flash('info', 'Nothing to show...');
+                res.redirect('/catalog');
+            }
+            res.locals.authenticated = req.session.authenticated;
+            res.locals.chapters = chapters;
+            console.log(chapters.length);
+            res.render('book', { chapters : chapters, book :  book[0]});
+        } );
+    });
 });
 
 module.exports = router;

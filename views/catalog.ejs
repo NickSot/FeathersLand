@@ -1,10 +1,11 @@
 <link rel="stylesheet" href = "/stylesheets/catalog.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <div id = "searchDiv">
-<form class="search-container">
-<input type="text" id="search-bar" placeholder="Търси автори">
-<a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
-</form></div>
+  <form class="search-container" action="/" method="POST">
+    <input type="text" id="search-bar" placeholder="Търси автори" name="search">
+    <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+  </form>
+</div>
 <div class="row">
 <% for(let i = 0; i < books.length; i++){ %>
   <% if(i % 4 == 0){ %>

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require("../config/database");
 
-const booksOnPage = 3;
+const booksOnPage = 20 ;
 
 router.get('/', function(req, res, next) {
     let offset = (req.query.page - 1) * booksOnPage;
@@ -25,6 +25,21 @@ router.get('/', function(req, res, next) {
             req.flash('error', "Изглежда свършиха книгите...");
             res.redirect('/');
         }
+    });
+
+});
+
+router.post('/', (req, res) => {
+    let searchInput = req.body.search;
+    let query = "Select * from Books INNER JOIN Users as u on AuthorId = u.Id where Title Like ? OR u.username Like ?";
+
+    db.query(query, [searchInput, searchInput], (err, result) => {
+        if(err) throw err;
+
+        if(result.length === 0){
+
+        }
+
     });
 
 });
