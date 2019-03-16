@@ -74,9 +74,9 @@ footer {
   font-size: 30px;
   color: #474a4f;
   position: fixed;
-  text-decoration: none
+  text-decoration: none;
   right: 0;
-  bottom: 10;
+  bottom: 4;
   width: 100%;
   text-align: center;
 }
