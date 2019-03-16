@@ -15,27 +15,28 @@
     <center>
       <a href = "#">
         <div class = "chapterHolder">
-          
           <h1 class = "chapterTitle"><img src = "/imgs/manuscript.png" class = "chapterImage"> Глава 1</h1>
         </div>
       </a>
     </center>
     <h2 id = "commentAnnounce"> Коментари </h2>
-    <form>
+    <form action='/book/<%-book.Id-%>/' method="POST">
         <center>
         <textarea id = "commentArea" placeholder="Напиши коментар!" name='comment'>
 
         </textarea>
         <br></br>
         <input type="submit" value = "Постни коментар" id = "commentButton">
-        </form>
+    </form>
         
-        <div class="row com">
-          <%%>
-          <div class="col author">Пенка</div>
-          <div class="col comment" style="word-wrap: break-word;display: table-cell;vertical-align: middle;">ебаааси скучното</div>
-        </center>
-      </div>
+    <div class="row com">
+      <%comments.forEach((comment) => {%>
+        <div class="col author"><%=comment.username%></div>
+        <div class="col comment" style="word-wrap: break-word;display: table-cell;vertical-align: middle;"><%=comment.Content%></div>
+      <%})%>
+      
+    </center>
+    </div>
       <!-- 
         <div class="row com">
           <div class="col author">Пенка</div>

@@ -58,10 +58,8 @@ router.post('/:id/show', (req, res) => {
         res.locals.authenticated = req.session.authenticated;
 
         let user = req.body.user;
-
-        console.log("User: " + user);
         
-        db.query('Select * From Followers Where FollowingId = ?', [authorId], (err, result) => {
+        db.query('Select * From Followers Where FollowingId = ? And FollowerId = ?', [authorId, req.session.user.ID], (err, result) => {
             if (result.length != 0){
                 req.flash('info', 'Вече си абониран за този автор!');
                 res.redirect('/author/' + authorId + '/show');
