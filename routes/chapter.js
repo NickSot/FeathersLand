@@ -10,9 +10,13 @@ router.get('/:id', (req, res) => {
     chapterId = req.params.id;
 
     db.query('Select * From Chapters Where Id = ?', [chapterId], (err, chapters) => {
-        let chapter = chapters[0];
+        db.query(`Select * From ChapterComments Inner Join Users On ChapterComments.PosterId
+        =Users.Id Where ChapterId = ?;
+        `, [chapterId], (err, result) => {
+            let chapter = chapters[0];
 
-        res.render('chapter', {layout: false, chapter: chapter});
+            res.render('chapter', {layout: false, chapter: chapter, commentUsers: result});
+        });
     });
 });
 
@@ -29,8 +33,7 @@ router.post('/:id', (req, res) => {
             if (err){
                 throw err;
             }
-            console.log('ASDASDS');
-            res.redirect('/book/' + bookId);
+            res.redirect('/chapter/' + chapterId);
         });
     }
 

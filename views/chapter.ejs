@@ -27,6 +27,15 @@
   <input type="submit" value = "Постни коментар" id = "commentButton">
 </form>
 
+<div class="row com">
+  <%commentUsers.forEach((comment) => {%>
+    <div class="col author"><%=comment.username%></div>
+    <div class="col comment" style="word-wrap: break-word;display: table-cell;vertical-align: middle;"><%=comment.Content%></div>
+  <%})%>
+  
+</center>
+</div>
+
 </body>
 </html>
  
