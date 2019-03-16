@@ -5,7 +5,7 @@
     <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
   </form>
 </div>
-      <center>
+
         <ul id = "listOfUsers">
             <%if (users != null){%>
                 <%users.forEach((user) => {%>
@@ -19,10 +19,10 @@
                 <%});%>
             <%}%>
         </ul>
-      </center>
+
 
         <footer>
-            <div style="text-align: center">
+            <div id="f">
                 <%for(let i = 1; i <= numPages; i++){%>
                     <a href=<%-"/authors/" + i %> > <%- i %></a>
                 <%}%>

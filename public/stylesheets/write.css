@@ -13,6 +13,7 @@ padding-top: 20px;
 }
 .left {
   left: 0;
+  word-break: break-all;
 }
 .right {
   right: 0;
