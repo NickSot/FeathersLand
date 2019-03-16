@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
               req.session.user = result[0];
               res.redirect('/profile');
             }else{
-              req.flash('error', 'Няма такъв потребител!');
+              req.flash('error', 'Грешен никнейм, мейл или парола!');
               res.redirect('/');
             }
           });
@@ -62,7 +62,7 @@ router.post('/', (req, res) => {
             console.log("Correct Register!");
             bcrypt.hash(rpwd, bcryptSaltRounds, (err, hash) => {
               if(err) throw err;
-              db.query('Insert Into Users (username, pass, email) Values (?, ?, ?)', [rusername, hash, remail], (err, result) => {
+              db.query('Insert Into Users (username, pass, Email) Values (?, ?, ?)', [rusername, hash, remail], (err, result) => {
                 if (err) throw err;                
                 req.flash('success', "Успешна регистрация! Приятно писане!");
                 res.redirect('/');
