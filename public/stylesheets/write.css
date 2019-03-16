@@ -42,13 +42,13 @@ div[contenteditable]{
 #writeButton {
   position: absolute;
   top: 30;
-  right: 10;
+  right: 40px;
 }
 div[contenteditable]:focus{
   outline: none;
 }
 body {
-  background-image: url("back.png");
+  background-image: url("/imgs/back.png");
 }
 * {
   font-family: 'open sans', 'lato', 'helvetica', sans-serif;

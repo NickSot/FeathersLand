@@ -19,18 +19,11 @@
   <h1> Произведения </h1>
   <div id="listbooks">
     <% books.forEach(book => { %>
-      <a href = "/book/<%-book.Id%>"><div class = "bHolder">
+      <a class="titles" href = "/book/<%-book.Id%>"><div class = "bHolder">
         <img src="/imgs/otherbook.png" width="100px" height="100px" alt = "icon" class="projectIcon">
           <h1 class = "projectTitle"><%- book.Title %></h1>
       </div></a>
-      <a href = "/book/<%-book.Id%>"><div class = "bHolder">
-        <img src="/imgs/otherbook.png" width="100px" height="100px" alt = "icon" class="projectIcon">
-          <h1 class = "projectTitle"><%- book.Title %></h1>
-      </div></a>
-      <a href = "/book/<%-book.Id%>"><div class = "bHolder">
-        <img src="/imgs/otherbook.png" width="100px" height="100px" alt = "icon" class="projectIcon">
-          <h1 class = "projectTitle"><%- book.Title %></h1>
-      </div></a>
+
     <%});%>
   </div>
 </div>

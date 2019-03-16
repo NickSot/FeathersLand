@@ -8,7 +8,10 @@
   overflow-x: hidden;
   padding-top: 20px;
 }
-
+a.titles{
+  text-decoration: none;
+  color: inherit;
+}
 .left {
   border: 4px black;
   left: 15%;
