@@ -29,18 +29,19 @@
     }, 1000);
 
   </script>
-
-
+  <form action='/write/<%-chapter.Id-%>' method="POST">
   <div class="split left">
     <div contenteditable id = "writingInProgress">
+      <%=chapter.Content%>
     </div>
   </div>
   <div class="split right">
-    <a href="#" id = "writeButton"><img src="/imgs/ready.png" id = "readyButton" alt = "ready"></a>
+    <button type='submit' id = "writeButton"><img src="/imgs/ready.png" id = "readyButton" alt = "ready"></button>
     
   <div id = "writingResult">
-    
+        
   </div>
+  </form>
 </div>
 </body>
 </html>
