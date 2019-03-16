@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
+  <%- include ./partials/locals.messages.ejs%>
   <a href="#" ><img src="/imgs/hamburgerparchment.png" id = "hamburgerButton"></a>
    <img src="/imgs/down.png" id = "downButton" onclick="downFunction()" onclick="scrollToBottom()">
   <div id = "textHolder"><h1 id = "chapterTitle"><%=chapter.Title%></h1>
