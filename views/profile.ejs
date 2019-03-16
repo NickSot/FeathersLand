@@ -1,6 +1,23 @@
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
 
+<div class="split left">
+  <img src = "/imgs/picture.png">
+  <h1> <%=user.username%> </h1>
+  <h3>
+      Оценка: <%=user.overallRating%> <br/>
+      Брой последователи: <%=user.followerCount%>
+  </h3>
+  <div id = "authorBio">
+    <form id="bioForm" action="/profile", method='POST'>
+        <textarea name="userBio" id="bio" cols="30" rows="7">
+            <%=user.Bio%>
+        </textarea><br></br>
+        <button id="submitbtn" class = "button" type='submit'>Edit</button>
+    </form>
+   </div>
+</div>
+
 <div class="split right">
   <h1> Произведения </h1>
   <div id="listbooks">
