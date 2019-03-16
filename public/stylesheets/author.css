@@ -1,5 +1,5 @@
 body {
-  background-image: url("back.png");
+  background-image: url("imgs/back.png");
   font-family: Open Sans;
 }
 .split {
@@ -35,4 +35,9 @@ text-align: center;
 #name {
 text-align: center;
 font-size: 30px;
+}
+#userBio {
+  background-color: color;
+  border-radius: 20px;
+  padding: 10px;
 }
