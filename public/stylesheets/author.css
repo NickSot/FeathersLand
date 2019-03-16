@@ -1,43 +1,68 @@
-body {
-  background-image: url("imgs/back.png");
-  font-family: Open Sans;
-}
 .split {
-height: 100%;
-width: 42%;
-position: fixed;
-z-index: 1;
-top: 0;
-overflow-x: hidden;
-padding-top: 20px;
+  height: 100%;
+  width: 43%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
-
-/* Control the left side */
 .left {
-left: 15%;
-background: none;
+  left: 15%;
+  background-color: none;
 }
-
-/* Control the right side */
 .right {
-right: 0;
-background: none;
+  right: 0;
+  background-color: none;
 }
-#bookholder {
-background-color: white;
-border-radius : 30px;
-padding : 20px;
-margin-right: 1%;
+.centered {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
-#works {
-text-align: center;
+.centered img {
+  width: 150px;
+  border-radius: 50%;
 }
-#name {
-text-align: center;
-font-size: 30px;
+#authorName {
+  font-size: 30px;
 }
-#userBio {
-  background-color: color;
-  border-radius: 20px;
+#authorBio {
+  width: 85%;
+  word-break: break-all;
+}
+.projectHolder {
+  margin-left: 35%;
+  text-align: center;
   padding: 10px;
+  background-color: white;
+  border-radius: 60px;
+   width: 40%;
+   margin-top: 10vh;
+   display: flex;
+   justify-content:center;
+   align-content:center;
+   flex-direction:row;
+}
+.projectIcon{
+  margin-right: 2vw;
+  margin-top: 12px;
+}
+.projectTitle {
+  display: inline;
+  font-size: 44px;
+  font-weight: 300;
+  color: #5f859b;
+  float: left;
+}
+#hamburgerButton {
+   width100px;
+   margin 30px;
+   height100px;
+}
+#hamburgerButton {
+  top 0;
+  left 0;
 }

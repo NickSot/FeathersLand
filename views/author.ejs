@@ -1,13 +1,10 @@
 <link rel="stylesheet" href = "/stylesheets/author.css">
-<div>
-  <h2 id="name">
-      <%=user.username%>
-  </h2>
-
-  <div name="userBio" id="" cols="30" rows="10">
-      <%=user.Bio%>
-  </div>
-
+<div class="split left">
+  <a href="#" ><img src="imgs/hamburgerparchment.png" id = "hamburgerButton"></a>
+<div class="centered">
+  <img src="user.png" alt="Avatar woman">
+  <h2 id = "authorName">Jane Flex</h2>
+  <div id = "authorBio"><%=user.Bio%></div>
   <h3>
       Оценка: <%=user.overallRating%>
   </h3>
@@ -15,34 +12,16 @@
   <h3>
       Брой последователи: <%=user.followerCount%>
   </h3>
-
-  <form action="<%-'/author/' + user.ID + '/show'-%>" method='POST'>
-      <button type='submit'>Последвай!</button>
-  </form>
-
-  Followers:
-  <ul>
-      <%if (followers.length > 0){%>
-          <%followers.forEach((follower) => {%>
-              <li>
-                  <a href="/author/<%-follower.ID-%>/show">
-                      <%=follower.username%>
-                  </a>
-              </li>
-          <%})%>
-      <%}%>
-  </ul>
-
 </div>
 </div>
 
 <div class="split right">
-<div id = "bookholder">
-  <h2 id = "works"> Произведения: </h2>
-  <% books.forEach(book => { %>
+<div class="centered">
+  <% books.array.forEach(book => { %>
     <div class = "projectHolder">
       <img src="/imgs/book.png" width="100px" height="100px" alt = "icon" class="projectIcon">
         <h1 class = "projectTitle"><%- book.Title %></h1>
-    </div><%});%>
+    </div>
+  <%});%>
 </div>
 </div>
