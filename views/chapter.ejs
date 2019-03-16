@@ -11,7 +11,7 @@
 <body>
   <%- include ./partials/locals.messages.ejs%>
   <a href="#" ><img src="/imgs/hamburgerparchment.png" id = "hamburgerButton"></a>
-   <img src="/imgs/down.png" id = "downButton" onclick="downFunction()" onclick="window.scrollTo(0,document.body.scrollHeight);">
+   <img src="/imgs/down.png" id = "downButton" onclick="downFunction()" onclick="window.scrollTo(0);">
   <div id = "textHolder"><h1 id = "chapterTitle"><%=chapter.Title%></h1>
     <%=chapter.Content%>
   </div>
