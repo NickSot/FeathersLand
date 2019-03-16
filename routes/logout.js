@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
     console.log(req.session);
     req.flash('info', 'Успешно отписване!');
 
-    res.render('index');
+    res.redirect('back');
 });
 
 module.exports = router;
