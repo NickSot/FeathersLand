@@ -1,18 +1,30 @@
+#container{
+  margin-top:5%;
+  margin-left:15%;
+}
+.body {
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
 h2#name{
+
   margin-left: 10%;
   margin-top: 5%;
 }
 
 form#bioForm{
   margin-left: 10%;
-  margin-top: -12%;
 }
 
 #bio{
-  width: 300px;
-  height: 200px;
+  width: 22vw;
+  height: 14vw;
   background-color: white;
-  max-width: 300px;
+  max-width: 22vw;
   word-break: break-all;
 
 }
@@ -23,40 +35,44 @@ h3 {
 }
 
 #submitbtn{
-  width: 300px;
+  width: 22.5vw;
+  margin-left: 10%;
 }
+
 
 ul#books li{
   list-style-type: none;
-
 }
 
+
 #books{
+
   margin-left: -30%;
-  margin-top: -4.9%;
+  margin-top: 10%;
 }
 
 #picture{
+  width: 30vw;
   margin-left: 40%;
-  margin-top: -5%;
+  margin-top: -42%;
 }
 
 #bookshelf{
-  width: 500px;
+  width: 40%;
   margin-left: 50%;
-  margin-top: -17%;
+  margin-top: 10%;
   max-height: 350px;
   overflow-y: scroll;
 
 }
 
 .projectHolder {
-  margin-left: 25%;
+  margin-left: 38%;
   text-align: center;
   padding: 10px;
   background-color: white;
   border-radius: 60px;
-   width: 60%;
+  max-width: 40%;
    margin-top: 4vh;
    display: flex;
    justify-content:center;
@@ -76,8 +92,4 @@ ul#books li{
   float: left;
   text-decoration: none;
   margin-top: 7%;
-}
-#addButton {
-  margin-left: 10%;
-  width: 8%;
 }

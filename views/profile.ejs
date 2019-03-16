@@ -1,18 +1,15 @@
+
 <link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
+<div id="container">
 <h2 id=name>
     <%=user.username%>
 </h2>
 
-<div id="picture" cols="30" rows="10">
-    <img id="picture" src="/imgs/picture.png" alt="something">
-</div>
-
 <form id="bioForm" action="/profile", method='POST'>
+    <img id="pic" src="/imgs/picture.png" alt="something">
     <textarea name="userBio" id="bio" cols="30" rows="10">
         <%=user.Bio%>
     </textarea>
-
-    <button id="submitbtn" type='submit'>Edit</button>
 </form>
 
 <h3>
@@ -22,14 +19,15 @@
 <h3>
     Брой последователи: <%=user.followerCount%>
 </h3>
+<button id="submitbtn" type='submit'>Edit</button>
+</div>
 
-<div id="bookshelf" cols="30" rows="10">
-    <ul id="books">
-        <%books.forEach((book) => {%>
-          <li class = "projectHolder">
-            <img src="/imgs/book.png" width="100px" height="100px" alt = "icon" class="projectIcon">
+
+<ul id="books">
+    <%books.forEach((book) => {%>
+        <li class = "projectHolder">
+              <img src="/imgs/book.png" width="100px" height="100px" alt = "icon" class="projectIcon">
               <a href="#" class = "projectTitle"><%- book.Title %></a>
           </li>
-        <%})%>
-    </ul>
-</div>
+    <%})%>
+</ul>
