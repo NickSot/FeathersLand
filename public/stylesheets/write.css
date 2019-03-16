@@ -1,6 +1,5 @@
 .split {
 height: 100%;
-width: 50%;
 position: fixed;
 z-index: 1;
 top: 0;
@@ -12,10 +11,12 @@ padding-top: 20px;
   height:80px;
 }
 .left {
+  width: 35%;
   left: 0;
   word-break: break-all;
 }
 .right {
+  width: 65%;
   right: 0;
 }
 #writingResult {
