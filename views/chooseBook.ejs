@@ -1,6 +1,5 @@
 <link rel = "stylesheet" href = "/stylesheets/font.css">
 <link rel = "stylesheet" href = "/stylesheets/choosebook.css">
-<script src="/javascripts/choosebook.js"></script>\
 <center><% books.forEach(book =>{ %>
 
     <a  href= <%- "/write/mybook?bookId=" + book.Id%> >
@@ -9,15 +8,5 @@
           <h1 class = "projectTitle"><%-book.Title%></h1>
       </div>
     </a>
-
 <%});%>
-<div id="myModal" class="modal">
-<div class="modal-content">
-  <div class="modal-body">
-    <div id = "formholder"><form>
-      <input type = "text" placeholder= "Име" name = "name">
-      <input type = "submit" id = "createBook" value="Създаване на книга">
-    </form></div>
-  </div>
-</div>
-<center><button id="myBtn"><img src = "plusbutton.png"></button></center>
+<a href="/newbook"><img src="/imgs/plusbutton.png" id = "addButton"></a></center>
