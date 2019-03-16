@@ -22,3 +22,9 @@ h3 {
 #submitbtn{
   width: 300px;
 }
+
+#bookshelf{
+  width: 500px;
+  margin-left: 30%;
+  background-color: white;
+}
