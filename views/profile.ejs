@@ -19,4 +19,10 @@
     Брой последователи: <%=user.followerCount%>
 </h3>
 
-<div id="bookshelf" cols="30" rows="10"></div>
+<div id="bookshelf" cols="30" rows="10">
+    <ul>
+        <%books.forEach((book) => {%>
+            <a><%=book.Title%></a>
+        <%})%>
+    </ul>
+</div>

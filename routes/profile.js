@@ -7,9 +7,10 @@ router.get('/', function(req, res, next) {
     let user = req.session.user;
 
     if (req.session.authenticated){
-
-        res.locals.authenticated = req.session.authenticated;
-        res.render('profile', {'user': user});
+        db.query('Select * From Books Where AuthorId = ?', [user.ID], (err, result) => {
+            res.locals.authenticated = req.session.authenticated;
+            res.render('profile', {'user': user, books: result});
+        })
     }
     else{
         req.flash('info', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);

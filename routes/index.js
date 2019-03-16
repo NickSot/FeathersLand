@@ -47,6 +47,7 @@ router.post('/', (req, res) => {
     }
     else if (lusername == undefined && lpwd == undefined){ // REGISTER HANDLE
       if (rreppsw != rpwd){
+        req.flash('info', 'Паролите не съответстват!');
         res.redirect('/');
       }
       else{
