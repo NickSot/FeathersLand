@@ -43,6 +43,11 @@ div[contenteditable]{
   position: absolute;
   top: 30;
   right: 40px;
+  background: none;
+  border: none;
+}
+#writeButton:focus {
+  outline: none;
 }
 div[contenteditable]:focus{
   outline: none;
