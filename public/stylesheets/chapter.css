@@ -11,13 +11,24 @@ body {
       padding: 20px;
       border-radius: 30px;
   }
+  #downButton {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+}
+
   #chapterTitle {
     text-align: center;
     font-weight: 400;
     font-size: 60px;
     margin-top: 30px;
   }
-  #nextButton, #beforeButton, #hamburgerButton {
+  #nextButton, #beforeButton, #hamburgerButton, #downButton {
      width: 100px;
      margin: 30px;
      height: 100px;
