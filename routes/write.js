@@ -5,32 +5,25 @@ var db = require('../config/database');
 
 router.get('/mybook', (req, res) => {
     let bookId = req.query.bookId;
-    let query = `SELECT ch.Title
-    FROM Chapters AS ch 
+    let query = `SELECT ch.Title AS characterTitle, b.Title AS bookTitle
+    FROM Chapters AS ch
+    INNER JOIN Books AS b ON ch.BookId = b.Id 
     WHERE ch.BookId = ?`;
-    let bookQuery = `SELECT * FROM Books WHERE Id = ?`
-    let commentsQuery = "SELECT * FROM BookComments WHERE BookId = ?";
-    res.locals.authenticated = req.session.authenticated;
-    db.query(bookQuery, [bookId], (err, book) => {
+
+    let commentsQuery = "SELECT * FROM BookComments WHERE BookId = ?"
+    
+    db.query(query, [bookId], (err, result) => {
         if(err) throw err;
-        console.log(book.Title);
-        db.query(query, [bookId], (err, chapters) => {
+        db.query(commentsQuery,[bookId], (err, commentsForBook) => {
             if(err) throw err;
-            if(chapters.length > 0){
-                db.query(commentsQuery,[bookId], (err, commentsForBook) => {
-                    if(err) throw err;
-                    console.log("IT is from this one...");
-                    console.log(chapters);
-                    console.log(commentsForBook);
-                    res.render('book', {chapters : chapters, comments : commentsForBook, book : book[0] , isMyBook : true });
-            
-                });
-            }else{
-                res.render('book', {chapters: null, comments:null, book : book[0], isMyBook : true})
-            }
+            console.log("IT is from this one...");
+            console.log(result);
+            console.log(commentsForBook);
+            res.render('book', {chapters : result, comments : commentsForBook, book : result[0].bookTitle, isMyBook : true });
+    
         });
     });
-    // res.render('write', {layout: false, result: req.query.result});
+    res.render('write', {layout: false, result: req.query.result});
 });
 
 router.get('/', (req, res) => {
@@ -56,13 +49,34 @@ var chapterId;
 var chapter;
 
 router.get('/:chapterId', (req, res) => {
-    chapterId = req.params.chapterId;
+    if (!req.session.authenticated){
+        req.flash('warning', 'Неправилен url!');
+        res.redirect('/');
+    }
+    else{
+        console.log("Id: " + req.session.user.ID);
 
-    db.query('Select * From Chapters Where Id = ?', [chapterId], (err, chapters) => {
-        chapter = chapters[0];
-
-        res.render('write', {layout: false, chapter: chapter, result: null});
-    })
+        let userId = req.session.user.ID;
+        chapterId = req.params.chapterId;
+        let query = `SELECT Users
+        FROM Chapters AS ch
+        INNER JOIN Books AS b ON ch.BookId = b.Id 
+        Inner Join Users As u On b.authorId = u.ID
+        Where ch.Id = ?`;
+        db.query(query, [chapterId], (err, result) => {
+            if (result.ID == userId) {
+                req.flash('warning', 'Неправилен url!');
+                res.redirect('/');
+            }
+            else{
+                db.query('Select * From Chapters Where Id = ?', [chapterId], (err, chapters) => {
+                    chapter = chapters[0];
+            
+                    res.render('write', {layout: false, chapter: chapter, result: null});
+                })
+            }
+        })
+    }
 });
 
 router.post('/', (req, res) => {
