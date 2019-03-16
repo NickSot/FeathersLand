@@ -1,44 +1,5 @@
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
-<<<<<<< HEAD
-<div id="container">
-<h2 id=name>
-    <%=user.username%>
-</h2>
-
-<form id="bioForm" action="/profile", method='POST'>
-    <img id="pic" src="/imgs/picture.png" alt="something">
-    <textarea name="userBio" id="bio" cols="30" rows="10">
-        <%=user.Bio%>
-    </textarea>
-    <button id="submitbtn" type='submit'>Edit</button>
-</form>
-
-<h3>
-    Оценка: <%=user.overallRating%>
-</h3>   
-
-<h3>
-    Брой последователи: <%=user.followerCount%>
-</h3>
-=======
-<div class="split left">
-  <img src = "/imgs/picture.png">
-  <h1> <%=user.username%> </h1>
-  <h3>
-      Оценка: <%=user.overallRating%> <br/>
-      Брой последователи: <%=user.followerCount%>
-  </h3>
-  <div id = "authorBio">
-    <form id="bioForm" action="/profile", method='POST'>
-        <textarea name="userBio" id="bio" cols="30" rows="7">
-            <%=user.Bio%>
-        </textarea><br></br>
-        <button id="submitbtn" class = "button" type='submit'>Edit</button>
-    </form>
-   </div>
->>>>>>> ff7a5045f5addaabc0adc52be23527f5c3eac707
-</div>
 
 <div class="split right">
   <h1> Произведения </h1>
