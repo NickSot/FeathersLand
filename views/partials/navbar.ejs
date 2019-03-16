@@ -1,4 +1,4 @@
-x<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
 
 <ul id="menu" class="nav">
     <%if (!authenticated) {%>
@@ -7,7 +7,7 @@ x<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
         <li><a class="login" href="/logout" style="width:auto;">Изход</a></li>
     <%}%>
     <li class="icon fas fa-bookmark" id="uno"><a class="link"  href="/"> Начало</a></li>
-    <li class="icon fas fa-book" id="dos"><a class="link"  href="/catalog?page=1"> Книги</a></li>
+    <li class="icon fas fa-book" id="dos"><a class="link"  href="/books?page=1"> Книги</a></li>
     <li class="icon fas fa-pen-fancy" id="tres"><a class="link" href="/write"> Сътвори</a></li>
     <!-- <li><a class="icon fas fa-address-book" id="cuatro" href="#t4"> Последователи</a></li> -->
     <li class="icon fas fa-user" id="sinco"><a class="link"  href="/profile"> Профил</a></li>
@@ -21,11 +21,11 @@ x<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
   <form class="modal-content animate" action="/" method='POST'>
 
     <div class="container">
-      <label for="luname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="luname" required>
+      <label for="1"><b>Username</b></label>
+      <input id="1" type="text" placeholder="Enter Username" name="luname" required>
 
-      <label for="lpsw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="lpsw" required>
+      <label for="2"><b>Password</b></label>
+      <input id="2" type="password" placeholder="Enter Password" name="lpsw" required>
 
       <button class="submit" type="submit">Login</button>
       <label>
@@ -43,17 +43,17 @@ x<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
 <div id="id02" class="modal">
   <form class="modal-content animate" action="/" method="POST">
     <div class="container">
-      <label for="remail"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="remail" required>
+      <label for="3"><b>Email</b></label>
+      <input id="3" type="text" placeholder="Enter Email" name="remail" required>
 
-      <label for="runame"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="runame" required>
+      <label for="4"><b>Username</b></label>
+      <input id="4" type="text" placeholder="Enter Username" name="runame" required>
 
-      <label for="rpsw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="rpsw" required>
+      <label for="5"><b>Password</b></label>
+      <input id="5" type="password" placeholder="Enter Password" name="rpsw" required>
 
-      <label for="rreppsw"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="rreppsw" required>
+      <label for="6"><b>Repeat Password</b></label>
+      <input id="6" type="password" placeholder="Repeat Password" name="rreppsw" required>
 
       <button class="submit" type="submit">Register</button>
 

@@ -2,9 +2,11 @@ body {
   background-image: url("/imgs/back.png");
 }
 
-ul#menu li{
-    margin-top: 2em;
+ul#menu li.icon{
+    /*margin-top: 2em;*/
+    height: 4%
 }
+
 
 .page {
   position: absolute;
@@ -53,6 +55,7 @@ ul.nav {
 
 #menu{
   list-style-type:none;
+
 }
 
 a.login, .link {
@@ -63,7 +66,7 @@ a.login, .link {
 }
 
 a.login{
-  font-size: 150%;
+  font-size: 90%;
 }
 
 

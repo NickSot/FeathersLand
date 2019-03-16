@@ -10,56 +10,59 @@ input[type=text], input[type=password] {
 
 a.login1 {
 
-  font-size: 130%;
+  font-size: 1.5vw;
   color: black;
   font-family: Open Sans;
 
 }
 
-span{
-  font-size: 130%;
+span.text{
+  font-size: 1.5vw;
   font-family: Open Sans;
 }
 
 
 #login_register{
+  width:100vw;
   margin-left: 22%;
   margin-top: 11%;
 }
 
 #feather{
-  width: 300px;
+  width: 20vw;
   margin-left: 71%;
-  margin-top: -30%;
+  margin-top: -27%;
 
 }
 
 img#f {
-  width: 300px;
+  width: 20vw;
 }
 
 img#l{
-  width: 264px;
+  width: 20vw;
   height: 10px;
 }
 
 img#i{
-  width: 200px;
-  height: 200px;
+  width: 20vw;
+  height: 60%;
 }
 
 #ink{
+  width: 20vw;
   margin-left: 80%;
   margin-top:-10%;
 }
 
 #line{
-  margin-left: 51%;
+  width: 20vw;
+  margin-left: 28%;
   margin-top:-1.1%;
 }
 
 #main{
-  width: 750px;
+  width: 60vw;
   margin-left: 3%;
   margin-top: 8.5%;
 }
@@ -76,7 +79,7 @@ h3{
 
 p{
   margin-left: 7%;
-  font-size:150%;
+  font-size:4vh;
   font-family: Open Sans;
 }
 
