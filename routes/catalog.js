@@ -20,8 +20,7 @@ router.get('/', function(req, res, next) {
             // console.log("result: " + result.length);
             res.locals.authenticated = req.session.authenticated;
             // console.log("In the end: " + Math.ceil(booksCount / booksOnPage))
-            res.render('catalog', {books : result, 'numPages' : Math.ceil(booksCount / booksOnPage)});
-
+            res.render('catalog', {books : result, numPages : Math.ceil(booksCount / booksOnPage)});
         }else{
             req.flash('error', "Изглежда свършиха книгите...");
             res.redirect('/');

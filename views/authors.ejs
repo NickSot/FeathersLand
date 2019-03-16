@@ -1,9 +1,19 @@
 <ul>
-    <%users.forEach((user) => {%>
-        <li>
-            <a href="<%-'/author/' + user.ID + '/show/'-%>">
-                <%=user.username%>
-            </a>
-        </li>
-    <%});%>
+    <%if (users != null){%>
+        <%users.forEach((user) => {%>
+            <li>
+                <a href="<%-'/author/' + user.ID + '/show/'-%>">
+                    <%=user.username%>
+                </a>
+            </li>
+        <%});%>
+    <%}%>
 </ul>
+
+<footer>
+    <div style="text-align: center">
+        <%for(let i = 1; i <= numPages; i++){%>
+        <a href=<%-"/authors/" + i %> > <%- i %></a>
+        <%}%>
+    </div>
+</footer>
