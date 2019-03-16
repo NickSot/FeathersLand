@@ -56,6 +56,7 @@ app.use('/logout', logoutRouter);
 app.use('/authors', authorsRouter);
 app.use('/author', authorRouter);
 app.use('/verify', verifyRouter);
+app.use('/chapter', chaptersRouter);
 
 
 // catch 404 and forward to error handler

@@ -2,27 +2,27 @@ body {
   background-image: url("/imgs/pattern.png");
 }
   #textHolder {
-    text-align center;
-    font-weight 300;
-    font-size2.5em;
-      margin-left15%;
-      margin-right15%;
+    text-align: center;
+    font-weight: 300;
+    font-size: 2.5em;
+      margin-left: 15%;
+      margin-right: 15%;
       background-image: url("/imgs/back.png");
-      padding 20px;
-      border-radius 30px;
+      padding: 20px;
+      border-radius: 30px;
   }
   #chapterTitle {
-    text-align center;
-    font-weight 400;
-    font-size 60px;
-    margin-top 30px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 60px;
+    margin-top: 30px;
   }
   #nextButton, #beforeButton, #hamburgerButton {
-     width100px;
-     margin 30px;
-     height100px;
+     width: 100px;
+     margin: 30px;
+     height: 100px;
   }
   #hamburgerButton {
-    top 0;
-    left 0;
+    top: 0;
+    left: 0;
   }
