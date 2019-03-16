@@ -27,13 +27,13 @@
   <br></br>
   <input type="submit" value = "Постни коментар" id = "commentButton">
 </form>
-
-<div class="row com">
   <%commentUsers.forEach((comment) => {%>
+    <div class="row com">
     <div class="col author"><%=comment.username%></div>
     <div class="col comment"><%=comment.Content%></div>
+  </div>
+  <br></br>
   <%})%>
-</div>
 </center>
 
 

@@ -69,3 +69,19 @@
     margin-top: 10px;
     display: table;
   }
+  .com {
+    border-radius: 30px;
+    width: 50%;
+    font-size:20px;
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+  }
+  .author {
+    font-weight: bold;
+  }
+  .author, .comment {
+    word-wrap: break-word;
+    display: table-cell;
+    vertical-align: middle;
+  }
