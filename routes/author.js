@@ -2,10 +2,14 @@ var express = require('express');
 var router = express.Router();
 var db = require('../config/database');
 
+var authorId;
+
 router.get('/:id/show', function(req, res, next) {
     res.locals.authenticated = req.session.authenticated;
 
-    db.query('Select * From Users Where ID = ?', [req.params.id], (err, result) => {
+    authorId = req.params.id;
+
+    db.query('Select * From Users Where ID = ?', [authorId], (err, result) => {
         if (result.length == 0){
             req.flash('info', 'Няма такъв автор! Моля, не се опитвайте да чупите механизма на сайта!');
             res.redirect('/authors');
@@ -31,14 +35,14 @@ router.post('/:id/show', (req, res) => {
 
         console.log("User: " + user);
         
-        db.query('Select * From Followers Where FollowingId = ?', [user.ID], (err, result) => {
+        db.query('Select * From Followers Where FollowingId = ?', [authorId], (err, result) => {
             if (result.length != 0){
                 req.flash('info', 'Вече си абониран за този автор!');
-                res.redirect('/author/' + user.ID + '/show');
+                res.redirect('/author/' + authorId + '/show');
             }
             else{
                 req.flash('info', 'Успешно абониране за автора!');
-                db.query('Insert Into Followers (FollowerId, FollowingId) Values (?, ?)', [req.session.user.ID, user.ID], (err, result) => {
+                db.query('Insert Into Followers (FollowerId, FollowingId) Values (?, ?)', [req.session.user.ID, authorId], (err, result) => {
                     req.flash('info', 'Успешно абониране!');
                     res.redirect('/authors');
                 });
