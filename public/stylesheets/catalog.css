@@ -35,6 +35,7 @@ input#search-bar{
   padding: 10 20px;
   font-size: 2rem;
   border: 0px;
+  border-radius: 30px;
   outline: none;
   &:focus{
     border: 0px;
