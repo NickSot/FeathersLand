@@ -17,3 +17,49 @@
   border-radius: 20px;
   margin: 10px;
 }
+.search-container{
+
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+
+  border-radius: 30px;
+}
+
+input#search-bar{
+  display:block;
+  width: 100%;
+  box-sizing: border-box
+  margin: 0 auto;
+  padding: 10 20px;
+  font-size: 2rem;
+  border: 0px;
+  outline: none;
+  &:focus{
+    border: 0px;
+    transition: 0.35s ease;
+    color: #008ABF;
+    &::-webkit-input-placeholder{
+      transition: opacity 0.45s ease;
+  	  opacity: 0;
+     }
+    &::-moz-placeholder {
+      transition: opacity 0.45s ease;
+  	  opacity: 0;
+     }
+    &:-ms-placeholder {
+     transition: opacity 0.45s ease;
+  	 opacity: 0;
+     }
+   }
+ }
+
+.search-icon{
+  width: 9vh;
+  position: absolute;
+  height: 9vh;
+  top: 0;
+  right: 0;
+
+}
