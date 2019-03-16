@@ -1,48 +1,23 @@
 .split {
   height: 100%;
+  width: 42.5%;
   position: fixed;
+  text-align: center;
   z-index: 1;
   top: 0;
   overflow-x: hidden;
   padding-top: 20px;
 }
+
 .left {
+  border: 4px black;
   left: 15%;
-  width: 30%;
   background-color: none;
-  margin-top: 3%;
 }
+
 .right {
-  width: 50%;
   right: 0;
   background-color: none;
-}
-.centered {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-
-}
-
-#listbooks{
-  max-height: 65vh;
-  overflow-y: scroll;
-  margin-left: 20%;
-  margin-top: 4%;
-}
-
-#profilePic {
-  width: 150px;
-}
-#authorName {
-  font-size: 30px;
-}
-#authorBio {
-  width: 85%;
-  word-break: break-all;
-  font-size: 25px;
 }
 .button {
   background: #76B3FA;
@@ -52,16 +27,14 @@
   border: 0px;
   text-decoration: none;
   font-size: 1em;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
 }
 
-/* Hover state animation applied here */
 .button:hover {
   -webkit-animation: hover 1200ms linear 2 alternate;
   animation: hover 1200ms linear 2 alternate;
 }
 
-/* Active state animation applied here */
 .button:active {
   -webkit-animation: active 1200ms ease 1 alternate;
   animation: active 1200ms ease 1 alternate;
@@ -71,10 +44,6 @@
 .button:focus {
   outline: none;
 }
-.gray { background: #D2D2D2; }
-.gray:active { background: #b9b9b9; }
-
-/* Active state animation keyframes below */
 
 @-webkit-keyframes active {
   0% {transform: scale(1,1);}
@@ -86,11 +55,6 @@ keyframes active {
   0% {transform: scale(1,1);}
   90% {transform: scale(.9,.88);}
   100% {transform: scale(.92,.9);}
-}
-
-/* Hover state animation keyframes below */
-.bHolder {
-  margin-top: 20px;
 }
 @-webkit-keyframes hover {
   0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
@@ -170,8 +134,10 @@ keyframes active {
   100% { -webkit-transform: matrix3d(1.1, 0, 0, 0, 0, 1.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.1, 0, 0, 0, 0, 1.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 }
 
-a {
-  color: black;
-  text-outline: none;
-  text-decoration: none;
+#authorBio {
+padding: 10px;
+
+}
+.bHolder {
+margin: 20px;
 }

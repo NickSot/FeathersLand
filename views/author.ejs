@@ -1,32 +1,36 @@
 <link rel="stylesheet" href = "/stylesheets/author.css">
 <script src="/javascripts/author.js"></script>
-
 <div class="split left">
-<div class="centered">
-
-  <img src="/imgs/picture.png" alt="Avatar woman" id = "profilePic">
-  <h2 id = "authorName"><%=user.username%></h2>
+  <img src = "/imgs/picture.png">
+  <h1> <%=user.username%> </h1>
   <form action="/author/<%-user.ID-%>/show" method='POST'>
     <button type='submit' class = "button" id = "subscribeButton" onclick="changeSubscribedStatus()"> Абонирай се </button>
   </form>
-  <div id = "authorBio"><%=user.Bio%></div>
   <h3>
-      Оценка: <%=user.overallRating%>
-  </h3>
-
-  <h3>
+      Оценка: <%=user.overallRating%> <br/>
       Брой последователи: <%=user.followerCount%>
   </h3>
+  <div id = "authorBio">
+   <%=user.Bio%>
+   </div>
+</div>
 
-</div>
-</div>
-
-<div id="listbooks" class="centered split right">
-  <% books.forEach(book => { %>
-    <a href = "/book/<%-book.Id%>"><div class = "bHolder">
-      <img src="/imgs/otherbook.png" width="100px" height="100px" alt = "icon" class="projectIcon">
-        <h1 class = "projectTitle"><%- book.Title %></h1>
-    </div></a>
-  <%});%>
-</div>
+<div class="split right">
+  <h1> Произведения </h1>
+  <div id="listbooks">
+    <% books.forEach(book => { %>
+      <a href = "/book/<%-book.Id%>"><div class = "bHolder">
+        <img src="/imgs/otherbook.png" width="100px" height="100px" alt = "icon" class="projectIcon">
+          <h1 class = "projectTitle"><%- book.Title %></h1>
+      </div></a>
+      <a href = "/book/<%-book.Id%>"><div class = "bHolder">
+        <img src="/imgs/otherbook.png" width="100px" height="100px" alt = "icon" class="projectIcon">
+          <h1 class = "projectTitle"><%- book.Title %></h1>
+      </div></a>
+      <a href = "/book/<%-book.Id%>"><div class = "bHolder">
+        <img src="/imgs/otherbook.png" width="100px" height="100px" alt = "icon" class="projectIcon">
+          <h1 class = "projectTitle"><%- book.Title %></h1>
+      </div></a>
+    <%});%>
+  </div>
 </div>
