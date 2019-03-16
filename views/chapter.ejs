@@ -11,7 +11,7 @@
 <body>
   <%- include ./partials/locals.messages.ejs%>
   <a href="#" ><img src="/imgs/hamburgerparchment.png" id = "hamburgerButton"></a>
-   <img src="/imgs/down.png" id = "downButton" onclick="downFunction()" onclick="window.scrollTo(0);">
+   <a href = "#commentArea"><img src="/imgs/down.png" id = "downButton"></a>
   <div id = "textHolder"><h1 id = "chapterTitle"><%=chapter.Title%></h1>
     <%=chapter.Content%>
   </div>
@@ -32,11 +32,11 @@
 <div class="row com">
   <%commentUsers.forEach((comment) => {%>
     <div class="col author"><%=comment.username%></div>
-    <div class="col comment" style="word-wrap: break-word;display: table-cell;vertical-align: middle;"><%=comment.Content%></div>
+    <div class="col comment"><%=comment.Content%></div>
   <%})%>
-
-</center>
 </div>
+</center>
+
 
 </body>
 </html>

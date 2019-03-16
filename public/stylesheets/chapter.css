@@ -1,45 +1,55 @@
 body {
   background-image: url("/imgs/pattern.png");
 }
-  #textHolder {
-    text-align: center;
-    font-weight: 300;
-    font-size: 2.5em;
-      margin-left: 15%;
-      margin-right: 15%;
-      background-image: url("/imgs/back.png");
-      padding: 20px;
-      border-radius: 30px;
-  }
-  #downButton {
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    border: none;
-    outline: none;
-    color: white;
-    cursor: pointer;
+#textHolder {
+  text-align: center;
+  font-weight: 300;
+  font-size: 2.5em;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-image: url("/imgs/back.png");
+    padding: 20px;
+    border-radius: 30px;
+}
+#downButton {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
 }
 
-  #chapterTitle {
-    text-align: center;
-    font-weight: 400;
-    font-size: 60px;
-    margin-top: 30px;
-  }
-  #nextButton, #beforeButton, #hamburgerButton, #downButton {
-     width: 100px;
-     margin: 30px;
-     height: 100px;
-  }
-  #hamburgerButton {
-    top: 0;
-    left: 0;
-  }
-  .com {
-    border-radius: 30px;
-  }
-  .author, .comment {
-    border: 3px #d1fffd;
-  }
+#chapterTitle {
+  text-align: center;
+  font-weight: 400;
+  font-size: 60px;
+  margin-top: 30px;
+}
+#nextButton, #beforeButton, #hamburgerButton, #downButton {
+   width: 100px;
+   margin: 30px;
+   height: 100px;
+}
+#hamburgerButton {
+  top: 0;
+  left: 0;
+}
+.com {
+  border-radius: 30px;
+  width: 50%;
+  font-size:20px;
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+}
+.author {
+  font-weight: bold;
+}
+.author, .comment {
+  word-wrap: break-word;
+  display: table-cell;
+  vertical-align: middle;
+}
