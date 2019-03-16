@@ -1,8 +1,8 @@
 <link rel="stylesheet" href = "/stylesheets/author.css">
 <div class="split left">
-  <a href="#" ><img src="imgs/hamburgerparchment.png" id = "hamburgerButton"></a>
+  <a href="#" ><img src="/imgs/hamburgerparchment.png" id = "hamburgerButton"></a>
 <div class="centered">
-  <img src="imgs/picture.png">
+  <img src="/imgs/picture.png">
   <h2 id = "authorName"><%=user.username%></h2>
   <div id = "authorBio"><%=user.Bio%></div>
   <h3>
@@ -19,7 +19,7 @@
 <div class="centered">
   <% books.forEach(book => { %>
     <div class = "projectHolder">
-      <img src="/imgs/book.png" width="100px" height="100px" alt = "icon" class="projectIcon">
+      <!-- <img src="/imgs/book.png" width="100px" height="100px" alt = "icon" class="projectIcon"> -->
         <h1 class = "projectTitle"><%- book.Title %></h1>
     </div>
   <%});%>

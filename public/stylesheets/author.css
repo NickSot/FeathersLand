@@ -45,23 +45,10 @@
    align-content:center;
    flex-direction:row;
 }
-.projectIcon{
-  margin-right: 2vw;
-  margin-top: 12px;
-}
 .projectTitle {
   display: inline;
-  font-size: 44px;
+  font-size: 20px;
   font-weight: 300;
   color: #5f859b;
   float: left;
-}
-#hamburgerButton {
-   width100px;
-   margin 30px;
-   height100px;
-}
-#hamburgerButton {
-  top 0;
-  left 0;
 }
