@@ -8,9 +8,9 @@
 </div>
 
 <form id="bioForm" action="/profile", method='POST'>
-    <div contenteditable name="userBio" id="bio" cols="30" rows="10">
-        <p><%=user.Bio%></p>
-    </div>
+    <textarea name="userBio" id="bio" cols="30" rows="10">
+        <%=user.Bio%>
+    </textarea>
 
     <button id="submitbtn" type='submit'>Edit</button>
 </form>

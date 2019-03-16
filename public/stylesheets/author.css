@@ -38,6 +38,7 @@
   background: #76B3FA;
   border-radius: 100px;
   padding: 10px;
+<<<<<<< HEAD
   color: #fff;
   border: 0px;
   text-decoration: none;
@@ -163,3 +164,21 @@ a {
   text-outline: none;
   text-decoration: none;
 }
+=======
+  background-color: white;
+  border-radius: 60px;
+   width: 90%;
+   margin-top: 2vh;
+   display: flex;
+   justify-content:center;
+   align-content:center;
+   flex-direction:row;
+}
+.projectTitle {
+  display: inline;
+  font-size: 20px;
+  font-weight: 300;
+  color: #5f859b;
+  float: left;
+}
+>>>>>>> 9e617ba6390c35d49c6cc2fc2d0a31224f95b131

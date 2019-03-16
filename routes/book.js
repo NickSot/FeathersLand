@@ -5,7 +5,7 @@ var db = require('../config/database');
 router.get('/:id', function(req, res, next) {
     res.locals.authenticated = req.session.authenticated;
     let id = req.params["id"];
-    db.query('Select * From Books Where Id = ?', id, (err, book) => {
+    db.query(`Select * From Books Where Id = "${id}"`, (err, book) => {
         if(err) throw err;
         console.log(book[0]);
 
@@ -18,6 +18,7 @@ router.get('/:id', function(req, res, next) {
             res.locals.authenticated = req.session.authenticated;
             res.locals.chapters = chapters;
             console.log(chapters.length);
+            console.log(book[0]);
             res.render('book', { chapters : chapters, book :  book[0]});
         } );
     });

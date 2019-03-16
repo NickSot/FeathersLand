@@ -25,15 +25,15 @@ router.get('/:id/show', function(req, res, next) {
 
                     if (result.length == 0){
                         if (books.length == 0){
-                            res.render('author', {user: result[0], followers: null, books: []});
+                            res.render('author', {user: result[0], followers: [], books: []});
                         }
                         else{
-                            res.render('author', {user: result[0], followers: null, books: books});
+                            res.render('author', {user: result[0], followers: [], books: books});
                         }
                     }
                     else{
                         if (books.length == 0){
-                            res.render('author', {user: result[0], followers: null, books: []});
+                            res.render('author', {user: result[0], followers: [], books: []});
                         }
                         else{
                             res.render('author', {user: result[0], followers: followersResult, books : books});
