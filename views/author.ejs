@@ -1,9 +1,12 @@
 <link rel="stylesheet" href = "/stylesheets/author.css">
+<script src="/javascripts/author.js"></script>
+
 <div class="split left">
-  <a href="#" ><img src="imgs/hamburgerparchment.png" id = "hamburgerButton"></a>
 <div class="centered">
-  <img src="imgs/picture.png">
+
+  <img src="user.png" alt="Avatar woman" id = "profilePic">
   <h2 id = "authorName"><%=user.username%></h2>
+  <button class = "button" id = "subscribeButton" onclick="changeSubscribedStatus()"> Абонирай се </button>
   <div id = "authorBio"><%=user.Bio%></div>
   <h3>
       Оценка: <%=user.overallRating%>
@@ -17,11 +20,11 @@
 
 <div class="split right">
 <div class="centered">
-  <% books.forEach(book => { %>
-    <div class = "projectHolder">
-      <img src="/imgs/book.png" width="100px" height="100px" alt = "icon" class="projectIcon">
+  <% books.array.forEach(book => { %>
+    <a href = "#"><div>
+      <img src="book.png" width="100px" height="100px" alt = "icon" class="projectIcon">
         <h1 class = "projectTitle"><%- book.Title %></h1>
-    </div>
+    </div></a>
   <%});%>
 </div>
 </div>
