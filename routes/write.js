@@ -3,21 +3,19 @@ var router = express.Router();
 var pandoc = require('node-pandoc');
 
 router.get('/', (req, res) => {
-    res.locals.authenticated = req.session.authenticated;
-    console.log("Markdown: " + req.query.markdown);
-
-    pandoc(req.query.markdown, '-f markdown -t html5', (err, result) => {
-        if (err) throw err;
-
-        console.log('Result: ' + result);
-
-        res.render('write',{layout:false, result: result.toString()});
-    });
+    res.render('write', {layout: false, result: req.query.result});
 });
 
 router.post('/', (req, res) => {
-    let content = req.body.content;
-    console.log(content);
+    res.locals.authenticated = req.session.authenticated;
+
+    let markdown = req.body.markdown;
+
+    pandoc(markdown, '-f markdown -t html5', (err, result) => {
+        if (err) throw err;
+
+        res.redirect('/write/?result=' + result);
+    });
 });
 
 module.exports = router;

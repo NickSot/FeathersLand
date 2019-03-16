@@ -10,24 +10,24 @@
 </head>
 <body>
   <script>
-    var res = `<%-result-%>`;
+    var xhttp = new XMLHttpRequest();
 
     setInterval(() => {
-      
-      var xhttp = new XMLHttpRequest();
+      var res = `<%-result%>`;
+
+      console.log(`<%=result%>`);
+
       xhttp.onreadystatechange = () => {
         if (this.readyState == 4 && this.status == 200){
-          document.getElementById("writeingResult").innerHTML = this.responseText;
           document.getElementById('writingResult').innerHTML = res;
         }
       };
 
-      xhttp.open('GET', '/write/?markdown=' + document.getElementById('writingInProgress').innerText, true);
-      xhttp.send();
-
-      res = `<%-result-%>`;
-      console.log(res);
-      // document.getElementById('writingResult').innerHTML = res;
+      let text = document.getElementById('writingInProgress').innerText;
+      
+      xhttp.open('POST', '/write/', true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send('markdown=' + text);
     }, 1000);
 
   </script>
@@ -39,7 +39,7 @@
 <div class="split right">
 <a href="#" id = "writeButton"><img src="/imgs/ready.png" id = "readyButton" alt = "ready"></a>
   <div id = "writingResult">
-
+    <%-result-%>
   </div>
 </div>
 </body>
