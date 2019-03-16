@@ -72,6 +72,7 @@ background-color: rgba(0,0,0,0.4);
 
 .modal-content {
 text-align: center;
+display: none;
 position: relative;
 background-color: #fefefe;
 margin: auto;
