@@ -1,10 +1,11 @@
 .bookLink {
   text-decoration: none;
   color: black;
+  text-align: center;
 }
 .bookLink:hover
 {
-     color:black; 
+     color:black;
      text-decoration:none;
      cursor:pointer;
 }
