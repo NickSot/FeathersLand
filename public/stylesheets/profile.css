@@ -25,11 +25,52 @@ h3 {
 
 ul#books li{
   list-style-type: none;
+
+}
+
+#books{
+  margin-left: -30%;
+  margin-top: -4.9%;
 }
 
 #bookshelf{
   width: 500px;
   margin-left: 50%;
-  margin-top: -36.2%;
+  margin-top: -37.5%;
+  max-height: 330px;
+  overflow-y: scroll;
+
+
+}
+
+.projectHolder {
+  margin-left: 25%;
+  text-align: center;
+  padding: 10px;
   background-color: white;
+  border-radius: 60px;
+   width: 60%;
+   margin-top: 4vh;
+   display: flex;
+   justify-content:center;
+   align-content:center;
+   flex-direction:row;
+}
+.projectIcon{
+  margin-right: 2vw;
+  margin-top: 8px;
+  width:70px;
+  height: 70px;
+}
+.projectTitle {
+  display: inline;
+  font-size: 24px;
+  color: #5f859b;
+  float: left;
+  text-decoration: none;
+  margin-top: 7%;
+}
+#addButton {
+  margin-left: 10%;
+  width: 8%;
 }

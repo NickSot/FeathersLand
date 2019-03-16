@@ -1,10 +1,26 @@
+<link rel="stylesheet" href = "/stylesheets/catalog.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<div class="row">
 <% for(let i = 0; i < books.length; i++){ %>
+  <% if(i % 4 == 0){ %>
+    <div class="w-100"></div>
+  <% } %>
   <div class = "projectHolder">
-    <img src="/imgs/book.png" width="100px" height="100px" class="projectIcon">
-      <h1 class = "projectTitle"><%- books[i].Title %></h1>
+    <a href = "#" class = "bookLink">
+      <% if(i % 4 == 0){ %>
+       <img src="/imgs/otherbook.png" width="100px" height="100px" class="projectIcon">
+       <% }else if(i % 4 == 1){ %>
+       <img src="/imgs/otherbookpurple.png" width="100px" height="100px" class="projectIcon">
+      <% }else if(i % 4 == 2){ %>
+       <img src="/imgs/otherbookred.png" width="100px" height="100px" class="projectIcon">
+      <% }else if(i % 4 == 3){ %>
+       <img src="/imgs/otherbookyellow.png" width="100px" height="100px" class="projectIcon">
+      <% } %>
+
+      <h1 class = "projectTitle"><%- books[i].Title %></h1></a>
   </div>
-  <center><a href="#"><img src="/imgs/plusbutton.png" id = "addButton"></a></center>
-<%};%>
+<%};%></div>
 
 
 <footer>

@@ -1,0 +1,18 @@
+.bookLink {
+  text-decoration: none;
+  color: black;
+}
+.bookLink:hover
+{
+     color:black; 
+     text-decoration:none;
+     cursor:pointer;
+}
+.projectHolder {
+  width: 20%;
+  padding: 10px;
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  margin: 10px;
+}
