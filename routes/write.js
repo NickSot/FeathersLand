@@ -5,25 +5,32 @@ var db = require('../config/database');
 
 router.get('/mybook', (req, res) => {
     let bookId = req.query.bookId;
-    let query = `SELECT ch.Title AS characterTitle, b.Title AS bookTitle
-    FROM Chapters AS ch
-    INNER JOIN Books AS b ON ch.BookId = b.Id 
+    let query = `SELECT ch.Title
+    FROM Chapters AS ch 
     WHERE ch.BookId = ?`;
-
-    let commentsQuery = "SELECT * FROM BookComments WHERE BookId = ?"
-    
-    db.query(query, [bookId], (err, result) => {
+    let bookQuery = `SELECT * FROM Books WHERE Id = ?`
+    let commentsQuery = "SELECT * FROM BookComments WHERE BookId = ?";
+    res.locals.authenticated = req.session.authenticated;
+    db.query(bookQuery, [bookId], (err, book) => {
         if(err) throw err;
-        db.query(commentsQuery,[bookId], (err, commentsForBook) => {
+        console.log(book.Title);
+        db.query(query, [bookId], (err, chapters) => {
             if(err) throw err;
-            console.log("IT is from this one...");
-            console.log(result);
-            console.log(commentsForBook);
-            res.render('book', {chapters : result, comments : commentsForBook, book : result[0].bookTitle, isMyBook : true });
-    
+            if(chapters.length > 0){
+                db.query(commentsQuery,[bookId], (err, commentsForBook) => {
+                    if(err) throw err;
+                    console.log("IT is from this one...");
+                    console.log(chapters);
+                    console.log(commentsForBook);
+                    res.render('book', {chapters : chapters, comments : commentsForBook, book : book[0] , isMyBook : true });
+            
+                });
+            }else{
+                res.render('book', {chapters: null, comments:null, book : book[0], isMyBook : true})
+            }
         });
     });
-    res.render('write', {layout: false, result: req.query.result});
+    // res.render('write', {layout: false, result: req.query.result});
 });
 
 router.get('/', (req, res) => {

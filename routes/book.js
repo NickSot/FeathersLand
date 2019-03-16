@@ -9,6 +9,7 @@ router.get('/:id', function(req, res, next) {
 
     res.locals.authenticated = req.session.authenticated;
     //let id = req.params["id"];
+    console.log(bookId);
     db.query('Select * From Books Where Id = ?', [bookId], (err, book) => {
         if(err) throw err;
         console.log(book[0]);
@@ -41,18 +42,19 @@ router.get('/:id', function(req, res, next) {
 router.post('/:id', (req, res) => {
     console.log('Commented!');
     let text = req.body.comment;
+    let id  = req.params.id;
 
     if (!req.session.authenticated){
-        req.flash('info', 'Не можеш да пишеш коментари, ако не си се логнал/ла!');
-        res.redirect('/book/' + bookId);
+        req.flash('error', 'Не можеш да пишеш коментари, ако не си в акаунта си!');
+        res.redirect('/');
     }
     else{
         db.query('Insert Into BookComments (Content, BookID, PosterId) Values (?, ?, ?)', [text, bookId, req.session.user.ID], (err, result) => {
             if (err){
                 throw err;
             }
-            console.log('ASDASDS');
-            res.redirect('/book/' + bookId);
+            // console.log('ASDASDS');
+            res.redirect('/book/' + id);
         });
     }
 });

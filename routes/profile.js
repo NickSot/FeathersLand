@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
         })
     }
     else{
-        req.flash('info', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);
+        req.flash('error', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);
 
         req.session.authenticated = false;
         res.locals.authenticated = req.session.authenticated;

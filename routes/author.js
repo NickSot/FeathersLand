@@ -13,7 +13,7 @@ router.get('/:id/show', function(req, res, next) {
         if (err) throw err;
 
         if (result.length == 0){
-            req.flash('info', 'Няма такъв автор! Моля, не се опитвайте да чупите механизма на сайта!');
+            req.flash('errorx', 'Няма такъв автор! Моля, не се опитвайте да чупите механизма на сайта!');
             res.redirect('/authors');
         }
         else{
@@ -49,7 +49,7 @@ router.post('/:id/show', (req, res) => {
     console.log('HERE');
 
     if (!req.session.authenticated){
-        req.flash('info', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);
+        req.flash('error', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);
         req.session.authenticated = false;
         res.locals.authenticated = req.session.authenticated;
         res.render('index');
@@ -65,9 +65,9 @@ router.post('/:id/show', (req, res) => {
                 res.redirect('/author/' + authorId + '/show');
             }
             else{
-                req.flash('info', 'Успешно абониране за автора!');
+                req.flash('success', 'Успешно абониране за автора!');
                 db.query('Insert Into Followers (FollowerId, FollowingId) Values (?, ?)', [req.session.user.ID, authorId], (err, result) => {
-                    req.flash('info', 'Успешно абониране!');
+                    req.flash('success', 'Успешно абониране!');
                     db.query('Update Users Set followerCount = followerCount + 1 Where ID = ?', [authorId]);
                     res.redirect('/author/' + authorId + '/show');
                 });

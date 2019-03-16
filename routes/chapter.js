@@ -25,7 +25,7 @@ router.post('/:id', (req, res) => {
     let text = req.body.comment;
 
     if (!req.session.authenticated){
-        req.flash('info', 'Не можеш да пишеш коментари, ако не си се логнал/ла!');
+        req.flash('error', 'Не можеш да пишеш коментари, ако не си в акаунта си!');
         res.redirect('/chapter/' + chapterId);
     }
     else{
