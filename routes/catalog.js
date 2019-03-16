@@ -17,10 +17,10 @@ router.get('/', function(req, res, next) {
     db.query(selectQuery, (err, result) => {
         if(err) throw err;
         if(result.length > 0){
-            console.log("result: " + result.length);
+            // console.log("result: " + result.length);
             res.locals.authenticated = req.session.authenticated;
-            console.log("In the end: " + Math.ceil(booksCount / booksOnPage))
-            res.render('books', {books : result, 'numPages' : Math.ceil(booksCount / booksOnPage)});
+            // console.log("In the end: " + Math.ceil(booksCount / booksOnPage))
+            res.render('catalog', {books : result, 'numPages' : Math.ceil(booksCount / booksOnPage)});
 
         }else{
             req.flash('error', "Изглежда свършиха книгите...");
