@@ -2,20 +2,20 @@ a.login1 {
 
   font-size: 1.5vw;
   color: black;
-  font-family: Open Sans;
+  font-family: 'Marck Script', cursive;
 
 }
 
 span.text{
   font-size: 1.5vw;
-  font-family: Open Sans;
+  font-family: 'Marck Script', cursive;
 }
 
 
 span.t{
   font-size: 1.5vw;
   color: black;
-  font-family: Open Sans;
+  font-family: 'Marck Script', cursive;
 }
 
 
@@ -37,7 +37,7 @@ img#f {
 }
 
 img#l{
-  width: 15vw;
+  width: 18vw;
   height: 10px;
 }
 
@@ -49,12 +49,12 @@ img#i{
 #ink{
   width: 20vw;
   margin-left: 77%;
-  margin-top:-10%;
+  margin-top:-15%;
 }
 
 #line{
-  width: 20vw;
-  margin-left: 53%;
+  width: 30vw;
+  margin-left: 49%;
   margin-top:-1.4%;
 }
 
@@ -67,23 +67,22 @@ img#i{
 h1#title{
   margin-left: 17%;
   font-size:6vh;
-  font-family: Open Sans;
+  font-family: 'Marck Script', cursive;
 }
 
 h3#subtitle{
-  margin-left: 27%;
+  margin-left: 17%;
+  font-family: 'Marck Script', cursive;
+  font-size:4vh;
 }
 
-h3{
-  font-size:2.5vh;
-  font-family: Open Sans;
-}
 
 p{
   font-family: Open Sans;
 }
 
 p#description{
-  margin-left: 7%;
-  font-size:4vh;
+  margin-left: 1%;
+  font-size:5vh;
+  font-family: 'Marck Script', cursive;
 }

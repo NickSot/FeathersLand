@@ -5,24 +5,25 @@
   height: 50px;
   border-style: solid;
   border-width: 2.5px;
+  margin-top:-5%;
 }
 
 #error{
-  margin-top:-5%;
+  
   background-color: #ce7c6d;
   color: #473431;
   border-color: #cc3939;
 }
 
 #info{
-  margin-top:-5%;
+
   background-color: #f4e649;
   color: #7a7806;
   border-color: #cecb1a;
 }
 
 #success{
-  margin-top:1%;
+
   background-color: #94e858;
   color: #174c07;
   border-color: #37cc0a;
