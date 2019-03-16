@@ -20,7 +20,7 @@ router.get('/mybook', (req, res) => {
             console.log("IT is from this one...");
             console.log(result);
             console.log(commentsForBook);
-            res.render('book', {chapters : result, comments: commentsForBook, book : result[0].bookTitle, isMyBook : true });
+            res.render('book', {chapters : result, comments : commentsForBook, book : result[0].bookTitle, isMyBook : true });
     
         });
     });
