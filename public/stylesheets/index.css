@@ -20,7 +20,7 @@ span.t{
 
 
 #login_register{
-  width:100vw;
+  width:500px;
   margin-left: 22%;
   margin-top: 15%;
 }
@@ -48,14 +48,14 @@ img#i{
 
 #ink{
   width: 20vw;
-  margin-left: 80%;
+  margin-left: 77%;
   margin-top:-10%;
 }
 
 #line{
   width: 20vw;
-  margin-left: 29%;
-  margin-top:-1.1%;
+  margin-left: 53%;
+  margin-top:-1.4%;
 }
 
 #main{
@@ -80,7 +80,10 @@ h3{
 }
 
 p{
+  font-family: Open Sans;
+}
+
+p#description{
   margin-left: 7%;
   font-size:4vh;
-  font-family: Open Sans;
 }

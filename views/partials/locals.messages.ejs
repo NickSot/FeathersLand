@@ -1,11 +1,19 @@
 <% if (messages.info) {%>
-    
-<center> <%- messages.info %></center>  
-
+<div class="msg" id="info">
+  <center><p> <%- messages.info %></p></center>
+</div>
 <% } else if(messages.error){%>
-<center> <%- messages.error %></center>  
-
+<div class="msg" id="error">
+  <center> <p><%- messages.error %></p></center>
+</div>
 <% } else if(messages.success){ %>
-<center> <%- messages.success %></center>  
-
+<div class="msg" id="success">
+  <center><p><%- messages.success %></p></center>
+</div>
 <% } %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+  setTimeout(function() {
+    $('.msg').fadeOut('fast');
+  }, 1200); // <-- time in milliseconds
+</script>
