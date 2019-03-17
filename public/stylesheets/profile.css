@@ -138,9 +138,16 @@ keyframes active {
 padding: 10px;
 
 }
+textarea:focus{
+outline: none;
+}
 #bio {
 width: 80%;
 font-size: 20px;
+border: none;
+border-radius: 10px;
+height: 200px;
+padding: 30px;
 }
 .bHolder {
 margin: 20px;
