@@ -5,13 +5,19 @@ var nodePandoc = require('node-pandoc');
 
 var chapterId;
 
-router.get('/:id/like', (req, res) => {
+router.get('/:bookId/like', (req, res) => {
     if (chapterId == undefined || req.session.user == undefined){
+        req.flash('error', "Трябва да си логнат за да можеш да харесваш книги...");
         res.redirect('/');
         return;
     }
+    console.log("Book which is liked: " + req.params.bookId);
+    db.query("Update Books Set Rating = Rating + 1 Where Id = ?", req.params.bookId, (err, res) => {
+        console.log(res);
+        req.flash("success", "Харесано!");
+        res.redirect('/catalog');
+    });
 
-    db.query("Update Books Set Rating = Rating + 1 Where Id = ?");
 })
 
 router.get('/:id/dislike', (req, res) => {
@@ -33,7 +39,8 @@ router.get('/:id', (req, res) => {
         =Users.Id Where ChapterId = ?;
         `, [chapterId], (err, result) => {
             let chapter = chapters[0];
-
+            console.log("Current chapter is: ");
+            console.log(chapter.BookId);
             if (chapter == undefined){
                 req.flash('error', 'Няма таквъв url!');
                 res.redirect('/');
