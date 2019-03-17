@@ -20,10 +20,9 @@
   height: 200px;
 }
 .search-container{
-
   width: 50%;
   display: block;
-  margin: 0 auto;
+  margin-top: 20px;
   position: relative;
 
   border-radius: 30px;
