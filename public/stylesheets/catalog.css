@@ -22,9 +22,9 @@
 .search-container{
   width: 50%;
   display: block;
-  margin-top: 20px;
   position: relative;
-
+  margin-top: 80px;
+  margin-left: 22%;
   border-radius: 30px;
 }
 
@@ -81,4 +81,8 @@ footer {
   text-decoration: none;
   width: 100%;
   text-align: center;
+}
+
+#searchDiv{
+
 }

@@ -5,11 +5,10 @@
   height: 50px;
   border-style: solid;
   border-width: 2.5px;
-  margin-top:-5%;
 }
 
 #error{
-  
+
   background-color: #ce7c6d;
   color: #473431;
   border-color: #cc3939;

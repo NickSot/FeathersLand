@@ -32,6 +32,10 @@ span.t{
 
 }
 
+.msg{
+  margin-top: -5%;
+}
+
 img#f {
   width: 20vw;
 }
