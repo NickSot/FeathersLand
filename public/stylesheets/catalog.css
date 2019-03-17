@@ -17,6 +17,7 @@
   background-color: white;
   border-radius: 20px;
   margin: 10px;
+  height: 200px;
 }
 .search-container{
 
@@ -34,6 +35,7 @@ input#search-bar{
   box-sizing: border-box
   margin: 0 auto;
   margin-top: 30px;
+  margin-left: 1px;
   padding: 10 20px;
   font-size: 2rem;
   border: 0px;
