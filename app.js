@@ -22,6 +22,7 @@ var authorsRouter = require('./routes/authors');
 var authorRouter = require('./routes/author');
 var verifyRouter = require('./routes/verify');
 var chaptersRouter = require('./routes/chapter');
+var bookFormRouter = require('./routes/bookform');
 
 var app = express();
 
@@ -57,7 +58,7 @@ app.use('/authors', authorsRouter);
 app.use('/author', authorRouter);
 app.use('/verify', verifyRouter);
 app.use('/chapter', chaptersRouter);
-
+app.use('/newbook', bookFormRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

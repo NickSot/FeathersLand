@@ -13,8 +13,6 @@
       <% for(let i = 0; i < chapters.length; i++ ){ %>
 
         <center>
-          <%console.log("Showing ya something!")%>
-          <%console.log(chapters[i])%>
           <a href = <%- "/chapter/" + chapters[i].Id %> >
             <div class = "chapterHolder">
               <h1 class = "chapterTitle"><img src = "/imgs/manuscript.png" class = "chapterImage"> <%- chapters[i].Title %></h1>

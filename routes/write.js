@@ -19,9 +19,6 @@ router.get('/mybook', (req, res) => {
             if(chapters.length > 0){
                 db.query(commentsQuery,[bookId], (err, commentsForBook) => {
                     if(err) throw err;
-                    console.log("IT is from this one...");
-                    console.log(chapters);
-                    console.log(commentsForBook);
                     res.render('book', {chapters : chapters, comments : commentsForBook, book : book[0] , isMyBook : true });
             
                 });
@@ -46,7 +43,7 @@ router.get('/', (req, res) => {
         db.query(query, [session.user.ID], (err, userBooks) => {
             if(err) throw err;
             console.log(userBooks);
-            res.render('chooseBook', {layout:false, books : userBooks });
+            res.render('chooseBook', {books : userBooks });
         });
     }
 });

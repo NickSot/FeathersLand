@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
             let chapter = chapters[0];
 
             if (chapter == undefined){
-                req.flash('warning', 'Няма таквъв url!');
+                req.flash('error', 'Няма таквъв url!');
                 res.redirect('/');
                 return;
             }

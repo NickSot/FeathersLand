@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
     res.locals.authenticated = req.session.authenticated;
     req.session.user = null;
     console.log(req.session);
-    req.flash('info', 'Успешно отписване!');
+    req.flash('success', 'Успешно отписване!');
 
     res.redirect('/');
 });
