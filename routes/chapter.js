@@ -12,10 +12,10 @@ router.get('/:bookId/like', (req, res) => {
         return;
     }
     console.log("Book which is liked: " + req.params.bookId);
-    db.query("Update Books Set Rating = Rating + 1 Where Id = ?", req.params.bookId, (err, res) => {
-        console.log(res);
+    db.query("Update Books Set Rating = Rating + 1 Where Id = ?", req.params.bookId, (err, resulting) => {
+        console.log(resulting);
         req.flash("success", "Харесано!");
-        res.redirect('/catalog');
+        res.redirect('/catalog?page=1');
     });
 
 })

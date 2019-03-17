@@ -9,6 +9,7 @@
 <body>
     <% console.log(book.Title);%>
     <h1 id = "headingChapters"> <%- book.Title %> </h1>
+    <p style="text-align: center;">Рейтинг на книгата: <strong><%- book.Rating%></strong></p>
     <%if(chapters){%>
       <% for(let i = 0; i < chapters.length; i++ ){ %>
 
