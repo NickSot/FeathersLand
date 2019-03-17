@@ -15,7 +15,7 @@
   <div id = "textHolder"><h1 id = "chapterTitle"><%=chapter.Title%></h1>
     <%-htmlContent%>
   </div>
-  <a class="fas fa-thumbs-up" id = "likeButton"></a>
+  <a class="fas fa-thumbs-up" id = "likeButton" href='/chapter/like'></a>
 <center>
   <a href="#" ><img src="/imgs/before.png" id = "beforeButton"></a><a href="#" ><img src="/imgs/next.png" id = "nextButton"></a>
 </center>
@@ -37,6 +37,14 @@
   <%})%>
 </center>
 
+<script>
+  var likebtn = document.getElementById('likeButton');
 
+  likebtn.onclick = () => {
+    if (likebtn.getAttribute("href").contains('dislike')){
+      
+    }
+  }
+</script>
 </body>
 </html>

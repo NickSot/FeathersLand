@@ -5,6 +5,24 @@ var nodePandoc = require('node-pandoc');
 
 var chapterId;
 
+router.get('/:id/like', (req, res) => {
+    if (chapterId == undefined || req.session.user == undefined){
+        res.redirect('/');
+        return;
+    }
+
+    db.query("Update Books Set Rating = Rating + 1");
+})
+
+router.get('/:id/dislike', (req, res) => {
+    if (chapterId == undefined && req.session.user == undefined){
+        res.redirect('/');
+        return;
+    }
+
+    db.query("Update Books Set Rating = Rating - 1");
+});
+
 router.get('/:id', (req, res) => {
     res.locals.authenticated = req.session.authenticated;
 
