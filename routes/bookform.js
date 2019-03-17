@@ -4,6 +4,10 @@ var db = require('../config/database');
 
 
 router.get('/', (req, res) => {
+    if(!req.session.authenticated){
+        req.flash('error', "Трябва да имаш акаунт, за да създаваш книги...");
+        res.redirect('/');
+    }
     res.locals.authenticated = req.session.authenticated;
     res.render('bookform');
 });
