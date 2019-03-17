@@ -38,6 +38,7 @@ div[contenteditable]{
     margin-left:10%;
     margin-right:5%;
     margin-top: 5%;
+    word-wrap: break-word;
 }
 #writeButton {
   position: absolute;
