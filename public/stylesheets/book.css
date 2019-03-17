@@ -85,3 +85,7 @@
     display: table-cell;
     vertical-align: middle;
   }
+  #addButton {
+    margin-left: 10%;
+    width: 8%;
+  }
