@@ -39,7 +39,7 @@ router.get('/:id/post', (req, res) => {
     });
 });
 
-router.get('/:id', function(req, res, next) {
+router.get('/:id', function(req, res) {
     bookId = req.params.id;
 
     res.locals.authenticated = req.session.authenticated;
@@ -47,29 +47,30 @@ router.get('/:id', function(req, res, next) {
     console.log(bookId);
     db.query('Select * From Books Where Id = ?', [bookId], (err, book) => {
         if(err) throw err;
-        console.log(book[0]);
-        bookId = book[0].Id;
-        db.query('Select * From Chapters Where BookId = ?', [bookId], (err, chapters) => {
-            db.query('Select * From BookComments Inner Join Users On PosterId = Users.ID Where BookId = ?', [bookId], (err, commentsUsers) => {
+        if(book.length > 0){
+            console.log("Id of current logged user: " + req.session.user.ID);
+            console.log("Id of book " + book[0].Id);
+            if(book[0].AuthorId == req.session.user.ID){
+                console.log('Redirecting to write page!');
+                res.redirect('/write/mybook?bookId='+book[0].Id);
+            }   
+            bookId = book[0].Id;
+            db.query('Select * From Chapters Where BookId = ?', [bookId], (err, chapters) => {
+                db.query('Select * From BookComments Inner Join Users On PosterId = Users.ID Where BookId = ?', [bookId], (err, commentsUsers) => {
                 if(err) throw err;
-
-                if(chapters.length === 0){
+                
                     req.flash('info', 'Все още няма глави!');
-                    res.redirect('/catalog');
-                }
-                else{
                     res.locals.authenticated = req.session.authenticated;
                     res.locals.chapters = chapters;
-
+                    
                     if (commentsUsers.length == 0){
                         commentsUsers = [];
                     }
-                    console.log("Look Here!");
                     console.log(chapters);
                     res.render('book', { chapters : chapters, book :  book[0], comments: commentsUsers});  
-                }
+                });
             });
-        });
+        }
     });
 });
 

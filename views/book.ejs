@@ -33,13 +33,7 @@
 
       <a href = '/book/<%=book.Id%>/post' name="button">Publish!</button>
 
-      <div class="row com">
-        <%comments.forEach((comment) => {%>
-          <div class="col author"><%=comment.username%></div>
-          <div class="col comment"><%=comment.Content%></div>
-          </div>
-          <br></br>
-        <%})%>
+  
     <%}else{%>
       <h1>Nothing to show here...</h1>
       //NO CHAPTERS, THEREFORE BUTTON FOR JUMPING FIELD FOR FORM WITH A TITLE OF NEW CHAPTER

@@ -53,7 +53,7 @@ var chapter;
 
 router.get('/:chapterId', (req, res) => {
     if (!req.session.authenticated){
-        req.flash('warning', 'Неправилен url!');
+        req.flash('error', 'Неправилен url!');
         res.redirect('/');
     }
     else{
