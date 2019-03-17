@@ -28,6 +28,9 @@
   border-radius: 30px;
 }
 
+.msg{
+  margin-top: -5%;
+}
 input#search-bar{
   display:block;
   width: 100%;
