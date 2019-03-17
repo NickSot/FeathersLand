@@ -28,10 +28,13 @@
   <br></br>
   <input type="submit" value = "Постни коментар" id = "commentButton">
 </form>
+
+  <div class="container com">
   <%commentUsers.forEach((comment) => {%>
-    <div class="row com">
-    <div class="col author"><%=comment.username%></div>
-    <div class="col comment"><%=comment.Content%></div>
+    <div class = "row">
+    <div class="col-3 author"><%=comment.username%></div>
+    <div class="col-9 comment"><%=comment.Content%></div>
+  </div>
   </div>
   <br></br>
   <%})%>
