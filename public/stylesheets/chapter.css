@@ -45,7 +45,7 @@ body {
   font-size: 60px;
   margin-top: 30px;
 }
-#nextButton, #beforeButton, #hamburgerButton, #downButton {
+#nextButton, #beforeButton, #hamburgerButton, #downButton, #likeButton {
    width: 100px;
    margin: 30px;
    height: 100px;
