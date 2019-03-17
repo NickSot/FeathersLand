@@ -1,3 +1,15 @@
+.projectHolder {
+  text-align: center;
+  padding: 10px;
+  background-color: white;
+  border-radius: 60px;
+  width: 40%;
+  margin-top: 10vh;
+  display: flex;
+  justify-content:center;
+  align-content:center;
+  flex-direction:row;
+}
 .projectIcon{
   margin-right: 2vw;
   margin-top: 12px;
@@ -10,5 +22,6 @@
   float: left;
 }
 #addButton {
+  margin-left: 10%;
   width: 8%;
 }
