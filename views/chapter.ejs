@@ -45,7 +45,10 @@
 
   likebtn.onclick = () => {
     if (likebtn.getAttribute("href").contains('dislike')){
-      
+      likebtn.setAttribute("href", `/chapter/<%=chapter.Id%>/like`);
+    }
+    else{
+      likebtn.setAttribute("href", `/chapter/<%=chapter.Id%>/dislike`);
     }
   }
 </script>

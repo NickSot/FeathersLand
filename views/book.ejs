@@ -31,6 +31,8 @@
           <input type="submit" value = "Коментирай" id = "commentButton">
       </form>
 
+      <a href = '/book/<%=book.Id%>/post' name="button">Publish!</button>
+
       <div class="row com">
         <%comments.forEach((comment) => {%>
           <div class="col author"><%=comment.username%></div>
@@ -42,8 +44,5 @@
       <h1>Nothing to show here...</h1>
       //NO CHAPTERS, THEREFORE BUTTON FOR JUMPING FIELD FOR FORM WITH A TITLE OF NEW CHAPTER
     <%}%>
-
-    <button type="button" name="button">Add chaptar</button>
-
 </body>
 </html>

@@ -1,8 +1,43 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../config/database');
+var transporter = require('../config/mailing');
 
 var bookId;
+
+router.get('/:id/post', (req, res) => {
+    bookId = req.params.id;
+
+    db.query("Update Books Set Posted = 'Y' Where Id = ?", [bookId], (err) => {
+        if (err) throw err;
+
+        db.query(`Select * From Users
+        Inner Join Followers On Followers.FollowingId = Users.ID
+        Inner Join Books On Books.AuthorId = Users.ID Where Books.Id = ?` [bookId], (err, results) => {
+            console.log(results);
+
+            results.forEach((result) => {
+                let mailOptions = {
+                    from: '"Feather Company" <feathers.land.original@gmail.com>', // sender address
+                    to: result.Email, // list of receivers
+                    subject: 'Здравей! :D', // Subject line
+                    text: `Човекът на име ${req.session.user.username}, когото следвате издаде книга!`, // plain text body
+                    html: `<b>Човекът на име ${req.session.user.username}, когото следваш издаде книга!</b>` // html body
+                };
+        
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        console.log(error);
+                        res.status(400).send({success: false})
+                    } else {
+                        res.status(200).send({success: true});
+                        console.log('YAY');
+                    }
+                });
+            });
+        });
+    });
+});
 
 router.get('/:id', function(req, res, next) {
     bookId = req.params.id;
@@ -57,9 +92,5 @@ router.post('/:id', (req, res) => {
         });
     }
 });
-
-// router.get('/new', (req, res) => {
-
-// });
 
 module.exports = router;

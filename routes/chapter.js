@@ -11,7 +11,7 @@ router.get('/:id/like', (req, res) => {
         return;
     }
 
-    db.query("Update Books Set Rating = Rating + 1");
+    db.query("Update Books Set Rating = Rating + 1 Where Id = ?");
 })
 
 router.get('/:id/dislike', (req, res) => {
@@ -20,7 +20,7 @@ router.get('/:id/dislike', (req, res) => {
         return;
     }
 
-    db.query("Update Books Set Rating = Rating - 1");
+    db.query("Update Books Set Rating = Rating - 1 Where Id = ?");
 });
 
 router.get('/:id', (req, res) => {
