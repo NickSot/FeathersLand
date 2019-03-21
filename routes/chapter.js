@@ -41,15 +41,22 @@ router.get('/:id', (req, res) => {
             let chapter = chapters[0];
             console.log("Current chapter is: ");
             console.log(chapter.BookId);
+            
             if (chapter == undefined){
                 req.flash('error', 'Няма таквъв url!');
                 res.redirect('/');
                 return;
             }
-
-            nodePandoc(chapter.Content, '-f markdown -t html5', (err, htmlContent) => {
-                res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: htmlContent});
-            });
+            
+            if (chapter.Content != null){
+                nodePandoc(chapter.Content, '-f markdown -t html5', (err, htmlContent) => {
+                    res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: htmlContent});
+            
+                });
+            }
+            else{
+                res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: null});
+            }
         });
     });
 });
