@@ -9,6 +9,8 @@
 <div class="row">
 
 <% for(let i = startIdx; i < endIdx && i < books.length ; i++){ %>
+  <%if (books[i].Posted != 'N' && books[i].Posted != 'n'){%>
+
   <% if(i % 4 == 0){ %>
     <br></br>
   <% } %>
@@ -23,9 +25,9 @@
       <% }else if(i % 4 == 3){ %>
        <img src="/imgs/otherbookyellow.png" width="100px" height="100px" class="projectIcon">
       <% } %>
-      <% console.log(books[i]); %>
       <h3 class = "projectTitle"><%- books[i].Title %></h3></a>
   </div>
+  <%}%>
 <%};%></div>
 
 
