@@ -32,13 +32,16 @@
           <input type="submit" value = "Коментирай" id = "commentButton"></center>
       </form>
 
-      <a href = '/book/<%=book.Id%>/post' name="button">Publish!</button>
+      <a href = '/book/post/<%=book.Id%>' name="button">Издай!</button>
 
 
     <%}else{%>
       <center><h1>Nothing to show here...</h1>
     <%}%>
+    
+    <%if (show){%>
+      <a href="/newchapter/<%-book.Id %>?bookTitle=<%-book.Title%>"><img src="/imgs/plusbutton.png" id = "addButton"></a></center>
+    <%}%>
 
-    <a href="/newchapter/<%-book.Id %>?bookTitle=<%-book.Title%>"><img src="/imgs/plusbutton.png" id = "addButton"></a></center>
 </body>
 </html>

@@ -9,8 +9,6 @@ var bookId;
 router.get('/post/:id', (req, res) => {
     bookId = req.params.id;
 
-    console.log('id of book: ' + bookId);
-
     if (!req.session.authenticated){
         req.flash('error', 'Не можеш да достъпиш този url!');
         res.redirect('/');
@@ -77,7 +75,6 @@ router.get('/:id', function(req, res) {
 
     res.locals.authenticated = req.session.authenticated;
     //let id = req.params["id"];
-    console.log(bookId);
     db.query('Select * From Books Where Id = ?', [bookId], (err, book) => {
         if(err) throw err;
         if(book.length > 0){
@@ -85,10 +82,19 @@ router.get('/:id', function(req, res) {
             // console.log("Id of book " + book[0].Id);
             if (req.session.authenticated){
                 if(book[0].AuthorId == req.session.user.ID){
-                    console.log('Redirecting to write page!');
                     res.redirect('/write/mybook?bookId='+book[0].Id);
                 }   
             }
+
+            //res.locals.authorId = book.AuthorId;
+
+            var show = false;
+
+            if (req.session.authenticated && req.session.user.ID == book.AuthorId){
+                show = true;
+            }
+
+            console.log('show: ' + show);
 
             //bookId = book[0].Id;
             
@@ -103,8 +109,7 @@ router.get('/:id', function(req, res) {
                         if (commentsUsers.length == 0){
                             commentsUsers = [];
                         }
-                        console.log(chapters);
-                        res.render('book', { chapters : chapters, book :  book[0], comments: commentsUsers});  
+                        res.render('book', { chapters : chapters, book :  book[0], comments: commentsUsers, show: show});  
                     });
             });
         }
@@ -112,7 +117,6 @@ router.get('/:id', function(req, res) {
 });
 
 router.post('/:id', (req, res) => {
-    console.log('Commented!');
     let text = req.body.comment;
     let id  = req.params.id;
 
