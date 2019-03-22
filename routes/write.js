@@ -66,7 +66,7 @@ router.get('/:chapterId', (req, res) => {
         Where Chapters.Id = ?`;
         db.query(query, [chapterId], (err, result) => {
             if (result == undefined){
-                req.flash('warning', 'Неправилен url!');
+                req.flash('error', 'Неправилна операция!');
                 res.redirect('/');
                 return;
             }
@@ -75,7 +75,7 @@ router.get('/:chapterId', (req, res) => {
             console.log("Result: " + result[0].ID);
 
             if (result[0].ID != userId) {
-                req.flash('warning', 'Неправилен url!');
+                req.flash('error', 'Не притежаваш тази книга!');
                 res.redirect('/');
             }
             else{

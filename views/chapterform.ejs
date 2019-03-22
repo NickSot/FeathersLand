@@ -1,0 +1,16 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/bookform.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins" rel="stylesheet">
+</head>
+<body>
+    <div id = "formholder">
+    <h1><%- bookTitle %></h1>
+      <form method="POST" action="/newchapter/<%-bookId%>">
+        <input type = "text" placeholder= "Име На Нова Глава" name = "name">
+        <input type = "submit" id = "createBook" value="Създаване на глава">
+      </form>
+    </div>
+</body>
+</html>

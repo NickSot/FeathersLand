@@ -9,7 +9,7 @@ var db = require("./config/database");
 var flash = require('express-flash');
 var session = require('express-session');
 
-// route vars
+// ROUTE VARS
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var projectsRouter = require('./routes/projects');
@@ -23,6 +23,8 @@ var authorRouter = require('./routes/author');
 var verifyRouter = require('./routes/verify');
 var chaptersRouter = require('./routes/chapter');
 var bookFormRouter = require('./routes/bookform');
+var chapterFormRouter = require('./routes/chapterform');
+//ROUTE VARS
 
 var app = express();
 
@@ -58,7 +60,8 @@ app.use('/authors', authorsRouter);
 app.use('/author', authorRouter);
 app.use('/verify', verifyRouter);
 app.use('/chapter', chaptersRouter);
-app.use('/newbook', bookFormRouter)
+app.use('/newbook', bookFormRouter);
+app.use('/newchapter', chapterFormRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

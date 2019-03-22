@@ -29,38 +29,19 @@
       }
     }
 
-    //   setInterval(() => {
-    //     var res = `<%-result%>`;
-
-
-    //   xhttp.onreadystatechange = () => {
-    //     if (xhttp.readyState == 4 && xhttp.status == 200){
-    //       document.getElementById('writingResult').innerHTML = JSON.parse(xhttp.responseText).result;
-    //     }
-    //   };
-
-    //   let text = document.getElementById('writingInProgress').innerText;
-      
-    //   xhttp.open('POST', '/write/', true);
-    //   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    //   xhttp.send('markdown=' + text);
-    // }, 1000);
 
   </script>
-  <form action='/write/<%-chapter.Id-%>' method="POST">
   <div class="split left">
     <div contenteditable id = "writingInProgress" style='white-space: pre;'>
       <%=chapter.Content%>
     </div>
   </div>
   <div class="split right">
-  
-  <button type='submit' id = "writeButton"><img src="/imgs/ready.png" id = "readyButton" alt = "ready"></button>
     
   <div id = "writingResult">
         
   </div>
-  </form>
+    <a href="/write/mybook?bookId=<%-chapter.BookId%>"> <img src="/imgs/ready.png" id = "readyButton" alt = "ready"></a>
 </div>
 </body>
 </html>

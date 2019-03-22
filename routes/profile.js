@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
     if (req.session.authenticated){
         db.query('Select * From Books Where AuthorId = ?', [user.ID], (err, result) => {
             res.locals.authenticated = req.session.authenticated;
+            console.log("User:" + req.session.user);
             if (result.length != 0){
                 res.render('profile', {'user': user, books: result});
             }
