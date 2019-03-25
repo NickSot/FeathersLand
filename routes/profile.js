@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
     if (req.session.authenticated){
         db.query('Select * From Books Where AuthorId = ?', [user.ID], (err, result) => {
             res.locals.authenticated = req.session.authenticated;
-            console.log("User:" + req.session.user);
+            console.log("User: " + req.session.user);
             if (result.length != 0){
                 res.render('profile', {'user': user, books: result});
             }
@@ -31,16 +31,12 @@ router.post('/', (req, res) => {
     if (req.session.authenticated){
         userBio = req.body.userBio;
 
-        console.log(req.body);
-
         let user = req.session.user;
 
         db.query('Update Users Set Bio = ? Where ID = ?', [userBio, user.ID], (err, result) => {
             if (err){
                 throw err
             }
-
-            console.log(result);
         });
         
         res.locals.authenticated = req.session.authenticated;

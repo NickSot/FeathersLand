@@ -30,7 +30,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/', (req, res) => {
     let searchInput = "%" + req.body.search + "%";
-    console.log(searchInput);
     let query = "Select * from Books INNER JOIN Users as u on AuthorId = u.Id where Title Like ?";
 
     startIdx = (req.query.page-1)*booksOnPage;
@@ -38,7 +37,6 @@ router.post('/', (req, res) => {
     db.query(query, [searchInput], (err, result) => {
         res.locals.authenticated = req.session.authenticated;
         if(err) throw err;
-        console.log("Incoming!");
         res.render("catalog", {books: result, numPages: pagesCount(result.length), startIdx: startIdx, endIdx: endIdx});
     });
 

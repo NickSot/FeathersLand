@@ -15,17 +15,17 @@ router.get('/mybook', (req, res) => {
     db.query(bookQuery, [bookId], (err, book) => {
         if(err) throw err;
         db.query(query, [bookId], (err, chapters) => {
-            var show = false;
+            // var show = false;
 
-            if (req.session.authenticated && req.session.user.ID == book.AuthorId){
-                show = true;
-            }
+            // if (req.session.authenticated && req.session.user.ID == book.AuthorId){
+            //     show = true;
+            // }
 
             if(err) throw err;
             if(chapters.length > 0){
                 db.query(commentsQuery,[bookId], (err, commentsForBook) => {
                     if(err) throw err;
-                    res.render('book', {chapters : chapters, comments : commentsForBook, book : book[0], show: show});
+                    res.render('book', {chapters : chapters, comments : commentsForBook, book : book[0], show: true});
             
                 });
             }else{

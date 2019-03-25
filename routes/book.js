@@ -80,6 +80,12 @@ router.get('/:id', function(req, res) {
         if(book.length > 0){
             // console.log("Id of current logged user: " + req.session.user.ID);
             // console.log("Id of book " + book[0].Id);
+
+            // var show = false;
+
+            // if (req.session.authenticated && req.session.user.ID == book.AuthorId){
+            //     show = true;
+            // }
             if (req.session.authenticated){
                 if(book[0].AuthorId == req.session.user.ID){
                     res.redirect('/write/mybook?bookId='+book[0].Id);
@@ -88,13 +94,7 @@ router.get('/:id', function(req, res) {
 
             //res.locals.authorId = book.AuthorId;
 
-            var show = false;
 
-            if (req.session.authenticated && req.session.user.ID == book.AuthorId){
-                show = true;
-            }
-
-            console.log('show: ' + show);
 
             //bookId = book[0].Id;
             
@@ -102,15 +102,14 @@ router.get('/:id', function(req, res) {
                 db.query('Select * From BookComments Inner Join Users On PosterId = Users.ID Where BookId = ?', [bookId], (err, commentsUsers) => {
                     if(err) throw err;
                     
-                        req.flash('info', 'Все още няма глави!');
-                        res.locals.authenticated = req.session.authenticated;
-                        res.locals.chapters = chapters;
-                        
-                        if (commentsUsers.length == 0){
-                            commentsUsers = [];
-                        }
-                        res.render('book', { chapters : chapters, book :  book[0], comments: commentsUsers, show: show});  
-                    });
+                    res.locals.authenticated = req.session.authenticated;
+                    res.locals.chapters = chapters;
+                    
+                    if (commentsUsers.length == 0){
+                        commentsUsers = [];
+                    }
+                    res.render('book', { chapters : chapters, book :  book[0], comments: commentsUsers, show: false});  
+                });
             });
         }
     });
@@ -129,7 +128,6 @@ router.post('/:id', (req, res) => {
             if (err){
                 throw err;
             }
-            // console.log('ASDASDS');
             res.redirect('/book/' + id);
         });
     }

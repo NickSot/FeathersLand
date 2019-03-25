@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../config/database');
 
-var authorsOnPage = 2;
+var authorsOnPage = 4;
 
 router.get('/:page', function(req, res, next) {
     res.locals.authenticated = req.session.authenticated;

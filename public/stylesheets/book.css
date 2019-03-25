@@ -50,7 +50,12 @@
     text-align: center;
     color: #5f859b;
   }
-  #commentButton {
+
+
+  #publish{
+    background-color: #696abf;
+  }
+  .Button {
     background-color: #5f859b;
     border: none;
     border-radius: 60px;
