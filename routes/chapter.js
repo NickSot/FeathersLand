@@ -44,19 +44,29 @@ router.get('/:id', (req, res) => {
             
             if (chapter == undefined){
                 req.flash('error', 'Няма таквъв url!');
-                res.redirect('/');
+                res.redirect('back');
                 return;
             }
-            
-            if (chapter.Content != null){
-                nodePandoc(chapter.Content, '-f markdown -t html5', (err, htmlContent) => {
-                    res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: htmlContent});
-            
-                });
-            }
-            else{
-                res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: null});
-            }
+
+            db.query('Select * From Books Inner Join Chapters On Books.Id = Chapters.BookId Where Chapters.Id = ?', [chapterId], (err, bookChapter) => {
+                var show = false;
+
+                if (req.session.authenticated && req.session.user.ID == bookChapter.AuthorId){
+                    show = true;
+                }
+                
+                console.log(show);
+
+                if (chapter.Content != null){
+                    nodePandoc(chapter.Content, '-f markdown -t html5', (err, htmlContent) => {
+                        res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: htmlContent, show: show});
+                
+                    });
+                }
+                else{
+                    res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: null, show: show});
+                }
+            });
         });
     });
 });
