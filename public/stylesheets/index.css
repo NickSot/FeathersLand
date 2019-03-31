@@ -1,83 +1,97 @@
+body{
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  height: 650px;
+  margin-left: 20px;
+}
+
 a.login1 {
 
-  font-size: 2vw;
+  font-size: 25px;
   color: black;
   font-family: 'Marck Script', cursive;
 
 }
 
 span.text{
-  font-size: 1.5vw;
+  font-size: 25px;
   font-family: 'Marck Script', cursive;
 }
 
 
 span.t{
-  font-size: 1.5vw;
+  font-size: 25px;
   color: black;
   font-family: 'Marck Script', cursive;
 }
 
 
+
 #login_register{
   width:500px;
-  margin-left: 15%;
-  margin-top: 10%;
+  margin-left: 110px;
+  margin-top: 5px;
 }
 
 #feather{
-  width: 15vw;
-  margin-left: 70%;
-  margin-top: -29%;
+  width: 30px;
+  margin-left: 840px;
+  margin-top: -330px;
 
 }
 
 .msg{
-  margin-top: -5%;
+  margin-top: 60px;
+  margin-left: 36px;
 }
 
 img#f {
-  width: 20vw;
+  width: 270px;
 }
 
 img#l{
-  width: 18vw;
+  width: 300px;
   height: 10px;
 }
 
 img#i{
-  width: 20vw;
-  height: 60%;
+  width: 250px;
+  height: 200px;
 }
 
 #ink{
-  width: 20vw;
-  margin-left: 77%;
-  margin-top:-11.7%;
+  width: 150px;
+  margin-left: 900px;
+  margin-top:-125px;
 }
 
 #line{
-  width: 30vw;
-  margin-left: 50%;
-  margin-top:-1.4%;
+  width: 330px;
+  margin-left: 540px;
+  margin-top:-18px;
 }
 
 #main{
-  width: 60vw;
-  margin-left: 3%;
-  margin-top: 8.5%;
+
+  width: 750px;
+  margin-left: 85px;
+  margin-top: 165px;
 }
 
 h1#title{
-  margin-left: 17%;
-  font-size:6vh;
+  margin-left: 126px;
+  font-size:35px;
   font-family: 'Marck Script', cursive;
 }
 
 h3#subtitle{
-  margin-left: 17%;
+  margin-left: 126px;
   font-family: 'Marck Script', cursive;
-  font-size:4vh;
+  font-size:30px;
 }
 
 
@@ -86,7 +100,7 @@ p{
 }
 
 p#description{
-  margin-left: 1%;
-  font-size:5vh;
+  margin-left: 10px;
+  font-size:30px;
   font-family: 'Marck Script', cursive;
 }

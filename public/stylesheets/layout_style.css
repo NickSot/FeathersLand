@@ -14,8 +14,8 @@ input[type=text], input[type=password] {
 
 
 #logo{
-  width: 50%;
-  height: 140%;
+  width: 80px;
+  height: 120px;
 
 }
 
@@ -54,7 +54,7 @@ ul .icon:hover {
   line-height: 2;
 }
 
-ul.nav {
+#n{
   background-image: url("/imgs/pattern.png");
   position: fixed;
   z-index: 1;
@@ -63,7 +63,19 @@ ul.nav {
   left: 0;
   margin: auto;
   height: 100%;
-  width: 11%;
+  width: 170px;
+}
+
+ul.nav {
+
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  height: 650px;
+  width: 170px;
   padding: 0;
   text-align: center;
   display: flex;
