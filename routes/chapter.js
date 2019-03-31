@@ -47,7 +47,6 @@ router.get('/:id', (req, res) => {
             }
 
             db.query('Select * From Books Inner Join Chapters On Books.Id = Chapters.BookId Where Chapters.Id = ?', [chapterId], (err, bookChapter) => {
-                console.log(bookChapter);
                 if (req.session.authenticated){
                     res.locals.userId = req.session.user.ID;
                     res.locals.authorId = bookChapter[0].AuthorId;
@@ -56,8 +55,6 @@ router.get('/:id', (req, res) => {
                     res.locals.userId = null;
                     res.locals.authorId = 0;
                 }
-
-                console.log(res.locals.userId);
 
                 if (chapter.Content != null){
                     nodePandoc(chapter.Content, '-f markdown -t html5', (err, htmlContent) => {
