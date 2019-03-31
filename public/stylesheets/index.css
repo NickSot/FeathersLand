@@ -1,12 +1,13 @@
 body{
-  position: fixed;
+  position: absolute;
   z-index: 1;
   top: 0;
-  bottom: 0;
+  bottom: 1;
   left: 0;
   margin: auto;
   height: 650px;
-  margin-left: 20px;
+
+  overflow: scroll;
 }
 
 a.login1 {
