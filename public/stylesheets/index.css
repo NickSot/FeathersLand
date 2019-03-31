@@ -1,13 +1,11 @@
 body{
   position: absolute;
   z-index: 1;
-  top: 0;
-  bottom: 1;
+  top:0;
   left: 0;
   margin: auto;
   height: 650px;
 
-  overflow: scroll;
 }
 
 a.login1 {

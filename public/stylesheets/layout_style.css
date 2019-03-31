@@ -64,15 +64,13 @@ ul .icon:hover {
   margin: auto;
   height: 100%;
   width: 170px;
-
 }
 
 ul.nav {
 
-  position: absolute;
+
   z-index: 1;
   top: 0;
-  bottom: 1;
   left: 0;
   margin: auto;
   height: 650px;
