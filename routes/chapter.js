@@ -39,8 +39,6 @@ router.get('/:id', (req, res) => {
         =Users.Id Where ChapterId = ?;
         `, [chapterId], (err, result) => {
             let chapter = chapters[0];
-            console.log("Current chapter is: ");
-            console.log(chapter.BookId);
             
             if (chapter == undefined){
                 req.flash('error', 'Няма таквъв url!');
@@ -49,22 +47,25 @@ router.get('/:id', (req, res) => {
             }
 
             db.query('Select * From Books Inner Join Chapters On Books.Id = Chapters.BookId Where Chapters.Id = ?', [chapterId], (err, bookChapter) => {
-                var show = false;
-
-                if (req.session.authenticated && req.session.user.ID == bookChapter.AuthorId){
-                    show = true;
+                console.log(bookChapter);
+                if (req.session.authenticated){
+                    res.locals.userId = req.session.user.ID;
+                    res.locals.authorId = bookChapter[0].AuthorId;
                 }
-                
-                console.log(show);
+                else{
+                    res.locals.userId = null;
+                    res.locals.authorId = 0;
+                }
+
+                console.log(res.locals.userId);
 
                 if (chapter.Content != null){
                     nodePandoc(chapter.Content, '-f markdown -t html5', (err, htmlContent) => {
-                        res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: htmlContent, show: show});
-                
+                        res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: htmlContent});
                     });
                 }
                 else{
-                    res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: null, show: show});
+                    res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: null});
                 }
             });
         });
