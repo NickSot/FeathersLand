@@ -12,6 +12,7 @@ a.login1 {
 
   font-size: 25px;
   color: black;
+  text-decoration: underline;
   font-family: 'Marck Script', cursive;
 
 }
@@ -31,8 +32,9 @@ span.t{
 
 
 #login_register{
+  text-align: end;
   width:500px;
-  margin-left: 110px;
+  margin-left: 70px;
   margin-top: 5px;
 }
 
