@@ -16,11 +16,13 @@
 
 <div id="login_register">
 
+  <%if(!authenticated){%>
   <a class="login1" onclick="document.getElementById('id01').style.display='block'" href="#" >Влез</a>
   <span class="t">/</span><a class="login1" onclick="document.getElementById('id02').style.display='block'" href="#" style="width:auto;">Регистрирай се</a>
   <span class="t"> или бъди наш </span><a class="login1" href="/catalog?page=1" style="width:auto;">Гост</a>
-
-
+  <%}else{%>
+  <span class="t">Към другите <a class="login1" href="/catalog?page=1">творци</a> или към <a class="login1" href="/catalog?page=1">всички книги</a>? </span>
+  <%}%>
 </div>
 <div id="line"><img id="l"  src=/imgs/Line.png alt="Something"></div>
 
