@@ -19,7 +19,7 @@ body {
   display: inline-block;
   background-color: white;
   border-radius: 20px;
-  margin: 10px;
+  margin: 0 10px 10px 10px;
   height: 200px;
   overflow: hidden;
 }
@@ -40,7 +40,7 @@ input#search-bar{
   width: 100%;
   box-sizing: border-box
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 0;
   margin-left: 1px;
   padding: 10 20px;
   font-size: 2rem;
@@ -82,14 +82,23 @@ footer {
   font-size: 30px;
   color: #474a4f;
   font-family: Open Sans;
-  position: fixed;
-  right: 0;
-  bottom: 4;
   text-decoration: none;
-  width: 100%;
   text-align: center;
 }
 
 #searchDiv{
 
+}
+
+.catalog-navigation{
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url(/imgs/pattern.png);
+  border-radius: 20px;
+  height: 50px; 
+}
+
+.wrapper{
+  min-height: calc(80vh);
 }

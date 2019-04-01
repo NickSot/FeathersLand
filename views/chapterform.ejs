@@ -7,7 +7,7 @@
 <body>
     <div id = "formholder">
     <h1><%- bookTitle %></h1>
-      <form method="POST" action="/newchapter/<%-bookId%>">
+      <form method="POST" action="/newchapter/<%-bookId%>?bookTitle=<%-bookTitle%>">
         <input type = "text" placeholder= "Име На Нова Глава" name = "name">
         <input type = "submit" class = "button createBook" value="Създаване на глава">
       </form>

@@ -4,12 +4,20 @@
     display: inline;
   }
   .chapterTitle{
-    display: inline;
+    display: inline-block;
+    margin: 0;
     font-size: 40px;
     font-weight: 300;
     color: #5f859b;
     margin-left: 30px;
   }
+  i.fas{
+    position: relative;
+    float: right;
+    color: #af4911;
+    margin-top: 2%;
+  }
+
   .chapterHolder{
     border-radius: 20px;
     padding: 10px;

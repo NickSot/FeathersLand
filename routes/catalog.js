@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require("../config/database");
 
-const booksOnPage = 20 ;
+const booksOnPage = 8 ;
 
 function pagesCount(booksCount){
     return Math.ceil(booksCount / booksOnPage);
@@ -10,7 +10,7 @@ function pagesCount(booksCount){
 
 router.get('/', function(req, res, next) {
     let offset = (req.query.page - 1) * booksOnPage;
-    let selectQuery = 'select * from Books order by Rating desc';
+    let selectQuery = 'select * from Books WHERE Posted = \'n\' order by Rating desc';
     let startIdx, endIdx;
     db.query(selectQuery, (err, result) => {
         if(err) throw err;

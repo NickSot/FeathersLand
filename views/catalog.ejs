@@ -1,40 +1,42 @@
 <link rel="stylesheet" href = "/stylesheets/catalog.css">
-
-<div id = "searchDiv">
-  <form class="search-container" action="/catalog?page=1" method="POST">
-    <input type="text" id="search-bar" placeholder="Търси книги" name="search">
-    <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
-  </form>
-</div>
-<div class="row">
-
-<% for(let i = startIdx; i < endIdx && i < books.length ; i++){ %>
-  <%if (books[i].Posted != 'N' && books[i].Posted != 'n'){%>
-
-  <% if(i % 4 == 0){ %>
-    <br></br>
-  <% } %>
-  <div class = "projectHolder">
-    <a href = "/book/<%-books[i].Id%>" class = "bookLink">
-      <% if(i % 4 == 0){ %>
-       <img src="/imgs/otherbook.png" width="100px" height="100px" class="projectIcon">
-       <% }else if(i % 4 == 1){ %>
-       <img src="/imgs/otherbookpurple.png" width="100px" height="100px" class="projectIcon">
-      <% }else if(i % 4 == 2){ %>
-       <img src="/imgs/otherbookred.png" width="100px" height="100px" class="projectIcon">
-      <% }else if(i % 4 == 3){ %>
-       <img src="/imgs/otherbookyellow.png" width="100px" height="100px" class="projectIcon">
-      <% } %>
-      <h3 class = "projectTitle"><%- books[i].Title %></h3></a>
+<div class = 'wrapper'>
+    
+  <div id = "searchDiv">
+    <form class="search-container" action="/catalog?page=1" method="POST">
+      <input type="text" id="search-bar" placeholder="Търси книги" name="search">
+      <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+    </form>
   </div>
-  <%}%>
-<%};%></div>
+  <div class="row">
 
+  <% for(let i = startIdx; i < endIdx && i < books.length ; i++){ %>
+
+    <% if(i % 4 == 0){ %>
+      <br></br>
+    <% } %>
+    <div class = "projectHolder">
+      <a href = "/book/<%-books[i].Id%>" class = "bookLink">
+        <% if(i % 4 == 0){ %>
+        <img src="/imgs/otherbook.png" width="100px" height="100px" class="projectIcon">
+        <% }else if(i % 4 == 1){ %>
+        <img src="/imgs/otherbookpurple.png" width="100px" height="100px" class="projectIcon">
+        <% }else if(i % 4 == 2){ %>
+        <img src="/imgs/otherbookred.png" width="100px" height="100px" class="projectIcon">
+        <% }else if(i % 4 == 3){ %>
+        <img src="/imgs/otherbookyellow.png" width="100px" height="100px" class="projectIcon">
+        <% } %>
+        <h3 class = "projectTitle"><%- books[i].Title %></h3></a>
+    </div>
+  <%};%></div>
+
+</div>
 
 <footer>
   <div style="text-align: center">
-    <%for(let i = 1; i <= numPages; i++){%>
-      <a href=<%-"/catalog/?page="+i %> > <%- i %></a>
-    <%}%>
+    <div class="catalog-navigation">
+      <%for(let i = 1; i <= numPages; i++){%>
+        <a href=<%-"/catalog/?page="+i %> > <%- i %></a>
+      <%}%>
+    </div>
   </div>
 </footer>

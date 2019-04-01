@@ -16,10 +16,12 @@
           <a href = <%- "/chapter/" + chapters[i].Id %> >
             <div class = "chapterHolder">
               <h1 class = "chapterTitle"><img src = "/imgs/manuscript.png" class = "chapterImage"> <%- chapters[i].Title %></h1>
+              <a href="#"><i class="fas fa-trash-alt fa-2x"></i></a>
             </div>
           </a>
         </center>
       <% } %>
+
     <%if (show){%>
       <center>
         <a href="/newchapter/<%-book.Id %>?bookTitle=<%-book.Title%>"><img src="/imgs/plusbutton.png" id = "addButton"></a> <br>
@@ -46,7 +48,7 @@
     <%if (show){%>
       <center>
         <br>
-        <a href = '/book/post/<%=book.Id%>' name="button" class="button">Издай!</a>
+        <button class="button"><a href = '/book/post/<%=book.Id%>' name="button" >Издай!</a></button>
       </center>
     <%}%>
 
