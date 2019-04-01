@@ -8,23 +8,20 @@
 } */
 
 .split {
-  height: 400px;
-  width: 550px;
   position: relative;
   text-align: center;
   top: 50px;
   padding-top: 5px;
   display: inline-block;
-
   margin: 20px; 
 }
 
-.left {
-  float: left;
-}
 
-.right {
-  float: right;
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 
@@ -39,12 +36,11 @@
 
 #authorBio {
 padding: 10px;
-height: 130px;
 }
 
 #books{
-  margin-right: 60px;
 }
+
 #bio {
 width: 500px;
 height: 130px;
