@@ -58,9 +58,8 @@ ul .icon:hover {
   background-image: url("/imgs/pattern.png");
   position: absolute;
   z-index: 1;
-  top: 0;
-  bottom: 0;
   left: 0;
+  top:0;
   margin: auto;
   height: 100%;
   width: 170px;
@@ -68,10 +67,10 @@ ul .icon:hover {
 
 ul.nav {
 
-
   z-index: 1;
   top: 0;
   left: 0;
+  bottom: 0;
   margin: auto;
   height: 650px;
   width: 170px;

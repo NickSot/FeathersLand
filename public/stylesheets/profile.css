@@ -1,34 +1,58 @@
+body{
+  position: absolute;
+  z-index: 1;
+  top:0;
+  left: 0;
+  margin: auto;
+  height: 650px;
+}
+
 .split {
-  height: 100%;
-  width: 42.5%;
-  position: fixed;
+  height: 400px;
+  width: 550px;
+  position: absolute;
   text-align: center;
   z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  padding-top: 50px;
+  top: 50px;
+  padding-top: 5px;
 }
 
 .left {
-  border: 4px black;
-  left: 15%;
-  background-color: none;
+  left: 170px;
+  max-height: 370px;
 }
 
 .right {
-  right: 0;
-  background-color: none;
+  left: 800px;
+  margin-top: 31px;
 }
 
+
+#listbooks{
+  max-height: 375px;
+  width: 500px;
+  overflow-x: hidden;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
 
 #authorBio {
 padding: 10px;
+height: 130px;
+}
 
+#books{
+  margin-right: 60px;
 }
 #bio {
-width: 80%;
+width: 500px;
+height: 130px;
 font-size: 20px;
 }
+
+
+
 .bHolder {
 margin: 20px;
 }
