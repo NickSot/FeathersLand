@@ -11,7 +11,7 @@
     <p style="text-align: center;">Рейтинг на книгата: <strong><%- book.Rating%></strong></p>
     <%if(chapters != null && chapters.length > 0){%>
       <% for(let i = 0; i < chapters.length; i++ ){ %>
-        <%if (chapters[i].Posted == 'Y'){%>
+        <%if (chapters[i].Posted == 'Y' || write){%>
             <center>
               <a href = <%- "/chapter/" + chapters[i].Id %> >
                 <div class = "chapterHolder">

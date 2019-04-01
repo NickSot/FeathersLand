@@ -31,11 +31,11 @@ router.get('/mybook', (req, res) => {
                 db.query(commentsQuery,[bookId], (err, commentsForBook) => {
                     if(err) throw err;
 
-                    res.render('book', {chapters : chapters, comments : commentsForBook, book : book[0], show: true});
+                    res.render('book', {chapters : chapters, comments : commentsForBook, book : book[0], show: true, write: true});
             
                 });
             }else{
-                res.render('book', {chapters: null, comments:null, book : book[0], show: true});
+                res.render('book', {chapters: null, comments:null, book : book[0], show: true, write: true});
             }
         });
     });

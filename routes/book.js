@@ -62,9 +62,6 @@ router.get('/post/:id', (req, res) => {
                         }
                     });
                 });
-
-                // req.flash('Успешно издаване на книга!');
-                // res.redirect('/');
             });
         })
     });
@@ -92,12 +89,6 @@ router.get('/:id', function(req, res) {
                     res.redirect('/write/mybook?bookId='+book[0].Id);
                 }   
             }
-
-            //res.locals.authorId = book.AuthorId;
-
-
-
-            //bookId = book[0].Id;
             
             db.query('Select * From Chapters Where BookId = ?', [bookId], (err, chapters) => {
                 db.query('Select * From BookComments Inner Join Users On PosterId = Users.ID Where BookId = ?', [bookId], (err, commentsUsers) => {
@@ -108,7 +99,7 @@ router.get('/:id', function(req, res) {
                     if (commentsUsers.length == 0){
                         commentsUsers = [];
                     }
-                    res.render('book', { chapters : chapters, book :  book[0], comments: commentsUsers, show: false});  
+                    res.render('book', { chapters : chapters, book :  book[0], comments: commentsUsers, show: false, write: false});  
                 });
             });
         }
