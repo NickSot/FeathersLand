@@ -11,15 +11,16 @@
     <p style="text-align: center;">Рейтинг на книгата: <strong><%- book.Rating%></strong></p>
     <%if(chapters != null && chapters.length > 0){%>
       <% for(let i = 0; i < chapters.length; i++ ){ %>
-
-        <center>
-          <a href = <%- "/chapter/" + chapters[i].Id %> >
-            <div class = "chapterHolder">
-              <h1 class = "chapterTitle"><img src = "/imgs/manuscript.png" class = "chapterImage"> <%- chapters[i].Title %></h1>
-              <a href="#"><i class="fas fa-trash-alt fa-2x"></i></a>
-            </div>
-          </a>
-        </center>
+        <%if (chapters[i].Posted == 'Y'){%>
+            <center>
+              <a href = <%- "/chapter/" + chapters[i].Id %> >
+                <div class = "chapterHolder">
+                  <h1 class = "chapterTitle"><img src = "/imgs/manuscript.png" class = "chapterImage"> <%- chapters[i].Title %></h1>
+                  <a href="#"><i class="fas fa-trash-alt fa-2x"></i></a>
+                </div>
+              </a>
+            </center>
+          <%}%>
       <% } %>
 
     <%if (show){%>

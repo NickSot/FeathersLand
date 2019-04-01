@@ -73,19 +73,20 @@ router.get('/post/:id', (req, res) => {
 router.get('/:id', function(req, res) {
     bookId = req.params.id;
 
-    res.locals.authenticated = req.session.authenticated;
     //let id = req.params["id"];
     db.query('Select * From Books Where Id = ?', [bookId], (err, book) => {
+
         if(err) throw err;
+
+        res.locals.authenticated = req.session.authenticated;
+
+        res.locals.userId = null;
+
+        if (res.locals.authenticated){
+            res.locals.userId = req.session.user.ID;
+        }
+        
         if(book.length > 0){
-            // console.log("Id of current logged user: " + req.session.user.ID);
-            // console.log("Id of book " + book[0].Id);
-
-            // var show = false;
-
-            // if (req.session.authenticated && req.session.user.ID == book.AuthorId){
-            //     show = true;
-            // }
             if (req.session.authenticated){
                 if(book[0].AuthorId == req.session.user.ID){
                     res.redirect('/write/mybook?bookId='+book[0].Id);
@@ -101,8 +102,7 @@ router.get('/:id', function(req, res) {
             db.query('Select * From Chapters Where BookId = ?', [bookId], (err, chapters) => {
                 db.query('Select * From BookComments Inner Join Users On PosterId = Users.ID Where BookId = ?', [bookId], (err, commentsUsers) => {
                     if(err) throw err;
-                    
-                    res.locals.authenticated = req.session.authenticated;
+
                     res.locals.chapters = chapters;
                     
                     if (commentsUsers.length == 0){

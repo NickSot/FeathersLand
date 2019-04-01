@@ -11,6 +11,15 @@ router.get('/:bookId/like', (req, res) => {
         res.redirect('/');
         return;
     }
+
+    db.query('Select * From Chapters Where Id = ?', [chapterId], (err, chapters) => {
+        if (chapters[0].Posted != 'Y' && chapters[0].posted != 'y'){
+            req.flash('error', 'Няма таквъв url!');
+            res.redirect('/');
+            return;
+        }
+    });
+
     // console.log("Book which is liked: " + req.params.bookId);
     db.query("Update Books Set Rating = Rating + 1 Where Id = ?", req.params.bookId, (err, resulting) => {
         // console.log(resulting);
@@ -26,6 +35,14 @@ router.get('/:id/dislike', (req, res) => {
         return;
     }
 
+    db.query('Select * From Chapters Where Id = ?', [chapterId], (err, chapters) => {
+        if (chapters[0].Posted != 'Y' && chapters[0].posted != 'y'){
+            req.flash('error', 'Няма таквъв url!');
+            res.redirect('/');
+            return;
+        }
+    });
+
     db.query("Update Books Set Rating = Rating - 1 Where Id = ?");
 });
 
@@ -35,6 +52,12 @@ router.get('/:id', (req, res) => {
     chapterId = req.params.id;
 
     db.query('Select * From Chapters Where Id = ?', [chapterId], (err, chapters) => {
+        if (chapters[0].Posted != 'Y' && chapters[0].posted != 'y'){
+            req.flash('error', 'Няма таквъв url!');
+            res.redirect('/');
+            return;
+        }
+
         db.query(`Select * From ChapterComments Inner Join Users On ChapterComments.PosterId
         =Users.Id Where ChapterId = ?;
         `, [chapterId], (err, result) => {
@@ -84,10 +107,31 @@ router.post('/:id', (req, res) => {
             if (err){
                 throw err;
             }
+
             res.redirect('/chapter/' + chapterId);
         });
     }
 
+});
+
+router.get('/:id/post', (req, res) => {
+    chapterId = req.params.id;
+    
+    db.query('Select * From Books Inner Join Chapters On Books.Id = Chapters.BookId Where Chapters.Id = ?', [chapterId], (err, chapter) => {
+        if (!req.session.authenticated || req.session.user.ID != result.AuthorId){
+            req.flash('Неправилен url!', 'success');
+            res.redirect(`/chapter/${chapterId}`);
+        }
+        else{
+            db.query(`Update Chapters Set Posted = 'Y' Where Id = ?`, [chapterId], (err, result) => {
+                if (err)
+                    throw err;
+
+                req.flash('Успешно публикуване на глава!', 'success');
+                res.redirect(`/chapter/${chapterId}`);
+            });
+        }
+    });
 });
 
 module.exports = router;

@@ -4,3 +4,5 @@
 
 3. Hamburger button
     -> css needs fixing!
+
+4.Cahpter deletion

@@ -12,11 +12,19 @@
   <%- include ./partials/locals.messages.ejs%>
   <div id='drop_down_menu'>
     <a href="#" ><img src="/imgs/hamburgerparchment.png" id = "hamburgerButton"></a>
-    <div id='drop_down_content' style='visibility:hidden;'>
-      <a href="">Начало</a>
-      <a href="/catalog/?page=1">Каталог</a>
-      <a href=<%- "/book/" + bookId %>>Книгата</a>
-      <a href="#">Публикувай!</a>
+    <div id='drop_down_content' style='visibility:hidden; position:relative;'>
+      <div>
+        <a href="/">Начало</a>
+      </div>
+      <div>
+        <a href="/catalog/?page=1">Каталог</a>
+      </div>
+      <div>
+        <a href=<%- "/book/" + bookId %>>Книгата</a>
+      </div>
+      <div>
+        <a href=<%- '/chapter/' + chapter.Id + '/post/' %>>Публикувай!</a>
+      </div>
     </div>
   </div>
    <a href = "#commentArea"><img src="/imgs/down.png" id = "downButton"></a>
