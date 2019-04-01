@@ -10,7 +10,7 @@ function pagesCount(booksCount){
 
 router.get('/', function(req, res, next) {
     let offset = (req.query.page - 1) * booksOnPage;
-    let selectQuery = 'select * from Books WHERE Posted = \'y\' order by Rating desc';
+    let selectQuery = 'select * from Books WHERE BookPosted = \'y\' order by Rating desc';
     let startIdx, endIdx;
     db.query(selectQuery, (err, result) => {
         if(err) throw err;

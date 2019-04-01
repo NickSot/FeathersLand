@@ -24,7 +24,7 @@ router.get('/post/:id', (req, res) => {
             return;
         }
 
-        if (book.Posted == 'Y' || book.Posted == 'y'){
+        if (book.BookPosted == 'Y' || book.BookPosted == 'y'){
             req.flash('error', 'Книгата вече е издадена!');
             res.redirect('/');
             return;
@@ -36,7 +36,7 @@ router.get('/post/:id', (req, res) => {
             return;
         }
 
-        db.query(`Update Books Set Posted='Y' Where Id = ?`, [bookId], (err) => {
+        db.query(`Update Books Set BookPosted='Y' Where Id = ?`, [bookId], (err) => {
             db.query(`Select * From Books Inner Join Followers On Followers.FollowingId = Books.AuthorId
             Inner Join Users On Users.ID = Followers.FollowerId Where Books.Id = ?
             `, [bookId], (err, result) => {

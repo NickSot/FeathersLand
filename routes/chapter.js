@@ -15,7 +15,7 @@ router.get('/:bookId/like', (req, res) => {
     }
 
     db.query('Select * From Chapters Where Id = ?', [chapterId], (err, chapters) => {
-        if (chapters[0].Posted != 'Y' && chapters[0].posted != 'y'){
+        if (chapters[0].ChapterPosted != 'Y' && chapters[0].ChapterPosted != 'y'){
             req.flash('error', 'Няма таквъв url!');
             res.redirect('/');
             return;
@@ -38,7 +38,7 @@ router.get('/:id/dislike', (req, res) => {
     }
 
     db.query('Select * From Chapters Where Id = ?', [chapterId], (err, chapters) => {
-        if (chapters[0].Posted != 'Y' && chapters[0].posted != 'y'){
+        if (chapters[0].ChapterPosted != 'Y' && chapters[0].ChapterPosted != 'y'){
             req.flash('error', 'Няма таквъв url!');
             res.redirect('/');
             return;
@@ -60,7 +60,7 @@ router.get('/:id', (req, res) => {
             return;
         }
 
-        if (chapters[0].Posted != 'Y' && chapters[0].Posted != 'y'){
+        if (chapters[0].ChapterPosted != 'Y' && chapters[0].ChapterPosted != 'y'){
             if (req.session.user.ID != chapters[0].AuthorId){
                 req.flash('error', 'Няма таквъв url!');
                 res.redirect('/');
@@ -93,10 +93,13 @@ router.get('/:id', (req, res) => {
 
                 if (chapter.Content != null){
                     nodePandoc(chapter.Content, '-f markdown -t html5', (err, htmlContent) => {
+                        console.log(chapter);
                         res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: htmlContent});
                     });
                 }
                 else{
+                    console.log('CHAPTER: ');
+                    console.log(chapter);
                     res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: null});
                 }
             });
@@ -133,7 +136,10 @@ router.get('/:id/post', (req, res) => {
             res.redirect(`/chapter/${chapterId}`);
         }
         else{
-            db.query(`Update Chapters Set Posted = 'Y' Where Id = ?`, [chapterId], (err, updateResult) => {
+            db.query(`Update Chapters Set ChapterPosted = 'Y' Where Id = ?`, [chapterId], (err, updateResult) => {
+                if (err)
+                    throw err;
+
                 db.query(`Select * From Chapters Inner Join Books On Books.Id = Chapters.BookId Inner Join Followers On Followers.FollowingId = Books.AuthorId
             Inner Join Users On Users.ID = Followers.FollowerId Where Chapters.Id = ?
             `, [chapterId], (err, result) => {

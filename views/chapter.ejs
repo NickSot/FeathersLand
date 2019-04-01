@@ -23,7 +23,9 @@
         <a href=<%- "/book/" + bookId %>>Книгата</a>
       </div>
       <div>
-        <a href=<%- '/chapter/' + chapter.Id + '/post/' %>>Публикувай!</a>
+        <%if (chapter.ChapterPosted == 'n' || chapter.Posted == 'N'){%>
+          <a href=<%- '/chapter/' + chapter.Id + '/post/' %>>Публикувай!</a>
+        <%}%>
       </div>
     </div>
   </div>
