@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     let name = req.body.name;
-    let query = "INSERT INTO Books(AuthorId, Title, Posted) VALUES(?, ?, 'n')";
+    let query = "INSERT INTO Books(AuthorId, Title, BookPosted) VALUES(?, ?, 'N')";
     db.query(query, [req.session.user.ID, name], (err, result) => {
         if(err) throw err;
         req.flash('success', 'Успешно създадена книга ' + name);

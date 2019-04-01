@@ -15,34 +15,24 @@
             <center>
               <a href = <%- "/chapter/" + chapters[i].Id %> >
                 <div class = "chapterHolder">
-                  <h1 class = "chapterTitle"><img src = "/imgs/manuscript.png" class = "chapterImage"> <%- chapters[i].Title %></h1>
+                  <h1 class = "chapterTitle"><img src = "/imgs/manuscript.png" class = "chapterImage"> <%- chapters[i].ChapterTitle %></h1>
                   <a href="#"><i class="fas fa-trash-alt fa-2x"></i></a>
                 </div>
               </a>
             </center>
           <%}%>
       <% } %>
+      <%}else{%>
+        <center>
+          <h1>Тук няма много за гледане май...</h1>
+          <a href="/catalog?page=1" class = "button">Назад</a>
+        </center>
+      <%}%>
+      <br>
 
     <%if (show){%>
       <center>
         <a href="/newchapter/<%-book.Id %>?bookTitle=<%-book.Title%>"><img src="/imgs/plusbutton.png" id = "addButton"></a> <br>
-      </center>
-    <%}%>
-
-      <h2 id = "commentAnnounce"> Коментари </h2>
-      <form action='/book/<%- book.Id %>/' method="POST">
-          <center>
-          <textarea id = "commentArea" placeholder="Напиши коментар!" name='comment'></textarea>
-          <br></br>
-          <input type="submit" value = "Коментирай" class = "button Button"></center>
-      </form>
-
-
-
-    <%}else{%>
-      <center>
-        <h1>Тук няма много за гледане май...</h1> <
-        <a href="/catalog?page=1" class = "button">Назад</a>
       </center>
     <%}%>
     
@@ -53,5 +43,13 @@
       </center>
     <%}%>
 
+
+      <h2 id = "commentAnnounce"> Коментари </h2>
+      <form action='/book/<%- book.Id %>/' method="POST">
+          <center>
+          <textarea id = "commentArea" placeholder="Напиши коментар!" name='comment'></textarea>
+          <br></br>
+          <input type="submit" value = "Коментирай" class = "button Button"></center>
+      </form>
 </body>
 </html>

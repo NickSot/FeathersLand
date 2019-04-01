@@ -60,7 +60,11 @@ router.get('/:id', (req, res) => {
             return;
         }
 
-        if (chapters[0].ChapterPosted != 'Y' && chapters[0].ChapterPosted != 'y'){
+        var chapter = chapters[0];
+
+        console.log(req.session.user);
+
+        if (chapter.ChapterPosted != 'Y' && chapter.ChapterPosted != 'y'){
             if (req.session.user.ID != chapters[0].AuthorId){
                 req.flash('error', 'Няма таквъв url!');
                 res.redirect('/');
@@ -71,7 +75,6 @@ router.get('/:id', (req, res) => {
         db.query(`Select * From ChapterComments Inner Join Users On ChapterComments.PosterId
         =Users.Id Where ChapterId = ?;
         `, [chapterId], (err, result) => {
-            let chapter = chapters[0];
             
             if (chapter == undefined){
                 req.flash('error', 'Няма таквъв url!');
@@ -93,13 +96,10 @@ router.get('/:id', (req, res) => {
 
                 if (chapter.Content != null){
                     nodePandoc(chapter.Content, '-f markdown -t html5', (err, htmlContent) => {
-                        console.log(chapter);
                         res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: htmlContent});
                     });
                 }
                 else{
-                    console.log('CHAPTER: ');
-                    console.log(chapter);
                     res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: null});
                 }
             });
@@ -140,11 +140,12 @@ router.get('/:id/post', (req, res) => {
                 if (err)
                     throw err;
 
+                console.log('UPDATED!');
+                console.log(updateResult);
+
                 db.query(`Select * From Chapters Inner Join Books On Books.Id = Chapters.BookId Inner Join Followers On Followers.FollowingId = Books.AuthorId
             Inner Join Users On Users.ID = Followers.FollowerId Where Chapters.Id = ?
             `, [chapterId], (err, result) => {
-                console.log('RESULT: ');
-                console.log(result);
 
                 result.forEach(element => {
                     emailExistence.check(element.Email, (err, response) => {
@@ -169,13 +170,11 @@ router.get('/:id/post', (req, res) => {
                                 }
                             });
                         }
-
-                        console.log('Sent mails!');
-
-                        req.flash('Успешно публикуване на глава!', 'success');
-                        res.redirect(`/chapter/${chapterId}`);
                     });
                 });
+
+                req.flash('Успешно публикуване на глава!', 'success');
+                res.redirect(`/chapter/${chapterId}`);
             });
         });
 

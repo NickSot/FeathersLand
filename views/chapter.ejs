@@ -23,14 +23,14 @@
         <a href=<%- "/book/" + bookId %>>Книгата</a>
       </div>
       <div>
-        <%if (chapter.ChapterPosted == 'n' || chapter.Posted == 'N'){%>
+        <%if (chapter.ChapterPosted == 'N'){%>
           <a href=<%- '/chapter/' + chapter.Id + '/post/' %>>Публикувай!</a>
         <%}%>
       </div>
     </div>
   </div>
    <a href = "#commentArea"><img src="/imgs/down.png" id = "downButton"></a>
-  <div id = "textHolder"><h1 id = "chapterTitle"><%=chapter.Title%></h1>
+  <div id = "textHolder"><h1 id = "chapterTitle"><%=chapter.ChapterTitle%></h1>
     <%-htmlContent%>
   </div>
   <center> 

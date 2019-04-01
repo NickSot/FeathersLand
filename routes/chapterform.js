@@ -21,7 +21,7 @@ router.post('/:bookId', (req, res) => {
         req.flash('error', 'Не може да имаш безименни глави!');
         res.redirect('/newchapter/' + req.params.bookId + "?bookTitle=" + bookTitle);
     }else{
-        let query = "INSERT INTO Chapters(BookId, Title, Posted, Content) VALUES(?, ?, 'n', '#Започни своята история тук...')";
+        let query = "INSERT INTO Chapters(BookId, ChapterTitle, ChapterPosted, Content) VALUES(?, ?, 'N', '#Започни своята история тук...')";
         db.query(query, [req.params.bookId, name], (err, result) => {
             if(err) throw err;
             req.flash('success', 'Успешно създадена глава ' + name);

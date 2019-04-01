@@ -27,6 +27,8 @@ router.get('/mybook', (req, res) => {
                 chapters = []
             }
 
+            console.log('redirected here...');
+
             if(chapters.length > 0){
                 db.query(commentsQuery,[bookId], (err, commentsForBook) => {
                     if(err) throw err;
@@ -35,7 +37,7 @@ router.get('/mybook', (req, res) => {
             
                 });
             }else{
-                res.render('book', {chapters: null, comments:null, book : book[0], show: true, write: true});
+                res.render('book', {chapters: null, comments: null, book : book[0], show: true, write: true});
             }
         });
     });
