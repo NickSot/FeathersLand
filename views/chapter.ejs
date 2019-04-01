@@ -10,7 +10,15 @@
 </head>
 <body>
   <%- include ./partials/locals.messages.ejs%>
-  <a href="#" ><img src="/imgs/hamburgerparchment.png" id = "hamburgerButton"></a>
+  <div id='drop_down_menu'>
+    <a href="#" ><img src="/imgs/hamburgerparchment.png" id = "hamburgerButton"></a>
+    <div id='drop_down_content' style='visibility:hidden;'>
+      <a href="">Начало</a>
+      <a href="/catalog/?page=1">Каталог</a>
+      <a href=<%- "/book/" + bookId %>>Книгата</a>
+      <a href="#">Публикувай!</a>
+    </div>
+  </div>
    <a href = "#commentArea"><img src="/imgs/down.png" id = "downButton"></a>
   <div id = "textHolder"><h1 id = "chapterTitle"><%=chapter.Title%></h1>
     <%-htmlContent%>
@@ -45,6 +53,10 @@
 
 <script>
   var likebtn = document.getElementById('likeButton');
+  var hamburger = document.getElementById('hamburgerButton');
+  var dropDown = document.getElementById('drop_down_content');
+
+  var showDropDown = false;
 
   likebtn.onclick = () => {
     if (likebtn.getAttribute("href").contains('dislike')){
@@ -52,6 +64,19 @@
     }
     else{
       likebtn.setAttribute("href", `/chapter/<%=chapter.Id%>/dislike`);
+    }
+  }
+
+  hamburger.onclick = () => {
+    console.log(showDropDown);
+
+    if (showDropDown){
+      dropDown.style.visibility = 'hidden';
+      showDropDown = false;
+    }
+    else{
+      showDropDown = true;
+      dropDown.style.visibility = 'visible';
     }
   }
 </script>

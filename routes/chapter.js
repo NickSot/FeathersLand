@@ -56,6 +56,8 @@ router.get('/:id', (req, res) => {
                     res.locals.authorId = 0;
                 }
 
+                res.locals.bookId = bookChapter[0].BookId;
+
                 if (chapter.Content != null){
                     nodePandoc(chapter.Content, '-f markdown -t html5', (err, htmlContent) => {
                         res.render('chapter', {layout: false, chapter: chapter, commentUsers: result, htmlContent: htmlContent});
