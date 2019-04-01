@@ -9,7 +9,7 @@ var bcryptSaltRounds = 10;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.locals.authenticated = req.session.authenticated;
-  res.render('index', { title: 'Writer\'s den', messages: req.flash()});
+  res.render('index', { messages: req.flash()});
 });
 
 router.post('/', (req, res) => {

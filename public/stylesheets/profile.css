@@ -1,30 +1,30 @@
-body{
+/* body{
   position: absolute;
   z-index: 1;
   top:0;
   left: 0;
   margin: auto;
   height: 650px;
-}
+} */
 
 .split {
   height: 400px;
   width: 550px;
-  position: absolute;
+  position: relative;
   text-align: center;
-  z-index: 1;
   top: 50px;
   padding-top: 5px;
+  display: inline-block;
+
+  margin: 20px; 
 }
 
 .left {
-  left: 170px;
-  max-height: 370px;
+  float: left;
 }
 
 .right {
-  left: 800px;
-  margin-top: 31px;
+  float: right;
 }
 
 
