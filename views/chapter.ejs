@@ -24,7 +24,7 @@
       </div>
       <div>
         <%if (chapter.ChapterPosted == 'N'){%>
-          <a href=<%- '/chapter/' + chapter.Id + '/post/' %>>Публикувай!</a>
+          <a href=<%- '/chapter/' + chapterId + '/post/' %>>Публикувай!</a>
         <%}%>
       </div>
     </div>
@@ -35,13 +35,13 @@
   </div>
   <center> 
   <%if (userId == authorId){%>
-    <a href="/write/<%-chapter.Id%>"> <button id = "editButton">Редактирай</button> </a>
+    <a href="/write/<%-chapterId%>"> <button id = "editButton">Редактирай</button> </a>
   <%}%>
   <a class="fas fa-thumbs-up" id = "likeButton" href='/chapter/<%-chapter.BookId%>/like'></a></center>
 <center>
   <a href="#" ><img src="/imgs/before.png" id = "beforeButton"></a><a href="#" ><img src="/imgs/next.png" id = "nextButton"></a>
 </center>
-<form action='/chapter/<%-chapter.Id-%>/' method="POST">
+<form action='/chapter/<%-chapterId-%>/' method="POST">
   <center>
   <textarea id = "commentArea" placeholder="Напиши коментар!" name='comment'>
 
@@ -70,10 +70,10 @@
 
   likebtn.onclick = () => {
     if (likebtn.getAttribute("href").contains('dislike')){
-      likebtn.setAttribute("href", `/chapter/<%=chapter.Id%>/like`);
+      likebtn.setAttribute("href", `/chapter/<%=chapterId%>/like`);
     }
     else{
-      likebtn.setAttribute("href", `/chapter/<%=chapter.Id%>/dislike`);
+      likebtn.setAttribute("href", `/chapter/<%=chapterId%>/dislike`);
     }
   }
 

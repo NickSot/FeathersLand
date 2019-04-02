@@ -56,7 +56,7 @@ router.get('/post/:id', (req, res) => {
                                     console.log(error);
                                     res.status(400).send({success: false});
                                 } else {
-                                    res.status(200).send({success: true});
+                                    res.status(200).redirect('/catalog');
                                 }
                             });
                         }
@@ -70,17 +70,16 @@ router.get('/post/:id', (req, res) => {
 router.get('/:id', function(req, res) {
     bookId = req.params.id;
 
-    //let id = req.params["id"];
     db.query('Select * From Books Where Id = ?', [bookId], (err, book) => {
 
         if(err) throw err;
 
         res.locals.authenticated = req.session.authenticated;
 
-        res.locals.userId = null;
+        var userId = null;
 
         if (res.locals.authenticated){
-            res.locals.userId = req.session.user.ID;
+            userId = req.session.user.ID;
         }
         
         if(book.length > 0){
@@ -99,7 +98,7 @@ router.get('/:id', function(req, res) {
                     if (commentsUsers.length == 0){
                         commentsUsers = [];
                     }
-                    res.render('book', { chapters : chapters, book :  book[0], comments: commentsUsers, show: false, write: false});  
+                    res.render('book', { chapters : chapters, book :  book[0], comments: commentsUsers, show: false, write: false, userId: userId});  
                 });
             });
         }

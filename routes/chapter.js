@@ -53,6 +53,8 @@ router.get('/:id', (req, res) => {
 
     chapterId = req.params.id;
 
+    res.locals.chapterId = chapterId;
+
     db.query('Select * From Chapters Inner Join Books On Books.Id = Chapters.BookId Where Chapters.Id = ?', [chapterId], (err, chapters) => {
         if (chapters.length == 0){
             req.flash('error', 'Няма таквъв url!');
@@ -146,32 +148,33 @@ router.get('/:id/post', (req, res) => {
                 db.query(`Select * From Chapters Inner Join Books On Books.Id = Chapters.BookId Inner Join Followers On Followers.FollowingId = Books.AuthorId
             Inner Join Users On Users.ID = Followers.FollowerId Where Chapters.Id = ?
             `, [chapterId], (err, result) => {
-
-                result.forEach(element => {
-                    emailExistence.check(element.Email, (err, response) => {
-                        if (err)
-                            throw err;
-
-                        if (response){
-                            let mailOptions = {
-                                from: '"Feather Company" <feathers.land.original@gmail.com>', // sender address
-                                to: element.Email, // list of receivers
-                                subject: 'Здравей! :D', // Subject line
-                                text: `Автор, за който сте се абонирали на име: <a href="localhost:3001/author/${req.session.user.ID}/show/">${req.session.user.username}</a>, издаде глава на книга!`, // plain text body
-                                html: `<h1>Автор, за който сте се абонирали на име: ${req.session.user.username}, издаде глава на книга!<h1>`
-                            };
-            
-                            transporter.sendMail(mailOptions, (error, info) => {
-                                if (error) {
-                                    console.log(error);
-                                    res.status(400).send({success: false});
-                                } else {
-                                    res.status(200).send({success: true});
-                                }
-                            });
-                        }
+                if (result.BookPosted == 'Y' || result.BookPosted == 'y'){
+                    result.forEach(element => {
+                        emailExistence.check(element.Email, (err, response) => {
+                            if (err)
+                                throw err;
+    
+                            if (response){
+                                let mailOptions = {
+                                    from: '"Feather Company" <feathers.land.original@gmail.com>', // sender address
+                                    to: element.Email, // list of receivers
+                                    subject: 'Здравей! :D', // Subject line
+                                    text: `Автор, за който сте се абонирали на име: <a href="localhost:3001/author/${req.session.user.ID}/show/">${req.session.user.username}</a>, издаде глава на книга!`, // plain text body
+                                    html: `<h1>Автор, за който сте се абонирали на име: ${req.session.user.username}, издаде глава на книга!<h1>`
+                                };
+                
+                                transporter.sendMail(mailOptions, (error, info) => {
+                                    if (error) {
+                                        console.log(error);
+                                        res.status(400).send({success: false});
+                                    } else {
+                                        res.status(200).send({success: true});
+                                    }
+                                });
+                            }
+                        });
                     });
-                });
+                }
 
                 req.flash('Успешно публикуване на глава!', 'success');
                 res.redirect(`/chapter/${chapterId}`);
@@ -179,6 +182,20 @@ router.get('/:id/post', (req, res) => {
         });
 
         }
+    });
+});
+
+router.get('/:id/delete', (req, res) => {
+    db.query('Delete From ChapterComments Where ChapterId = ?', [req.params.id], (err, result) => {
+        if (err)
+            throw err;
+
+        db.query('Delete From Chapters Where Id = ?', [req.params.id], (err, result) => {
+            if (err)
+                throw err;
+    
+            res.redirect('/');
+        }); 
     });
 });
 

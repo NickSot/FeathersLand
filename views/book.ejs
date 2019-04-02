@@ -16,7 +16,9 @@
               <a href = <%- "/chapter/" + chapters[i].Id %> >
                 <div class = "chapterHolder">
                   <h1 class = "chapterTitle"><img src = "/imgs/manuscript.png" class = "chapterImage"> <%- chapters[i].ChapterTitle %></h1>
-                  <a href="#"><i class="fas fa-trash-alt fa-2x"></i></a>
+                  <%if (userId == book.AuthorId){%>
+                    <a href=<%- "/chapter/" + chapters[i].Id + '/delete' %>><i class="fas fa-trash-alt fa-2x"></i></a>
+                  <%}%>
                 </div>
               </a>
             </center>
