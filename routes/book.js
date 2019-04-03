@@ -40,9 +40,11 @@ router.get('/post/:id', (req, res) => {
             db.query(`Select * From Books Inner Join Followers On Followers.FollowingId = Books.AuthorId
             Inner Join Users On Users.ID = Followers.FollowerId Where Books.Id = ?
             `, [bookId], (err, result) => {
-                result.forEach(element => {
-                    emailExistence.check(element.Email, (err, response) => {
-                        if (response){
+                if(result.length > 0){
+
+                    result.forEach(element => {
+                        emailExistence.check(element.Email, (err, response) => {
+                            if (response){
                             let mailOptions = {
                                 from: '"Feather Company" <feathers.land.original@gmail.com>', // sender address
                                 to: element.Email, // list of receivers
@@ -50,7 +52,7 @@ router.get('/post/:id', (req, res) => {
                                 text: `Автор, за който сте се абонирали на име: <a href="localhost:3001/author/${req.session.user.ID}/show/">${req.session.user.username}</a>, издаде книга!`, // plain text body
                                 html: `<h1>Автор, за който сте се абонирали на име: ${req.session.user.username}, издаде книга!<h1>`
                             };
-            
+                            
                             transporter.sendMail(mailOptions, (error, info) => {
                                 if (error) {
                                     console.log(error);
@@ -59,9 +61,13 @@ router.get('/post/:id', (req, res) => {
                                     res.status(200).redirect('/catalog');
                                 }
                             });
-                        }
+                            }
+                        });
                     });
-                });
+                }else{
+                    req.flash('success', 'Успешно издадена книга!')
+                    res.status(200).redirect('/catalog');
+                }
             });
         })
     });
@@ -89,7 +95,7 @@ router.get('/:id', function(req, res) {
                 }   
             }
             
-            db.query('Select * From Chapters Where BookId = ?', [bookId], (err, chapters) => {
+            db.query('Select * From Chapters Where BookId = ? AND ChapterPosted = "y"', [bookId], (err, chapters) => {
                 db.query('Select * From BookComments Inner Join Users On PosterId = Users.ID Where BookId = ?', [bookId], (err, commentsUsers) => {
                     if(err) throw err;
 
@@ -108,7 +114,7 @@ router.get('/:id', function(req, res) {
 router.post('/:id', (req, res) => {
     let text = req.body.comment;
     let id  = req.params.id;
-
+    
     if (!req.session.authenticated){
         req.flash('error', 'Не можеш да пишеш коментари, ако не си в акаунта си!');
         res.redirect('/');
