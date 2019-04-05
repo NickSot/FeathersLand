@@ -1,28 +1,25 @@
 .split {
-  height: 100%;
-  width: 42.5%;
-  position: fixed;
+  position: relative;
   text-align: center;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
-  margin-top: 5%;
+  top: 50px;
+  padding-top: 5px;
+  display: inline-block;
+  margin: 20px;
 }
+
+
+
+.wrapper{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
 a.titles{
   text-decoration: none;
   color: inherit;
 }
-.left {
-  border: 4px black;
-  left: 15%;
-  background-color: none;
-}
 
-.right {
-  right: 0;
-  background-color: none;
-}
 .button {
   background: #76B3FA;
   border-radius: 100px;
