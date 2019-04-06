@@ -30,6 +30,7 @@ router.post('/', (req, res) => {
         if(err) throw err;
 
         if(result.length == 0){
+          req.flash('error', 'Грешен никнейм, мейл или парола!');          
           res.redirect('back'); 
         }else{
           bcrypt.compare(lpwd, result[0].pass, (err, isPasswordCorrect) => {
@@ -39,6 +40,7 @@ router.post('/', (req, res) => {
               req.session.user = result[0];
               res.redirect('back');
             }else{
+              console.log("Fail my friend!");
               req.flash('error', 'Грешен никнейм, мейл или парола!');
               res.redirect('back');
             }
