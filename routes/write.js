@@ -12,7 +12,25 @@ router.get('/mybook', (req, res) => {
     let commentsQuery = "SELECT * FROM BookComments WHERE BookId = ?";
     res.locals.authenticated = req.session.authenticated;
 
+    if (!req.session.authenticated){
+        req.flash('error', 'Няма такъв url!');
+        res.redirect('/');
+        return;
+    }
+
     db.query(bookQuery, [bookId], (err, book) => {
+        if (book.length == 0){
+            req.flash('error', 'Няма такъв url!');
+            res.redirect('/');
+            return;
+        }
+
+        if (book[0].AuthorId != req.session.user.ID){
+            req.flash('Няма такъв url!', 'error')
+            res.redirect('/');
+            return;
+        }
+
         if(err) throw err;
         db.query(query, [bookId], (err, chapters) => {
             // var show = false;

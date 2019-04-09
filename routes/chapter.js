@@ -166,18 +166,16 @@ router.get('/:id/post', (req, res) => {
                                 transporter.sendMail(mailOptions, (error, info) => {
                                     if (error) {
                                         console.log(error);
-                                        res.status(400).send({success: false});
+                                        res.status(400).send('Грешка се случи при мейлването...');
                                     } else {
-                                        res.status(200).send({success: true});
+                                        req.flash('Успешно публикуване на глава!', 'success');
+                                        res.status(200).redirect('/catalog/?page=1');
                                     }
                                 });
                             }
                         });
                     });
                 }
-
-                req.flash('Успешно публикуване на глава!', 'success');
-                res.redirect(`/chapter/${chapterId}`);
             });
         });
 
@@ -186,16 +184,34 @@ router.get('/:id/post', (req, res) => {
 });
 
 router.get('/:id/delete', (req, res) => {
-    db.query('Delete From ChapterComments Where ChapterId = ?', [req.params.id], (err, result) => {
+    chapterId = req.params.id;
+
+    db.query('Delete From ChapterComments Where ChapterId = ?', [chapterId], (err, result) => {
         if (err)
             throw err;
 
-        db.query('Delete From Chapters Where Id = ?', [req.params.id], (err, result) => {
-            if (err)
-                throw err;
-    
-            res.redirect('/');
-        }); 
+        db.query('Select b.Id From Books b Inner Join Chapters c On c.BookId = b.Id Where c.Id = ?', [chapterId], (err, bookId) => {
+            db.query('Delete From Chapters Where Id = ?', [chapterId], (err, result) => {           
+                if (err)
+                    throw err;
+
+                db.query('Select * From Chapters Where BookId = ?', [bookId], (err, allChapters) => {
+                    if (allChapters.length == 0){
+                        db.query('Delete From Books Where Id = ?', [bookId], (err, result) => {
+                            if (err)
+                                throw err;
+
+                            req.flash('success', 'Успешно изтриване на книга!');
+                            res.redirect('/');
+                        });
+                    }
+                    else{
+                        req.flash('success', 'Успешно изтриване на глава!');
+                        res.redirect('/');
+                    }
+                });
+            });
+        });
     });
 });
 

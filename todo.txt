@@ -1,6 +1,6 @@
 1. Chapter publish x
 
-2. Hide unposted
+2. Hide unposted x
 
 3. Hamburger button
     -> css needs fixing!

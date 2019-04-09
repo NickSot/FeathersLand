@@ -58,7 +58,8 @@ router.get('/post/:id', (req, res) => {
                                     console.log(error);
                                     res.status(400).send({success: false});
                                 } else {
-                                    res.status(200).redirect('/catalog');
+                                    req.flash('Успешно публикуване на книга!', 'success');
+                                    res.status(200).redirect('/catalog/?page=1');
                                 }
                             });
                             }
