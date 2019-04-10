@@ -1,23 +1,29 @@
 #listOfUsers {
   list-style-type: none;
   width: 50%;
-  text-align: left;
-  margin-left: 31%;
+  text-align: center;
+  margin: auto;
+  padding-left: 0;
 }
 
-#f{
-  margin-left: 19%;
-}
+
 .userHolder {
-
   font-size: 3em;
   padding: 20px;
-  border-radius: 40px;
   text-align: left;
-
   margin: 10px;
-  padding-bottom: 30px;
 }
+
+.userHolderWrapper{
+  background-color: white;
+  border-radius: 40px;
+  margin-bottom: 10px;
+}
+
+.userHolder a{
+  color: black;
+}
+
 .search-container{
 
   width: 50%;
@@ -28,37 +34,25 @@
   border-radius: 30px;
 }
 
+div#searchDiv{
+  margin-bottom: 40px;
+}
+
 input#search-bar{
   display:block;
   width: 100%;
-  box-sizing: border-box
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 10 20px;
   font-size: 2rem;
   border: 0px;
   border-radius: 30px;
   outline: none;
-  &:focus{
-    border: 0px;
-    transition: 0.35s ease;
-    color: #008ABF;
-    &::-webkit-input-placeholder{
-      transition: opacity 0.45s ease;
-      opacity: 0;
-     }
-    &::-moz-placeholder {
-      transition: opacity 0.45s ease;
-      opacity: 0;
-     }
-    &:-ms-placeholder {
-     transition: opacity 0.45s ease;
-     opacity: 0;
-     }
-   }
+
  }
  a {
    text-decoration: none;
-   color: black;
+   color: white;
  }
 .search-icon{
   width: 9vh;
@@ -72,13 +66,24 @@ input#search-bar{
   font-size: 80px;
   margin-right: 20px;
 }
+
 footer {
   font-size: 30px;
-  color: #474a4f;
-  position: fixed;
+  color: white;
+  font-family: Open Sans;
   text-decoration: none;
-  right: 0;
-  bottom: 4;
-  width: 100%;
   text-align: center;
+}
+
+.catalog-navigation{
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url(/imgs/pattern.png);
+  border-radius: 20px;
+  height: 50px; 
+}
+
+.wrapper{
+  min-height: calc(80vh);
 }

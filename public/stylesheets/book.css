@@ -6,6 +6,8 @@
   .chapterTitle{
     display: inline-block;
     margin: 0;
+    text-align: center;
+    width: 70%;
     font-size: 40px;
     font-weight: 300;
     color: #5f859b;

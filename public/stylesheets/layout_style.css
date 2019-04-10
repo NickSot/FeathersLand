@@ -73,8 +73,9 @@ ul .icon:hover {
 
 #page{
   display: inline-block;
-  width: 85%;
-  height: 100%;
+  width: 81%;
+  height: 96%;
+  margin: 2%;
 }
 
 ul.nav {
@@ -86,7 +87,17 @@ ul.nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
 }
+
+@media (max-width: 1300px){
+  ul.nav, #n, #nav-wrapper{
+    display: none;
+  }
+  #page{
+    width: 100%;
+  }
+} 
 
 #menu .icon {
   margin: 30px 0;

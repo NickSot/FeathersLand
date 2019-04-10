@@ -1,30 +1,37 @@
 <link rel="stylesheet" href = "/stylesheets/authors.css">
-<div id = "searchDiv">
-  <form class="search-container">
-    <input type="text" id="search-bar" placeholder="Търси автори">
-    <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
-  </form>
+<div class = 'wrapper'>
+    <div id = "searchDiv">
+    <form class="search-container">
+        <input type="text" id="search-bar" placeholder="Търси автори">
+        <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+    </form>
+    </div>
+
+            <ul id = "listOfUsers">
+                <%if (users != null){%>
+                    <%users.forEach((user) => {%>
+                        <div class = "userHolderWrapper">
+                            <li class = "userHolder">
+
+                                <i class="fas fa-feather-alt authorIcon"></i>
+                                <a href="<%-'/author/' + user.ID + '/show/'-%>">
+                                    <%=user.username%>
+                                </a>
+                            </li>
+                        </div>
+                    <%});%>
+                <%}%>
+            </ul>
 </div>
 
-        <ul id = "listOfUsers">
-            <%if (users != null){%>
-                <%users.forEach((user) => {%>
-                    <li class = "userHolder">
 
-                        <a href="<%-'/author/' + user.ID + '/show/'-%>">
-                          <i class="fas fa-feather-alt authorIcon"></i>
-                            <%=user.username%>
-                        </a>
-                    </li>
-                <%});%>
-            <%}%>
-        </ul>
+<footer>
+  <div style="text-align: center">
+    <div class="catalog-navigation">
+      <%for(let i = 1; i <= numPages; i++){%>
+        <a href=<%-"/catalog/?page="+i %> > <%- i %></a>
+      <%}%>
+    </div>
+  </div>
+</footer>
 
-
-        <footer>
-            <div id="f">
-                <%for(let i = 1; i <= numPages; i++){%>
-                    <a href=<%-"/authors/" + i %> > <%- i %></a>
-                <%}%>
-            </div>
-        </footer>
