@@ -60,6 +60,6 @@ body {
   font-family: 'open sans', 'lato', 'helvetica', sans-serif;
 }
 #writingInProgress {
-  overflow: auto;
+  overflow: auto; 
   word-wrap: break-word;
 }

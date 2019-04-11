@@ -1,9 +1,11 @@
 <link rel="stylesheet" href = "/stylesheets/authors.css">
 <div class = 'wrapper'>
     <div id = "searchDiv">
-    <form class="search-container">
-        <input type="text" id="search-bar" placeholder="Търси автори">
-        <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+    <form class="search-container" action = "/authors/search" method = "GET" id = "search_form">
+        <input type="text" id="search-bar" placeholder="Търси автори" name="search">
+        <button type="submit" form="search_form">
+          <img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png">
+        </button>
     </form>
     </div>
 
@@ -29,7 +31,7 @@
   <div style="text-align: center">
     <div class="catalog-navigation">
       <%for(let i = 1; i <= numPages; i++){%>
-        <a href=<%-"/catalog/?page="+i %> > <%- i %></a>
+        <a href=<%-"/authors/"+i %> > <%- i %></a>
       <%}%>
     </div>
   </div>

@@ -4,6 +4,18 @@ var db = require('../config/database');
 
 var authorsOnPage = 4;
 
+
+router.get('/search', function(req, res, next){
+    let search = "%" + req.query.search + "%";
+    let query = "SELECT * FROM Users a WHERE a.username LIKE ?";
+    res.locals.authenticated = req.session.authenticated;
+
+    db.query(query, search, (err, result) => {
+        if(err) throw err;
+        res.render("authors", {users: result, numPages: 1});
+    });
+});
+
 router.get('/:page', function(req, res, next) {
     res.locals.authenticated = req.session.authenticated;
 
@@ -26,5 +38,6 @@ router.get('/:page', function(req, res, next) {
         });
     }
 });
+
 
 module.exports = router;

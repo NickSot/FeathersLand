@@ -11,17 +11,22 @@
     <p style="text-align: center;">Рейтинг на книгата: <strong><%- book.Rating%></strong></p>
     <%if(chapters != null && chapters.length > 0){%>
       <% for(let i = 0; i < chapters.length; i++ ){ %>
-        <%console.log("chapters");%>
             <center>
-              <a href = <%- "/chapter/" + chapters[i].Id %> >
                 <div class = "chapterHolder">
-                  <img src = "/imgs/manuscript.png" class = "chapterImage">
-                  <h1 class = "chapterTitle"> <%- chapters[i].ChapterTitle %></h1>
+                  <a href = <%- "/chapter/" + chapters[i].Id %> >
+                    <img src = "/imgs/manuscript.png" class = "chapterImage">
+                  </a>
+                  <a href = <%- "/chapter/" + chapters[i].Id %> >
+                    <center>
+                      <h1 class = "chapterTitle"> <%- chapters[i].ChapterTitle %></h1>
+                    </center>
+                  </a>
                   <%if (userId == book.AuthorId){%>
-                    <a href=<%- "/chapter/" + chapters[i].Id + '/delete' %>><i class="fas fa-trash-alt fa-2x"></i></a>
+                    <a href=<%- "/chapter/" + chapters[i].Id + '/delete' %>>
+                      <i class="fas fa-trash-alt fa-2x"></i>
+                    </a>
                   <%}%>
                 </div>
-              </a>
             </center>
       <% } %>
       <%}else{%>

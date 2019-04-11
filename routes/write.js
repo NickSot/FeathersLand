@@ -45,7 +45,6 @@ router.get('/mybook', (req, res) => {
                 chapters = []
             }
 
-            console.log('redirected here...');
 
             if(chapters.length > 0){
                 db.query(commentsQuery,[bookId], (err, commentsForBook) => {

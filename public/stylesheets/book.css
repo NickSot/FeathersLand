@@ -11,7 +11,6 @@
     font-size: 40px;
     font-weight: 300;
     color: #5f859b;
-    margin-left: 30px;
   }
   i.fas{
     position: relative;
@@ -21,6 +20,9 @@
   }
 
   .chapterHolder{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-radius: 20px;
     padding: 10px;
     text-align: left;

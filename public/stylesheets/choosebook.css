@@ -2,21 +2,26 @@ body {
   font-family: Open Sans;
 }
 
+h1{
+  margin: 2% auto;
+}
+
 .projectHolder {
   text-align: center;
-  padding: 10px;
+  padding: 18px;
   background-color: white;
   border-radius: 60px;
-  width: 40%;
-  margin-top: 10vh;
+  align-items: center;
+  width: 520px;
+  margin-top: 2%;
   display: flex;
-  justify-content:center;
+  justify-content: space-between;
   align-content:center;
   flex-direction:row;
 }
 .projectIcon{
-  margin-right: 2vw;
-  margin-top: 12px;
+  /* margin-right: 2vw; */
+  /* margin-top: 12px; */
 }
 .projectTitle {
   display: inline;
@@ -26,8 +31,10 @@ body {
   float: left;
 }
 #addButton {
-  /* margin-left: 10%; */
   width: 8%;
+  position: fixed;
+  bottom: 42%;
+  right: 0;
 }
 a {
   color: black;

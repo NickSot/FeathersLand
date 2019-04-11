@@ -14,6 +14,14 @@
   margin: 10px;
 }
 
+button[type=submit]{
+  background: none;
+  outline: none;
+  border: none;
+  position: absolute;
+  right: 0;
+}
+
 .userHolderWrapper{
   background-color: white;
   border-radius: 40px;
@@ -25,12 +33,12 @@
 }
 
 .search-container{
-
   width: 50%;
   display: block;
+  background-color: white;
   margin: 0 auto;
   position: relative;
-  margin-top: 50px;
+  margin-top: 30px;
   border-radius: 30px;
 }
 
@@ -39,28 +47,25 @@ div#searchDiv{
 }
 
 input#search-bar{
-  display:block;
-  width: 100%;
+  /* display:block; */
+  /* width: 100%; */
+  overflow: auto;
+  width: 85%;
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 10 20px;
+  padding: 10px 20px;
   font-size: 2rem;
   border: 0px;
   border-radius: 30px;
   outline: none;
+ }
 
- }
- a {
-   text-decoration: none;
-   color: white;
- }
+a {
+  text-decoration: none;
+  color: white;
+}
 .search-icon{
-  width: 9vh;
-  position: absolute;
-  height: 9vh;
-  top: 0;
-  right: 0;
-
+    width: 70px;
 }
 .authorIcon {
   font-size: 80px;
