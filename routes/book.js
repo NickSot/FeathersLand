@@ -40,31 +40,33 @@ router.get('/post/:id', (req, res) => {
             db.query(`Select * From Books Inner Join Followers On Followers.FollowingId = Books.AuthorId
             Inner Join Users On Users.ID = Followers.FollowerId Where Books.Id = ?
             `, [bookId], (err, result) => {
-                if(result.length > 0){
-
-                    result.forEach(element => {
-                        emailExistence.check(element.Email, (err, response) => {
+                if(result != undefined){
+                    for (let i = 0; i < result.length; i++){
+                        console.log('HERE');
+                        console.log(result[i]);
+                        emailExistence.check(result[i].email, (err, response) => {
                             if (response){
-                            let mailOptions = {
-                                from: '"Feather Company" <feathers.land.original@gmail.com>', // sender address
-                                to: element.Email, // list of receivers
-                                subject: 'Здравей! :D', // Subject line
-                                text: `Автор, за който сте се абонирали на име: <a href="localhost:3001/author/${req.session.user.ID}/show/">${req.session.user.username}</a>, издаде книга!`, // plain text body
-                                html: `<h1>Автор, за който сте се абонирали на име: ${req.session.user.username}, издаде книга!<h1>`
-                            };
-                            
-                            transporter.sendMail(mailOptions, (error, info) => {
-                                if (error) {
-                                    console.log(error);
-                                    res.status(400).send({success: false});
-                                } else {
-                                    req.flash('success', 'Успешно публикуване на книга!');
-                                    res.status(200).redirect('/catalog/?page=1');
-                                }
-                            });
+                                let mailOptions = {
+                                    from: '"Feather Company" <feathers.land.original@gmail.com>', // sender address
+                                    to: result[i].email, // list of receivers
+                                    subject: 'Здравей! :D', // Subject line
+                                    text: `Автор, за когото сте се абонирали на име: ${req.session.user.username}, издаде книга!`, // plain text body
+                                    html: `<h1>Автор, за когото сте се абонирали на име: <a href="localhost:3001/author/${req.session.user.ID}/show/">${req.session.user.username}</a>, издаде книга!<h1>`
+                                };
+                                
+                                transporter.sendMail(mailOptions, (error, info) => {
+                                    if (error) {
+                                        res.status(400).send({success: false});
+                                    } else {
+                                        req.flash('success', 'Успешно публикуване на книга!');
+                                        res.status(200).redirect('/catalog/?page=1');
+                                    }
+                                });
                             }
                         });
-                    });
+                    };
+
+                    console.log('NO SHIT');
                 }else{
                     req.flash('success', 'Успешно издадена книга!')
                     res.status(200).redirect('/catalog?page=1');

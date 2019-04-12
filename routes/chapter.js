@@ -148,33 +148,44 @@ router.get('/:id/post', (req, res) => {
                 db.query(`Select * From Chapters Inner Join Books On Books.Id = Chapters.BookId Inner Join Followers On Followers.FollowingId = Books.AuthorId
             Inner Join Users On Users.ID = Followers.FollowerId Where Chapters.Id = ?
             `, [chapterId], (err, result) => {
-                if (result.BookPosted == 'Y' || result.BookPosted == 'y'){
-                    result.forEach(element => {
-                        emailExistence.check(element.Email, (err, response) => {
-                            if (err)
-                                throw err;
-    
-                            if (response){
-                                let mailOptions = {
-                                    from: '"Feather Company" <feathers.land.original@gmail.com>', // sender address
-                                    to: element.Email, // list of receivers
-                                    subject: 'Здравей! :D', // Subject line
-                                    text: `Автор, за който сте се абонирали на име: <a href="localhost:3001/author/${req.session.user.ID}/show/">${req.session.user.username}</a>, издаде глава на книга!`, // plain text body
-                                    html: `<h1>Автор, за който сте се абонирали на име: ${req.session.user.username}, издаде глава на книга!<h1>`
-                                };
-                
-                                transporter.sendMail(mailOptions, (error, info) => {
-                                    if (error) {
-                                        console.log(error);
-                                        res.status(400).send('Грешка се случи при мейлването...');
-                                    } else {
-                                        req.flash('Успешно публикуване на глава!', 'success');
-                                        res.status(200).redirect('/catalog/?page=1');
-                                    }
-                                });
-                            }
+                if (result.length > 0){
+                    if (result[0].BookPosted == 'Y'){
+                        console.log("HERE");
+                        result.forEach(element => {
+                            emailExistence.check(element.email, (err, response) => {
+                                if (err)
+                                    throw err;
+        
+                                if (response){
+                                    let mailOptions = {
+                                        from: '"Feather Company" <feathers.land.original@gmail.com>', // sender address
+                                        to: element.email, // list of receivers
+                                        subject: 'Здравей! :D', // Subject line
+                                        //text: `Автор, за когото сте се абонирали на име: ${req.session.user.username}, издаде глава на книга!`, // plain text body
+                                        html: `<h1>Автор, за когото сте се абонирали на име: <a href="localhost:3001/author/${req.session.user.ID}/show/">${req.session.user.username}</a>, издаде глава на книга!<h1>`
+                                    };
+                    
+                                    transporter.sendMail(mailOptions, (error, info) => {
+                                        if (error) {
+                                            console.log(error);
+                                            res.status(400).send('Грешка се случи при мейлването...');
+                                        } else {
+                                            req.flash('success', 'Успешно публикуване на глава!');
+                                            res.status(200).redirect('/catalog/?page=1');
+                                        }
+                                    });
+                                }
+                            });
                         });
-                    });
+                    }
+                    else{
+                        req.flash('success', 'Успешно публикуване на глава!');
+                        res.status(200).redirect('back');
+                    }
+                }
+                else{
+                    req.flash('success', 'Успешно публикуване на глава!');
+                    res.status(200).redirect('back');
                 }
             });
         });
