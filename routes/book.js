@@ -58,7 +58,7 @@ router.get('/post/:id', (req, res) => {
                                     console.log(error);
                                     res.status(400).send({success: false});
                                 } else {
-                                    req.flash('Успешно публикуване на книга!', 'success');
+                                    req.flash('success', 'Успешно публикуване на книга!');
                                     res.status(200).redirect('/catalog/?page=1');
                                 }
                             });
@@ -67,7 +67,7 @@ router.get('/post/:id', (req, res) => {
                     });
                 }else{
                     req.flash('success', 'Успешно издадена книга!')
-                    res.status(200).redirect('/catalog');
+                    res.status(200).redirect('/catalog?page=1');
                 }
             });
         })
@@ -97,10 +97,10 @@ router.get('/:id', function(req, res) {
             }
             
             db.query('Select * From Chapters Where BookId = ? AND ChapterPosted = "y"', [bookId], (err, chapters) => {
-                db.query('Select * From BookComments Inner Join Users On PosterId = Users.ID Where BookId = ?', [bookId], (err, commentsUsers) => {
+                db.query('Select * From BookComments bc Inner Join Users On bc.PosterId = Users.ID Where BookId = ?', [bookId], (err, commentsUsers) => {
                     if(err) throw err;
-
-                    res.locals.chapters = chapters;
+                    // console.log(commentsUsers);
+                    // res.locals.chapters = chapters;
                     
                     if (commentsUsers.length == 0){
                         commentsUsers = [];
@@ -112,8 +112,9 @@ router.get('/:id', function(req, res) {
     });
 });
 
-router.post('/:id', (req, res) => {
+router.post('/:id/comment', (req, res) => {
     let text = req.body.comment;
+    // console.log("Trying to comment, my friend...: " + text);
     let id  = req.params.id;
     
     if (!req.session.authenticated){
@@ -125,6 +126,7 @@ router.post('/:id', (req, res) => {
             if (err){
                 throw err;
             }
+            req.flash('success', 'Добавен коментар!');
             res.redirect('/book/' + id);
         });
     }

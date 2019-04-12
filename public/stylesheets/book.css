@@ -108,3 +108,44 @@
   #addButton {
     width: 8%;
   }
+
+  div.commentSection{
+    width: 70%;
+    margin: 20px auto 0 auto;
+  }
+
+  div.commentBlock{
+    padding: 10px;
+    background-color: white;
+    border-radius: 50px;
+    margin-top: 5px;
+    font-size: 120%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+  /* .commentAuthor, .commentContent, .commentDate{
+    display: flex;
+    align-content: center;
+  } */
+  div.commentAuthor{
+    width: 25%;
+    font-weight: 700;
+    text-align:  center;
+    overflow: auto;
+  }
+  div.commentContent{
+    width: 65%;
+    text-align:  center;
+    overflow: auto;
+    max-height: 50px;
+    transition: max-height 1s;
+  }
+  div.commentContent:hover{
+    max-height: 500px;
+  }
+  div.commentDate{
+    width: 10%;
+    font-size: 50%;
+    font-style: italic;
+  }

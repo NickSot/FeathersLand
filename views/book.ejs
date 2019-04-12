@@ -32,7 +32,7 @@
       <%}else{%>
         <center>
           <h1>Тук няма много за гледане май...</h1>
-          <a href="/catalog?page=1" class = "button">Назад</a>
+          <a href="back" class = "button">Към другите творения</a>
         </center>
       <%}%>
       <br>
@@ -52,11 +52,28 @@
 
 
       <h2 id = "commentAnnounce"> Коментари </h2>
-      <form action='/book/<%- book.Id %>/' method="POST">
+      <form action='/book/<%- book.Id %>/comment' method="POST">
           <center>
           <textarea id = "commentArea" placeholder="Напиши коментар!" name='comment'></textarea>
           <br></br>
           <input type="submit" value = "Коментирай" class = "button Button"></center>
       </form>
+
+      
+      <div class = "commentSection">
+        <%for(let i = 0; i < comments.length; i++){%>
+        <div class = "commentBlock">
+          <div class = "commentDate">
+            <p><%- comments[i].PostedOn %></p>
+          </div>
+          <div class = "commentAuthor">
+            <p><%- comments[i].username %></p>
+          </div>
+          <div class = "commentContent">
+            <p><%- comments[i].Content %></p>
+          </div>
+        </div>
+        <%}%>
+      </div>
 </body>
 </html>

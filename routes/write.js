@@ -54,7 +54,7 @@ router.get('/mybook', (req, res) => {
             
                 });
             }else{
-                res.render('book', {chapters: null, comments: null, book : book[0], show: true, write: true, userId : req.session.user.ID});
+                res.render('book', {chapters: [], comments: [], book : book[0], show: true, write: true, userId : req.session.user.ID});
             }
         });
     });

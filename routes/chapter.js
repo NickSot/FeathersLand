@@ -191,23 +191,25 @@ router.get('/:id/delete', (req, res) => {
             throw err;
 
         db.query('Select b.Id From Books b Inner Join Chapters c On c.BookId = b.Id Where c.Id = ?', [chapterId], (err, bookId) => {
+           
             db.query('Delete From Chapters Where Id = ?', [chapterId], (err, result) => {           
                 if (err)
                     throw err;
 
-                db.query('Select * From Chapters Where BookId = ?', [bookId], (err, allChapters) => {
+                db.query('Select * From Chapters Where BookId = ?', [bookId[0].Id], (err, allChapters) => {
+                    console.log(allChapters);
                     if (allChapters.length == 0){
-                        db.query('Delete From Books Where Id = ?', [bookId], (err, result) => {
+                        db.query('Delete From Books Where Id = ?', [bookId[0].Id], (err, result) => {
                             if (err)
                                 throw err;
 
                             req.flash('success', 'Успешно изтриване на книга!');
-                            res.redirect('/');
+                            res.redirect('/write');
                         });
                     }
                     else{
                         req.flash('success', 'Успешно изтриване на глава!');
-                        res.redirect('/');
+                        res.redirect('/write/mybook?bookId=' + bookId[0].Id );
                     }
                 });
             });

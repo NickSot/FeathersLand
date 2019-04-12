@@ -50,14 +50,13 @@
   <input type="submit" value = "Постни коментар" id = "commentButton">
 </form>
 
-  <div class="container com">
   <%commentUsers.forEach((comment) => {%>
+  <div class="container com">
     <div class = "row">
     <div class="col-3 author"><%=comment.username%></div>
     <div class="col-9 comment"><%=comment.Content%></div>
   </div>
   </div>
-  <br></br>
   <%})%>
 </center>
 
