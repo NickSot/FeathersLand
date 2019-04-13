@@ -39,7 +39,13 @@
   <%}%>
   <a class="fas fa-thumbs-up" id = "likeButton" href='/chapter/<%-chapter.BookId%>/like'></a></center>
 <center>
-  <a href="#" ><img src="/imgs/before.png" id = "beforeButton"></a><a href="#" ><img src="/imgs/next.png" id = "nextButton"></a>
+  <%if (chapter.PreviousChapter){%>
+    <a href="/chapter/<%-chapter.PreviousChapter%>" ><img src="/imgs/before.png" id = "beforeButton"></a>
+  <%}%>
+  <%if (chapter.NextChapter){%>
+    <a href="/chapter/<%-chapter.NextChapter%>" ><img src="/imgs/next.png" id = "nextButton"></a>
+  <%}%>
+
 </center>
 <form action='/chapter/<%-chapterId-%>/' method="POST">
   <center>

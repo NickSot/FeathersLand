@@ -64,6 +64,12 @@ Create Table Followers(
 ALTER TABLE BookComments
 ADD COLUMN PostedOn DATETIME DEFAULT CURRENT_TIMESTAMP;
 
+Alter Table Chapters
+Add Column NextChapter Integer,
+Add Column PreviousChapter Integer,
+Add Foreign Key (NextChapter) REFERENCES Chapters(Id) On Delete Cascade,
+Add Foreign Key (PreviousChapter) References Chapters(Id) On Delete Cascade
+
 -- 
 -- 
 -- Use WritersDenDB;
