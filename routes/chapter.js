@@ -219,15 +219,19 @@ router.get('/:id/delete', (req, res) => {
                     });
                 });
             }).then((result) => {
+                if (!result.next || !result.prev)
+                    return result;
                 return new Promise((resolve, reject) => {
                     db.query('Update Chapters Set NextChapter = ? Where Id = ?', [result.next.Id, result.prev.Id], (err, results) => {
                         if (err)
                             throw err;
-                            
+
                         resolve(result);
                     });
                 });
             }).then((result) => {
+                if (!result.prev || !result.next)
+                    return result;
                 return new Promise((resolve, reject) => {
                     console.log(result);
                     db.query('Update Chapters Set PreviousChapter = ? Where Id = ?', [result.prev.Id, result.next.Id], (err, results) => {
