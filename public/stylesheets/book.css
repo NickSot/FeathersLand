@@ -143,7 +143,7 @@
   }
   div.commentContent:hover{
     max-height: 500px;
-  }
+    }
   div.commentDate{
     width: 10%;
     font-size: 50%;

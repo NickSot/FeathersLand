@@ -23,11 +23,12 @@ padding-top: 20px;
   font-family: 'Open Sans', sans-serif;
   word-wrap: break-word;
   color: #433b3b;
-  font-weight: 300;
-  font-size:30px;
+  /* font-weight: 300; */
+  font-size:120%;
   margin-right:5%;
   margin-top: 5%;
 }
+
 
 div[contenteditable]{
   font-family: 'Open Sans', sans-serif;

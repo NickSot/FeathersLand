@@ -19,15 +19,22 @@ body {
   font-weight: 600;
 }
 #textHolder {
-  text-align: center;
-  font-weight: 300;
-  font-size: 2.5em;
-    margin-left: 15%;
-    margin-right: 15%;
-    background-image: url("/imgs/back.png");
-    padding: 20px;
-    border-radius: 30px;
+  font-size: 150%;
+  margin-left: 15%;
+  margin-right: 15%;
+  background-image: url("/imgs/back.png");
+  padding: 20px;
+  border-radius: 30px;
 }
+
+#textHolder blockquote{
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}
+
 #edit {
   background-color: #5f859b;
   border: none;
@@ -53,9 +60,11 @@ body {
 
 #chapterTitle {
   text-align: center;
-  font-weight: 400;
-  font-size: 60px;
+  font-weight: 900;
+  
+  font-size: 200%;
   margin-top: 30px;
+  margin-bottom: 100px;
 }
 #nextButton, #beforeButton, #hamburgerButton, #downButton, #likeButton {
    width: 100px;
