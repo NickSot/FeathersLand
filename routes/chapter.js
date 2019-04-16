@@ -202,26 +202,62 @@ router.get('/:id/delete', (req, res) => {
             throw err;
 
         db.query('Select b.Id From Books b Inner Join Chapters c On c.BookId = b.Id Where c.Id = ?', [chapterId], (err, bookId) => {
-           
-            db.query('Delete From Chapters Where Id = ?', [chapterId], (err, result) => {           
-                if (err)
-                    throw err;
+            new Promise((resolve, reject) => {
+                db.query('Select * From Chapters Where NextChapter = ?', [chapterId], (err, results) => {
+                    if (err)
+                        throw err;
 
-                db.query('Select * From Chapters Where BookId = ?', [bookId[0].Id], (err, allChapters) => {
-                    console.log(allChapters);
-                    if (allChapters.length == 0){
-                        db.query('Delete From Books Where Id = ?', [bookId[0].Id], (err, result) => {
-                            if (err)
-                                throw err;
+                    resolve(results[0]);
+                });
+            }).then((result) => {
+                return new Promise((resolve, reject) => {
+                    db.query('Select * From Chapters Where PreviousChapter = ?', [chapterId], (err, results) => {
+                        if (err)
+                            throw err;
+    
+                        resolve({'prev': result, 'next': results[0]});
+                    });
+                });
+            }).then((result) => {
+                return new Promise((resolve, reject) => {
+                    db.query('Update Chapters Set NextChapter = ? Where Id = ?', [result.next.Id, result.prev.Id], (err, results) => {
+                        if (err)
+                            throw err;
+                            
+                        resolve(result);
+                    });
+                });
+            }).then((result) => {
+                return new Promise((resolve, reject) => {
+                    console.log(result);
+                    db.query('Update Chapters Set PreviousChapter = ? Where Id = ?', [result.prev.Id, result.next.Id], (err, results) => {
+                        if (err)
+                            throw err;
 
-                            req.flash('success', 'Успешно изтриване на книга!');
-                            res.redirect('/write');
-                        });
-                    }
-                    else{
-                        req.flash('success', 'Успешно изтриване на глава!');
-                        res.redirect('/write/mybook?bookId=' + bookId[0].Id );
-                    }
+                        resolve(result);
+                    });
+                });
+            }).then((result) => {
+                db.query('Delete From Chapters Where Id = ?', [chapterId], (err, DeleteResults) => {           
+                    if (err)
+                        throw err;
+                    
+                    db.query('Select * From Chapters Where BookId = ?', [bookId[0].Id], (err, allChapters) => {
+                        console.log(result);
+                        if (allChapters.length == 0){
+                            db.query('Delete From Books Where Id = ?', [bookId[0].Id], (err, DeleteBookResults) => {
+                                if (err)
+                                    throw err;
+
+                                req.flash('success', 'Успешно изтриване на книга!');
+                                res.redirect('/write');
+                            });
+                        }
+                        else{
+                            req.flash('success', 'Успешно изтриване на глава!');
+                            res.redirect('/write/mybook?bookId=' + bookId[0].Id );
+                        }
+                    });
                 });
             });
         });
