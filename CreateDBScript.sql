@@ -67,8 +67,8 @@ ADD COLUMN PostedOn DATETIME DEFAULT CURRENT_TIMESTAMP;
 Alter Table Chapters
 Add Column NextChapter Integer,
 Add Column PreviousChapter Integer,
-Add Foreign Key (NextChapter) REFERENCES Chapters(Id) On Delete Set NULL,
-Add Foreign Key (PreviousChapter) References Chapters(Id) On Delete Set NULL
+Add Foreign Key (NextChapter) REFERENCES Chapters(Id) On Delete SET NULL,
+Add Foreign Key (PreviousChapter) References Chapters(Id) On Delete SET NULL
 
 -- 
 -- 
