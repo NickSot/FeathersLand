@@ -9,7 +9,7 @@ router.get('/mybook', (req, res) => {
     FROM Chapters AS ch 
     WHERE ch.BookId = ?`;
     let bookQuery = `SELECT * FROM Books WHERE Id = ?`
-    let commentsQuery = "SELECT * FROM BookComments WHERE BookId = ?";
+    let commentsQuery = `Select * From BookComments bc Inner Join Users On bc.PosterId = Users.ID Where BookId = ? ORDER BY PostedOn ASC`;
     res.locals.authenticated = req.session.authenticated;
 
     if (!req.session.authenticated){
@@ -54,7 +54,12 @@ router.get('/mybook', (req, res) => {
             
                 });
             }else{
-                res.render('book', {chapters: [], comments: [], book : book[0], show: true, write: true, userId : req.session.user.ID});
+                db.query(commentsQuery,[bookId], (err, commentsForBook) => {
+                    if(err) throw err;
+
+                    res.render('book', {chapters: commentsForBook, comments: [], book : book[0], show: true, write: true, userId : req.session.user.ID});
+            
+                });
             }
         });
     });

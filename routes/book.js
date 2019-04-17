@@ -40,7 +40,7 @@ router.get('/post/:id', (req, res) => {
             db.query(`Select * From Books Inner Join Followers On Followers.FollowingId = Books.AuthorId
             Inner Join Users On Users.ID = Followers.FollowerId Where Books.Id = ?
             `, [bookId], (err, result) => {
-                if(result != undefined){
+                if(result != undefined && result.length > 0){
                     for (let i = 0; i < result.length; i++){
                         console.log('HERE');
                         console.log(result[i]);
@@ -99,7 +99,7 @@ router.get('/:id', function(req, res) {
             }
             
             db.query('Select * From Chapters Where BookId = ? AND ChapterPosted = "y"', [bookId], (err, chapters) => {
-                db.query('Select * From BookComments bc Inner Join Users On bc.PosterId = Users.ID Where BookId = ?', [bookId], (err, commentsUsers) => {
+                db.query('Select * From BookComments bc Inner Join Users On bc.PosterId = Users.ID Where BookId = ? ORDER BY PostedOn ASC', [bookId], (err, commentsUsers) => {
                     if(err) throw err;
                     // console.log(commentsUsers);
                     // res.locals.chapters = chapters;
@@ -116,15 +116,15 @@ router.get('/:id', function(req, res) {
 
 router.post('/:id/comment', (req, res) => {
     let text = req.body.comment;
-    // console.log("Trying to comment, my friend...: " + text);
+    console.log("Trying to comment, my friend...: " + text);
     let id  = req.params.id;
-    
+
     if (!req.session.authenticated){
         req.flash('error', 'Не можеш да пишеш коментари, ако не си в акаунта си!');
         res.redirect('/');
     }
     else{
-        db.query('Insert Into BookComments (Content, BookID, PosterId) Values (?, ?, ?)', [text, bookId, req.session.user.ID], (err, result) => {
+        db.query('Insert Into BookComments (Content, BookID, PosterId) Values (?, ?, ?)', [text, id, req.session.user.ID], (err, result) => {
             if (err){
                 throw err;
             }

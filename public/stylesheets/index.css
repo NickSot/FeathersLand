@@ -32,17 +32,11 @@ span.t{
 
 
 #login_register{
-  text-align: end;
+  /* text-align: end; */
   width:500px;
-  margin-left: 70px;
+  display: inline-block;
+  /* margin-left: 70px; */
   margin-top: 5px;
-}
-
-#feather{
-  width: 30px;
-  margin-left: 840px;
-  margin-top: -330px;
-
 }
 
 .msg{
@@ -64,35 +58,46 @@ img#i{
   height: 200px;
 }
 
+
+#feather{
+  display: inline-block;
+  z-index: -20;
+  float: right;
+}
+
 #ink{
   width: 150px;
-  margin-left: 900px;
-  margin-top:-125px;
+  z-index: -20;
+  display: inline-block;
+  float: right;
+  /* margin-left: 900px; */
 }
 
-#line{
-  width: 330px;
-  margin-left: 540px;
-  margin-top:-18px;
+#home-wrapper{
+  display: flex;
+  align-items: center;
+  background: url("/imgs/scroll.png") no-repeat center;
+  background-size: 100% auto;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
-#main{
-
+#home{  
   width: 750px;
-  margin-left: 85px;
-  margin-top: 165px;
-  left: 0;
-  right:0;
 }
 
 h1#title{
-  margin-left: 126px;
+  /* margin-left: 126px; */
+  margin-top: 0;
   font-size:35px;
+  text-align: center;
   font-family: 'Marck Script', cursive;
 }
 
 h3#subtitle{
-  margin-left: 126px;
+  text-align: center;
+  /* margin-left: 126px; */
   font-family: 'Marck Script', cursive;
   font-size:30px;
 }
