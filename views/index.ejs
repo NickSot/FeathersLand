@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+<<<<<<< Updated upstream
 <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
+=======
+ <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
 
-<div id="main">
+<div id = "home-wrapper">
+  <div id="home">
+>>>>>>> Stashed changes
 
-<h1 id="title">Добре дошли в <strong style="color:#696abf;">Света на Перата</strong></h1>
+    <h1 id="title">Добре дошли в <strong style="color:#696abf;">Света на Перата</strong></h1>
 
 
-<h3 id="subtitle">Присъедини се към творците!</h3>
+    <h3 id="subtitle">Присъедини се към творците!</h3>
+
+      <p id="description"> Света на Перата дава възможност на своите потребители да споделят произведенията си.
+      Те ще бъдат оценявани от други автори и любители на литературата.
+      Единственото ограничение е твоето въображение, така че какво чакаш?</p>
 
   <p id="description"> Светът на Перата дава възможност на своите потребители да споделят произведенията си.
   Те ще бъдат оценявани от други автори и любители на литературата.
   Единственото ограничение е твоето въображение, така че какво чакаш?</p>
+  
+    <div id="login_register">
+      <%if(!authenticated){%>
+      <a class="login1" onclick="document.getElementById('id01').style.display='block'" href="#" >Влез</a>
+      <span class="t">/</span><a class="login1" onclick="document.getElementById('id02').style.display='block'" href="#" style="width:auto;">Регистрирай се</a>
+      <span class="t"> или бъди наш </span><a class="login1" href="/catalog?page=1" style="width:auto;">Гост</a>
+      <%}else{%>
+      <span class="t">Към другите <a class="login1" href="/authors/1">творци</a> или към <a class="login1" href="/catalog?page=1">всички книги</a>? </span>
+      <%}%>
+    </div>
+    <div id="line"><img id="l"  src=/imgs/Line.png alt="Something"></div>
 
-<div id="login_register">
-
+<<<<<<< Updated upstream
   <%if(!authenticated){%>
     <a class="login1" onclick="document.getElementById('id01').style.display='block'" href="#" >Влез</a>
     <span class="t">/</span><a class="login1" onclick="document.getElementById('id02').style.display='block'" href="#" style="width:auto;">Регистрирай се</a>
@@ -26,8 +45,12 @@
 <div id="line"><img id="l"  src=/imgs/Line.png alt="Something"></div>
 
 <div id="feather"><img id="f"  src=/imgs/feather3.png alt="Something"></div>
+=======
+    <div id="feather"><img id="f"  src=/imgs/feather3.png alt="Something"></div>
+>>>>>>> Stashed changes
 
-<div id="ink"><img id="i"  src=/imgs/InkDrop.png alt="Something"></div>
+    <div id="ink"><img id="i"  src=/imgs/InkDrop.png alt="Something"></div>
+  </div>
 </div>
 
 <script>
