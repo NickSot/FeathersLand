@@ -14,19 +14,22 @@ router.get('/:bookId/like', (req, res) => {
         return;
     }
 
-    db.query('Select * From Chapters Where Id = ?', [chapterId], (err, chapters) => {
-        if (chapters[0].ChapterPosted != 'Y' && chapters[0].ChapterPosted != 'y'){
-            req.flash('error', 'Няма таквъв url!');
-            res.redirect('/');
-            return;
-        }
-    });
+    new Promise((resolve, reject) => {
+        db.query('Select * From Chapters Where Id = ?', [chapterId], (err, chapters) => {
+            if (chapters[0].ChapterPosted != 'Y' && chapters[0].ChapterPosted != 'y'){
+                reject(new Error('Няма такъв url!'));
+            }
 
-    // console.log("Book which is liked: " + req.params.bookId);
-    db.query("Update Books Set Rating = Rating + 1 Where Id = ?", req.params.bookId, (err, resulting) => {
-        // console.log(resulting);
-        req.flash("success", "Харесано!");
-        res.redirect('/catalog?page=1');
+            resolve('Харесано!');
+        });
+    }).then((result) => {
+        db.query("Update Books Set Rating = Rating + 1 Where Id = ?", req.params.bookId, (err, resulting) => {
+            req.flash("success", result);
+            res.redirect('/catalog?page=1');
+        });
+    }).catch((reason) => {
+        req.flash('error', reason.message);
+        res.redirect('/');
     });
 
 })

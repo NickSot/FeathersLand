@@ -35,6 +35,14 @@ router.post('/', (req, res) => {
         }else{
           bcrypt.compare(lpwd, result[0].pass, (err, isPasswordCorrect) => {
             if(isPasswordCorrect){
+              if (req.body.remember){
+                  let date = new Date();
+
+                  date.setDate(date.getDay() + 5);
+
+                  res.cookie("username", lusername, {maxAge: date.getMilliseconds()});
+                  res.cookie("password", lpwd, {maxAge: date.getMilliseconds()});
+              }
               req.flash('success', `Добре дошъл/ла отново, ${lusername}!`);
               req.session.authenticated = true;
               req.session.user = result[0];

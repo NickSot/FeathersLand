@@ -46,6 +46,7 @@ app.use(session({
 }));
 
 app.use(flash());
+app.use(cookieParser("Why should it be so hard???"));
 
 //ROUTES
 app.use('/', indexRouter);

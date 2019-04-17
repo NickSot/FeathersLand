@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
- <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
 
 <div id="main">
 
@@ -10,18 +9,18 @@
 
 <h3 id="subtitle">Присъедини се към творците!</h3>
 
-  <p id="description"> Света на Перата дава възможност на своите потребители да споделят произведенията си.
+  <p id="description"> Светът на Перата дава възможност на своите потребители да споделят произведенията си.
   Те ще бъдат оценявани от други автори и любители на литературата.
   Единственото ограничение е твоето въображение, така че какво чакаш?</p>
 
 <div id="login_register">
 
   <%if(!authenticated){%>
-  <a class="login1" onclick="document.getElementById('id01').style.display='block'" href="#" >Влез</a>
-  <span class="t">/</span><a class="login1" onclick="document.getElementById('id02').style.display='block'" href="#" style="width:auto;">Регистрирай се</a>
-  <span class="t"> или бъди наш </span><a class="login1" href="/catalog?page=1" style="width:auto;">Гост</a>
+    <a class="login1" onclick="document.getElementById('id01').style.display='block'" href="#" >Влез</a>
+    <span class="t">/</span><a class="login1" onclick="document.getElementById('id02').style.display='block'" href="#" style="width:auto;">Регистрирай се</a>
+    <span class="t"> или бъди наш </span><a class="login1" href="/catalog?page=1" style="width:auto;">Гост</a>
   <%}else{%>
-  <span class="t">Към другите <a class="login1" href="/authors/1">творци</a> или към <a class="login1" href="/catalog?page=1">всички книги</a>? </span>
+    <span class="t">Към другите <a class="login1" href="/authors/1">творци</a> или към <a class="login1" href="/catalog?page=1">всички книги</a>? </span>
   <%}%>
 </div>
 <div id="line"><img id="l"  src=/imgs/Line.png alt="Something"></div>
@@ -30,3 +29,20 @@
 
 <div id="ink"><img id="i"  src=/imgs/InkDrop.png alt="Something"></div>
 </div>
+
+<script>
+  if (
+  document.cookie.split(';').filter(item => {
+    return item.includes('username=') && item.includes('password=');
+  }).length
+) {
+  var cookieValues = document.cookie.split(';');
+
+  var xhr = new XMLHttpRequest();
+
+  xhr.open("POST", "/", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send(`lusername=${cookieValues.username}&lpwd=${cookieValues.password}`);
+}
+
+</script>
