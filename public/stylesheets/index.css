@@ -73,6 +73,13 @@ img#i{
   /* margin-left: 900px; */
 }
 
+@media (max-width: 1300px){
+  div#home-wrapper{
+    /* background: none; */
+    background-size: auto 100%;
+  }
+}
+
 #home-wrapper{
   display: flex;
   align-items: center;
@@ -97,6 +104,7 @@ h1#title{
 
 h3#subtitle{
   text-align: center;
+  margin-bottom: 50px;
   /* margin-left: 126px; */
   font-family: 'Marck Script', cursive;
   font-size:30px;

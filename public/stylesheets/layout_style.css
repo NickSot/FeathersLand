@@ -18,11 +18,20 @@ input[type=text], input[type=password] {
 #logo{
   width: 80px;
   height: 120px;
-
 }
 
+
 ul#menu li{
-    height: 10%;
+  transition: font-size  0.4s, height 0.4s;
+  /* transition: height 0.4s; */
+  height: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+li.nonscalable{
+  flex-direction: column;
 }
 
 button.submit {
@@ -45,10 +54,10 @@ button.submit {
   font-size: 18px;
   display: block;
 }
-
+/* 
 ul .icon:hover {
   opacity: 0.5;
-}
+} */
 
 
 .page .icon .title {
@@ -102,10 +111,7 @@ ul.nav {
 
 #menu .icon {
   margin: 30px 0;
-  transition: all .5s ease-out !important;
-  -webkit-transition: all .5s ease-out;
-  -moz-transition: all .5s ease-out;
-  -o-transition: all .5s ease-out;
+  font-weight: 900;
 
 }
 
@@ -117,20 +123,30 @@ a{
 
 a.login, .link {
   text-decoration: none;
-  color:white;
+  margin-left:5px; 
+  color: white;
   font-size: 130%;
   font-family: 'Open Sans', fantasy;
 }
 
+ul#menu li:hover{
+  font-size: 180%;
+  height: 10%;
+}
 
 a.login{
   font-family: 'Marck Script', cursive;
-
   font-size: 100%;
 }
 
 .icon {
+  /* float: left; */
   font-size: 20px;
+}
+
+.real-icon{
+  margin-right: 12px;
+  font-size: 140%;
 }
 
 #cncl{
@@ -298,7 +314,7 @@ keyframes active {
   96% { -webkit-transform: matrix3d(1.1, 0, 0, 0, 0, 1.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.1, 0, 0, 0, 0, 1.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   100% { -webkit-transform: matrix3d(1.1, 0, 0, 0, 0, 1.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.1, 0, 0, 0, 0, 1.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 }
-
+/* 
 @keyframes hover {
   0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   1.8% { -webkit-transform: matrix3d(1.016, 0, 0, 0, 0, 1.037, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.016, 0, 0, 0, 0, 1.037, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
@@ -336,4 +352,4 @@ keyframes active {
   88.59% { -webkit-transform: matrix3d(1.1, 0, 0, 0, 0, 1.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.1, 0, 0, 0, 0, 1.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   96% { -webkit-transform: matrix3d(1.1, 0, 0, 0, 0, 1.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.1, 0, 0, 0, 0, 1.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   100% { -webkit-transform: matrix3d(1.1, 0, 0, 0, 0, 1.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.1, 0, 0, 0, 0, 1.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-}
+} */
