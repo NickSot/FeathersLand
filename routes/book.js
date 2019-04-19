@@ -53,20 +53,19 @@ router.get('/post/:id', (req, res) => {
                                     text: `Автор, за когото сте се абонирали на име: ${req.session.user.username}, издаде книга!`, // plain text body
                                     html: `<h1>Автор, за когото сте се абонирали на име: <a href="http://localhost:3001/author/${req.session.user.ID}/show/">${req.session.user.username}</a>, издаде книга!<h1>`
                                 };
-                                
-                                transporter.sendMail(mailOptions, (error, info) => {
-                                    if (error) {
-                                        res.status(400).send({success: false});
-                                    } else {
-                                        req.flash('success', 'Успешно публикуване на книга!');
-                                        res.status(200).redirect('/catalog/?page=1');
-                                    }
-                                });
+                                if (result[i].Verified == 'Y'){
+                                    transporter.sendMail(mailOptions, (error, info) => {
+                                        if (error) {
+                                            res.status(400).send({success: false});
+                                        } else {
+                                            req.flash('success', 'Успешно публикуване на книга!');
+                                            res.status(200).redirect('/catalog/?page=1');
+                                        }
+                                    });
+                                }
                             }
                         });
                     };
-
-                    console.log('NO SHIT');
                 }else{
                     req.flash('success', 'Успешно издадена книга!')
                     res.status(200).redirect('/catalog?page=1');
