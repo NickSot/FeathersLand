@@ -32,7 +32,15 @@
     to   { height: 7%;}
 }
 
+@keyframes scroll-roll {
+    from { height: 40px;}
+    to   { height: 300px;}
+}
 
+@keyframes scroll-nav-order{
+    from {margin: 0;opacity: 0;}
+    to   {margin: 13px;opacity:1;}
+}
 
 @-webkit-keyframes active {
   0% {transform: scale(1,1);}

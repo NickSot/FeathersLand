@@ -6,7 +6,13 @@ body {
   font-size: 50px;
   color: white;
   text-decoration: none;
+  transition: color 1s;
 }
+
+#likeButton:hover{
+  color:lightblue;
+}
+
 #editButton {
   background-color: #5f859b;
   border: none;
@@ -54,8 +60,8 @@ body {
 
 #downButton {
   position: fixed;
-  bottom: 20px;
-  right: 30px;
+  bottom: 0;
+  right: 0;
   z-index: 99;
   border: none;
   outline: none;
@@ -77,6 +83,7 @@ body {
    height: 100px;
 }
 #hamburgerButton {
+  cursor: pointer;
   position: fixed;
   top: 0;
   left: 0;
@@ -113,7 +120,35 @@ body {
 }
 
 #drop_down_content{
-  visibility:hidden;
+  display: none;
   position:fixed;
   top:130px;
+  height: 300px;
+  width: 200px;
+  animation: scroll-roll 1s ease-out;
+  overflow: hidden;
+}
+
+#drop_down_content img {
+  width: 100%;
+  z-index: -20;
+  position: absolute;
+  height: 100%;
+}
+
+#drop_down_content div#options{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+#drop_down_content div#options div{
+  opacity: 0;
+  animation: scroll-nav-order 1s ease-out 0.6s;
+  animation-fill-mode: forwards;
+}
+
+#options div a:hover{
+  text-decoration: none;
 }

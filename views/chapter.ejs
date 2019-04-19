@@ -20,19 +20,20 @@
 <body>
   <%- include ./partials/locals.messages.ejs%>
   <div id='drop_down_menu'>
-    <a href="#" ><img src="/imgs/hamburgerparchment.png" id = "hamburgerButton"></a>
+    <img src="/imgs/hamburgerparchment.png" id = "hamburgerButton">
     <div id='drop_down_content'>
-      <ul>
-        <li><a href="/">Начало</a></li>
-        <li><a href="/catalog/?page=1">Каталог</a></li>
-        <li><a href=<%- "/book/" + bookId %>>Книгата</a></li>
+      <img src="/imgs/scroll-small.png" alt="scroll" id = "background-scroll">
+      <div id = "options">
+        <div><a href="/">Начало</a></div>
+        <div><a href="/catalog/?page=1">Каталог</a></div>
+        <div><a href=<%- "/book/" + bookId %>>Книгата</a></div>
 
-        <li>
+        <div>
           <%if (chapter.ChapterPosted == 'N'){%>
             <a href=<%- '/chapter/' + chapterId + '/post/' %> >Публикувай!</a>
           <%}%>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </div>
    <a href = "#commentArea"><img src="/imgs/down.png" id = "downButton"></a>
@@ -44,7 +45,11 @@
   </div>
   <center>
   <%if (userId == authorId){%>
-    <a href="/write/<%-chapterId%>"> <button id = "editButton">Редактирай</button> </a>
+    <a href="/write/<%-chapterId%>"> 
+      <button class = "button">
+        <span class = "with-font">Редактирай</span>
+      </button>
+    </a>
   <%}%>
   <a class="fas fa-thumbs-up" id = "likeButton" href='/chapter/<%-chapter.BookId%>/like'></a></center>
 <center>
@@ -93,12 +98,12 @@
     console.log(showDropDown);
 
     if (showDropDown){
-      dropDown.style.visibility = 'hidden';
+      dropDown.style.display  = 'none';
       showDropDown = false;
     }
     else{
       showDropDown = true;
-      dropDown.style.visibility = 'visible';
+      dropDown.style.display = 'block';
     }
   }
 
