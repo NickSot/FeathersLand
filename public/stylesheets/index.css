@@ -39,11 +39,6 @@ span.t{
   margin-top: 5px;
 }
 
-.msg{
-  margin-top: 60px;
-  margin-left: 36px;
-}
-
 img#f {
   width: 270px;
 }
@@ -87,10 +82,20 @@ img#i{
   justify-content: center;
   height: 100%;
   width: 100%;
+
+  
+  -webkit-animation: fadein 1.2s; /* Safari, Chrome and Opera > 11.2.1 */
+  -moz-animation: fadein 1.2s; /* Firefox < 16 */
+  -ms-animation: fadein 1.2s; /* Internet Explorer */
+  -o-animation: fadein 1.2s; /* Opera < 11.2.1 */
+  animation: fadein 1.2s;
+
+  
 }
 
 #home{  
   width: 750px;
+  
 }
 
 h1#title{

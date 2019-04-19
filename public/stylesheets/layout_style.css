@@ -4,6 +4,10 @@ html, body {
   margin: 0;
 }
 
+.msg{
+  width: 75%;
+  left: 20%;
+}
 
 input[type=text], input[type=password] {
   width: 100%;

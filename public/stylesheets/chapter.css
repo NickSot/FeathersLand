@@ -10,7 +10,7 @@ body {
 }
 
 #likeButton:hover{
-  color:lightblue;
+  color: #696abf;
 }
 
 #editButton {
@@ -100,6 +100,10 @@ body {
 }
 #fullscreen_png:hover{
   width: 20px;
+}
+
+.button{
+  transition: background-color 1s;
 }
 
 .com {

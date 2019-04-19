@@ -4,6 +4,15 @@
   text-align: center;
   margin: auto;
   padding-left: 0;
+  opacity: 0;
+    -webkit-animation: fadein 1.2s; /* Safari, Chrome and Opera > 11.2.1 */
+  -moz-animation: fadein 1.2s; /* Firefox < 16 */
+  -ms-animation: fadein 1.2s; /* Internet Explorer */
+  -o-animation: fadein 1.2s; /* Opera < 11.2.1 */
+  animation: fadein 1.2s;
+
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards;
 }
 
 
@@ -48,6 +57,12 @@ button[type=submit]{
   position: relative;
   margin-top: 30px;
   border-radius: 30px;
+  -webkit-animation: fadein 1.2s; /* Safari, Chrome and Opera > 11.2.1 */
+  -moz-animation: fadein 1.2s; /* Firefox < 16 */
+  -ms-animation: fadein 1.2s; /* Internet Explorer */
+  -o-animation: fadein 1.2s; /* Opera < 11.2.1 */
+  animation: fadein 1.2s;
+
 }
 
 div#searchDiv{
@@ -87,6 +102,15 @@ footer {
   font-family: Open Sans;
   text-decoration: none;
   text-align: center;
+  opacity: 0;
+
+  -webkit-animation: fadein 1.2s; /* Safari, Chrome and Opera > 11.2.1 */
+  -moz-animation: fadein 1.2s; /* Firefox < 16 */
+  -ms-animation: fadein 1.2s; /* Internet Explorer */
+  -o-animation: fadein 1.2s; /* Opera < 11.2.1 */
+  animation: fadein 1.2s;
+  animation-delay: 1.2s;
+  animation-fill-mode: forwards;
 }
 
 .catalog-navigation{
