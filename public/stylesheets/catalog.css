@@ -15,8 +15,9 @@ body {
 .projectHolder {
   width: 20%;
   padding: 10px;
-  text-align: center;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: white;
   border-radius: 20px;
   margin: 0 10px 10px 10px;
@@ -35,10 +36,17 @@ body {
 .msg{
   margin-top: -5%;
 }
+
+div.row{
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
 input#search-bar{
   display:block;
   width: 100%;
-  box-sizing: border-box
+  box-sizing: border-box;
   margin: 0 auto;
   margin-top: 0;
   margin-left: 1px;
@@ -47,23 +55,6 @@ input#search-bar{
   border: 0px;
   border-radius: 30px;
   outline: none;
-  &:focus{
-    border: 0px;
-    transition: 0.35s ease;
-    color: #008ABF;
-    &::-webkit-input-placeholder{
-      transition: opacity 0.45s ease;
-  	  opacity: 0;
-     }
-    &::-moz-placeholder {
-      transition: opacity 0.45s ease;
-  	  opacity: 0;
-     }
-    &:-ms-placeholder {
-     transition: opacity 0.45s ease;
-  	 opacity: 0;
-     }
-   }
  }
 
 .search-icon{
