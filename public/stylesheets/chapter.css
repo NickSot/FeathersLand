@@ -22,6 +22,7 @@ body {
 
 #textHolder {
   font-size: 150%;
+  margin-top: 5%;
   margin-left: 15%;
   margin-right: 15%;
   background-image: url("/imgs/back.png");
@@ -77,6 +78,8 @@ body {
 }
 #hamburgerButton {
   position: fixed;
+  top: 0;
+  left: 0;
 }
 
 #textHolder #fullscreenBtn{
@@ -111,5 +114,6 @@ body {
 
 #drop_down_content{
   visibility:hidden;
-  position:relative;
+  position:fixed;
+  top:130px;
 }
