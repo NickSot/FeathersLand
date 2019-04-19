@@ -28,6 +28,8 @@ ul#menu li{
   display: flex;
   align-items: center;
   justify-content: center; 
+  animation: navbar-order 1.2s;
+  animation-timing-function: ease-out;
 }
 
 li.nonscalable{
