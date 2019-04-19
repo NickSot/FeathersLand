@@ -1,79 +1,73 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel = "stylesheet" href = "/stylesheets/font.css">
-  <link rel = "stylesheet" href = "/stylesheets/book.css">
-</head>
-<body>
-    <h1 id = "headingChapters"> <%- book.Title %> </h1>
-    <p style="text-align: center;">Рейтинг на книгата: <strong><%- book.Rating%></strong></p>
-    <%if(chapters != null && chapters.length > 0){%>
-      <% for(let i = 0; i < chapters.length; i++ ){ %>
-            <center>
-                <div class = "chapterHolder">
-                  <a href = <%- "/chapter/" + chapters[i].Id %> >
-                    <img src = "/imgs/manuscript.png" class = "chapterImage">
-                  </a>
-                  <a href = <%- "/chapter/" + chapters[i].Id %> id="titleAnchor" >
-                    <center>
-                      <h1 class = "chapterTitle"> <%- chapters[i].ChapterTitle %></h1>
-                    </center>
-                  </a>
-                  <%if (userId == book.AuthorId){%>
-                    <a href=<%- "/chapter/" + chapters[i].Id + '/delete' %>>
-                      <i class="fas fa-trash-alt fa-2x"></i>
-                    </a>
-                  <%}%>
-                </div>
-            </center>
-      <% } %>
-      <%}else{%>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/book.css">
+  <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
+      <h1 id = "headingChapters"> <%- book.Title %> </h1>
+      <p style="text-align: center;">Рейтинг на книгата: <strong><%- book.Rating%></strong></p>
+      <div id = "bookWrapper">
+        <%if(chapters != null && chapters.length > 0){%>
+          <% for(let i = 0; i < chapters.length; i++ ){ %>
+                <center>
+                    <div class = "chapterHolder">
+                      <a href = <%- "/chapter/" + chapters[i].Id %> >
+                        <img src = "/imgs/manuscript.png" class = "chapterImage">
+                      </a>
+                      <a href = <%- "/chapter/" + chapters[i].Id %> id="titleAnchor" >
+                        <center>
+                          <h1 class = "chapterTitle"> <%- chapters[i].ChapterTitle %></h1>
+                        </center>
+                      </a>
+                      <%if (userId == book.AuthorId){%>
+                        <a href=<%- "/chapter/" + chapters[i].Id + '/delete' %>>
+                          <i class="fas fa-trash-alt fa-2x"></i>
+                        </a>
+                      <%}%>
+                    </div>
+                </center>
+          <% } %>
+        <br>
+        <%}%>
+      <%if (show){%>
         <center>
-          <h1>Тук няма много за гледане май...</h1>
-          <a href="/catalog?page=1" class = "button">Към другите творения</a>
+          <a href="/newchapter/<%-book.Id %>?bookTitle=<%-book.Title%>"><img src="/imgs/plusbutton.png" id = "addButton"></a> <br>
         </center>
       <%}%>
-      <br>
-
-    <%if (show){%>
-      <center>
-        <a href="/newchapter/<%-book.Id %>?bookTitle=<%-book.Title%>"><img src="/imgs/plusbutton.png" id = "addButton"></a> <br>
-      </center>
-    <%}%>
-    
-    <%if (show){%>
-      <center>
-        <br>
-        <button class="button"><a href = '/book/post/<%=book.Id%>' name="button" >Издай!</a></button>
-      </center>
-    <%}%>
-
-
-      <h2 id = "commentAnnounce"> Коментари </h2>
-      <form action='/book/<%- book.Id %>/comment' method="POST">
-          <center>
-          <textarea id = "commentArea" placeholder="Напиши коментар!" name='comment'></textarea>
-          <br></br>
-          <input type="submit" value = "Коментирай" class = "button Button"></center>
-      </form>
-
-      
-      <div class = "commentSection">
-        <%for(let i = 0; i < comments.length; i++){%>
-        <div class = "commentBlock">
-          <div class = "commentDate">
-            <p><%- comments[i].PostedOn %></p>
-          </div>
-          <div class = "commentAuthor">
-            <p><%- comments[i].username %></p>
-          </div>
-          <div class = "commentContent">
-            <p><%- comments[i].Content %></p>
-          </div>
-        </div>
-        <%}%>
       </div>
-</body>
-</html>
+      
+
+      <center>
+        <button class = "button">
+            <a href="/catalog?page=1" class = "with-font">Към другите творения</a>
+        </button>
+      </center>
+        
+      <%if (show){%>
+        <center>
+          <br>
+          <button class="button"><a href = '/book/post/<%=book.Id%>' name="button" class = "with-font" >Издай!</a></button>
+        </center>
+      <%}%>
+
+    <h1 id = "commentAnnounce"> Коментари </h2>
+    <form action='/book/<%- book.Id %>/comment' method="POST">
+        <center>
+        <textarea id = "commentArea" placeholder="Напиши коментар!" name='comment'></textarea>
+        <br></br>
+        <button type="submit" class = "button"> <span class = "with-font">Коментирай</span> </button>
+        </center>
+    </form>
+
+    
+    <div class = "commentSection">
+      <%for(let i = 0; i < comments.length; i++){%>
+      <div class = "commentBlock">
+        <div class = "commentDate">
+          <p><%- comments[i].PostedOn %></p>
+        </div>
+        <div class = "commentAuthor">
+          <p><%- comments[i].username %></p>
+        </div>
+        <div class = "commentContent">
+          <p><%- comments[i].Content %></p>
+        </div>
+      </div>
+      <%}%>
+    </div>
