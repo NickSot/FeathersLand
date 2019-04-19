@@ -27,7 +27,10 @@
     </div>
   </div>
    <a href = "#commentArea"><img src="/imgs/down.png" id = "downButton"></a>
-  <div id = "textHolder"><h1 id = "chapterTitle"><%=chapter.ChapterTitle%></h1>
+  <div id = "textHolder">
+    <a href="#" ><img src="/imgs/fullscreen.png" id = "fullscreenBtn"></a>
+    <h1 id = "chapterTitle"><%=chapter.ChapterTitle%></h1>
+
     <%-htmlContent%>
   </div>
   <center>
@@ -89,6 +92,21 @@
     else{
       showDropDown = true;
       dropDown.style.visibility = 'visible';
+    }
+  }
+
+
+  var elem = document.getElementById("textHolder");
+  var fullscreenBtn = document.getElementById("fullscreenBtn");
+  fullscreenBtn.onclick = () => {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
     }
   }
 </script>

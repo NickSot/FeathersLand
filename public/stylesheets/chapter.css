@@ -25,6 +25,7 @@ body {
   background-image: url("/imgs/back.png");
   padding: 20px;
   border-radius: 30px;
+  overflow: scroll;
 }
 
 #textHolder blockquote{
@@ -75,6 +76,12 @@ body {
 #hamburgerButton {
   top: 0;
   left: 0;
+}
+
+#fullscreenBtn{
+  width: 30px;
+  height: 30px;
+
 }
 .com {
   border-radius: 30px;
