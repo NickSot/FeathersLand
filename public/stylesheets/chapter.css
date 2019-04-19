@@ -61,7 +61,7 @@ body {
 #chapterTitle {
   text-align: center;
   font-weight: 900;
-  
+
   font-size: 200%;
   margin-top: 30px;
   margin-bottom: 100px;
@@ -90,4 +90,9 @@ body {
   word-wrap: break-word;
   display: table-cell;
   vertical-align: middle;
+}
+
+#drop_down_content{
+  visibility:hidden;
+  position:relative;
 }

@@ -12,28 +12,25 @@
   <%- include ./partials/locals.messages.ejs%>
   <div id='drop_down_menu'>
     <a href="#" ><img src="/imgs/hamburgerparchment.png" id = "hamburgerButton"></a>
-    <div id='drop_down_content' style='visibility:hidden; position:relative;'>
-      <div>
-        <a href="/">Начало</a>
-      </div>
-      <div>
-        <a href="/catalog/?page=1">Каталог</a>
-      </div>
-      <div>
-        <a href=<%- "/book/" + bookId %>>Книгата</a>
-      </div>
-      <div>
-        <%if (chapter.ChapterPosted == 'N'){%>
-          <a href=<%- '/chapter/' + chapterId + '/post/' %>>Публикувай!</a>
-        <%}%>
-      </div>
+    <div id='drop_down_content'>
+      <ul>
+        <li><a href="/">Начало</a></li>
+        <li><a href="/catalog/?page=1">Каталог</a></li>
+        <li><a href=<%- "/book/" + bookId %>>Книгата</a></li>
+
+        <li>
+          <%if (chapter.ChapterPosted == 'N'){%>
+            <a href=<%- '/chapter/' + chapterId + '/post/' %>>Публикувай!</a>
+          <%}%>
+        </li>
+      </ul>
     </div>
   </div>
    <a href = "#commentArea"><img src="/imgs/down.png" id = "downButton"></a>
   <div id = "textHolder"><h1 id = "chapterTitle"><%=chapter.ChapterTitle%></h1>
     <%-htmlContent%>
   </div>
-  <center> 
+  <center>
   <%if (userId == authorId){%>
     <a href="/write/<%-chapterId%>"> <button id = "editButton">Редактирай</button> </a>
   <%}%>
