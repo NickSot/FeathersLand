@@ -6,8 +6,7 @@ var db = mysql.createConnection({
   "user": "root",
   "password": JSON.parse(fs.readFileSync(__dirname + '/password.json')).password,
   "database": "WritersDenDB"
-}); 
-
+});
 
 db.connect(function(err) {
   if (err) throw err;
