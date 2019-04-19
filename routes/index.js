@@ -91,10 +91,9 @@ router.post('/', (req, res) => {
                         console.log(error);
                         res.status(400).send({success: false})
                     } else {
-                        res.status(200).send({success: true});
                         console.log('YAY');
                         req.flash('success', `Успешна регистрация! Изпратихме ти мейл за верификация на регистрацията! Приятно писане!`);
-                        // res.redirect('back');
+                        res.redirect('back');
                     }
                 });
               });
