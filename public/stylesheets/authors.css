@@ -18,6 +18,7 @@
 
 .userHolderWrapper:hover{
   animation: hover 2s;
+  animation-fill-mode: forwards;
 }
 
 button[type=submit]{

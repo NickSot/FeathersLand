@@ -1,0 +1,56 @@
+
+.with-font{
+  font-family:  'Marck Script', cursive;
+}
+
+/* Button animation */
+
+
+.button {
+  background: #696abf;
+  border-radius: 100px;
+  font-family: 'Marck  Script', cursive;
+  padding: 10px 15px;
+  color: #fff;
+  border: 0px;
+  text-decoration: none;
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  transition: background-color 0.5s;
+}
+
+.button:hover {
+  -webkit-animation: hover 2s linear 2 alternate;
+  animation: hover 2s linear 2 alternate;
+  animation-fill-mode: forwards;
+  background-color: #4245f0;
+  cursor: pointer;
+}
+
+.button:active {
+  -webkit-animation: active 1200ms ease 1 alternate;
+  animation: active 1200ms ease 1 alternate;
+  /* background: #5F9BE0; */
+
+}
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #696abf; 
+  border-radius: 10px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4245f0; 
+}

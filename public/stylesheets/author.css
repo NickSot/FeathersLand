@@ -34,6 +34,8 @@ a.titles{
 .button:hover {
   -webkit-animation: hover 1200ms linear 2 alternate;
   animation: hover 1200ms linear 2 alternate;
+  animation-fill-mode: forwards;
+
 }
 
 .button:active {

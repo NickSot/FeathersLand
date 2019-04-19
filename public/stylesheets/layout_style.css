@@ -109,7 +109,7 @@ ul.nav {
     display: none;
   }
   #page{
-    width: 100%;
+    width: 96%;
   }
 } 
 
@@ -203,6 +203,7 @@ span.psw {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
 }
+
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
@@ -231,41 +232,3 @@ span.psw {
      width: 100%;
   }
 }
-
-.with-font{
-  font-family:  'Marck Script', cursive;
-}
-
-/* Button animation */
-
-
-.button {
-  background: #696abf;
-  border-radius: 100px;
-  font-family: 'Marck  Script', cursive;
-  padding: 10px 15px;
-  color: #fff;
-  border: 0px;
-  text-decoration: none;
-  font-size: 1.5em;
-  margin-bottom: 5px;
-}
-
-.button:hover {
-  -webkit-animation: hover 1200ms linear 2 alternate;
-  animation: hover 1200ms linear 2 alternate;
-  background-color: #4245f0;
-  cursor: pointer;
-}
-
-.button:active {
-  -webkit-animation: active 1200ms ease 1 alternate;
-  animation: active 1200ms ease 1 alternate;
-  /* background: #5F9BE0; */
-
-}
-.button:focus {
-  outline: none;
-}
-
-

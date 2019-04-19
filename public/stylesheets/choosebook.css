@@ -22,6 +22,8 @@ h1{
 
 .projectHolder:hover{
   animation: hover 2s;
+  animation-fill-mode: forwards;
+
 }
 
 .projectIcon{

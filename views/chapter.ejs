@@ -2,11 +2,20 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.2">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Feather's Land</title>
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel = "stylesheet" href = "/stylesheets/font.css">
   <link rel = "stylesheet" href = "/stylesheets/chapter.css">
   <link rel = "stylesheet" href = "/stylesheets/book.css">
+  <link rel = "stylesheet" href = "/stylesheets/animations.css">
+  <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
+  <link rel = "stylesheet" href = "/stylesheets/globals.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel='icon' href='/imgs/logo.png' type='image/x-icon' />
 </head>
 <body>
   <%- include ./partials/locals.messages.ejs%>
@@ -20,7 +29,7 @@
 
         <li>
           <%if (chapter.ChapterPosted == 'N'){%>
-            <a href=<%- '/chapter/' + chapterId + '/post/' %>>Публикувай!</a>
+            <a href=<%- '/chapter/' + chapterId + '/post/' %> >Публикувай!</a>
           <%}%>
         </li>
       </ul>
@@ -49,11 +58,9 @@
 </center>
 <form action='/chapter/<%-chapterId-%>/' method="POST">
   <center>
-  <textarea id = "commentArea" placeholder="Напиши коментар!" name='comment'>
-
-  </textarea>
+  <textarea id = "commentArea" placeholder="Напиши коментар!" name='comment'></textarea>
   <br></br>
-  <input type="submit" value = "Постни коментар" id = "commentButton">
+  <button type="submit" class = "button"><span class = "with-font">Коментирай</span></button>
 </form>
 
   <%commentUsers.forEach((comment) => {%>
@@ -98,16 +105,27 @@
 
   var elem = document.getElementById("textHolder");
   var fullscreenBtn = document.getElementById("fullscreenBtn");
+  var onFullScreen = false;
   fullscreenBtn.onclick = () => {
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.mozRequestFullScreen) {
-      elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) {
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) {
-      elem.msRequestFullscreen();
+    if(!onFullScreen){
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      }
+    onFullScreen = true;
+    }else{
+      if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+        else if (document.msExitFullscreen) document.msExitFullscreen(); 
+      onFullScreen = false;
     }
+    
   }
 </script>
 </body>

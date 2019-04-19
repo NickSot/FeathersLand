@@ -75,7 +75,6 @@ img#i{
 
 @media (max-width: 1300px){
   div#home-wrapper{
-    /* background: none; */
     background-size: auto 100%;
   }
 }

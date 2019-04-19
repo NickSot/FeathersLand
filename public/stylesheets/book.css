@@ -6,56 +6,73 @@
   display: inline;
 }
 
-  .chapterTitle{
-    display: inline-block;
-    margin: 0;
-    text-align: center;
-    font-size: 40px;
-    font-weight: 300;
-    color: #5f859b;
-  }
+.chapterTitle{
+  display: inline-block;
+  margin: 0;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 300;
+  color: #5f859b;
+}
 
-  div#bookWrapper{
-    min-height: 80vh;
-  }
+.chapterTitle{
+  display: inline-block;
+  margin: 0;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 300;
+  color: #5f859b;
+}
 
-  a#titleAnchor{
-    margin: auto;
-  }
-  i.fas{
-    position: relative;
-    float: right;
-    color: #af4911;
-    margin-top: 2%;
-  }
+div#bookWrapper{
+  height: 65vh;
+  overflow: auto;
+}
 
-  .chapterHolder{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 20px;
-    padding: 10px;
-    text-align: left;
-    background-color: white;
-    width: 50%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  #headingChapters {
-    text-align: center;
-    margin: 30px;
-    font-weight: 400;
-    font-size: 55px;
-    color: #5f859b;
-  }
-  #commentArea {
-    border: none;
-    border-radius: 10px;
-    width: 50%;
-    height: 200px;
-    padding: 30px;
+a#titleAnchor{
+  margin: auto;
+}
+i.fas{
+  position: relative;
+  float: right;
+  color: #af4911;
+  margin-top: 2%;
+}
 
-  }
+.chapterHolder{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: left;
+  background-color: white;
+  width: 50%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: transform 2s;
+}
+
+.chapterHolder:hover{
+  animation: hover 2s;
+  animation-fill-mode: forwards;
+}
+
+#headingChapters {
+  text-align: center;
+  margin: 30px;
+  font-weight: 400;
+  font-size: 55px;
+  color: #5f859b;
+}
+#commentArea {
+  border: none;
+  border-radius: 10px;
+  width: 50%;
+  height: 200px;
+  padding: 30px;
+
+}
 textarea:focus{
   outline: none;
 }
@@ -155,4 +172,9 @@ div.commentDate{
   width: 10%;
   font-size: 50%;
   font-style: italic;
+}
+
+#book-rating{
+  color: #696abf;
+  font-size: 200%;
 }

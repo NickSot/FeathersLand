@@ -1,6 +1,7 @@
 body {
   background-image: url("/imgs/pattern.png");
 }
+
 #likeButton {
   font-size: 50px;
   color: white;
@@ -18,6 +19,7 @@ body {
   font-size: 18px;
   font-weight: 600;
 }
+
 #textHolder {
   font-size: 150%;
   margin-left: 15%;
@@ -25,7 +27,7 @@ body {
   background-image: url("/imgs/back.png");
   padding: 20px;
   border-radius: 30px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 #textHolder blockquote{
@@ -74,19 +76,22 @@ body {
    height: 100px;
 }
 #hamburgerButton {
-  top: 0;
-  left: 0;
+  position: fixed;
 }
 
 #textHolder #fullscreenBtn{
-
-  margin-left: 96%;
+  float: right;
 }
 
 #fullscreen_png{
   width: 30px;
-  height: 30px;
+  height: auto;
+  transition: width .6s ease-out;
 }
+#fullscreen_png:hover{
+  width: 20px;
+}
+
 .com {
   border-radius: 30px;
   width: 50%;
