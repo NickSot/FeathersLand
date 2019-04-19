@@ -76,27 +76,24 @@ router.post('/', (req, res) => {
               db.query("Insert Into Users (username, pass, Email, Verified) Values (?, ?, ?, 'Y')", [rusername, hash, remail], (err, result) => {
                 if (err) throw err;
 
-                // let mailOptions = {
-                //     from: '"Feather Company" <feathers.land.original@gmail.com>', // sender address
-                //     to: remail, // list of receivers
-                //     subject: 'Здравей! :D', // Subject line
-                //     text: 'Имаме линк за теб! localhost:3001/verify', // plain text body
-                //     html: '<b>Имаме линк за теб!</b><br><a href="localhost:3001/verify">Натисни тук за верификация!</a>' // html body
-                // };
+                let mailOptions = {
+                    from: '"Feather Company" <feathers.land.original@gmail.com>', // sender address
+                    to: remail, // list of receivers
+                    subject: 'Здравей! :D', // Subject line
+                    text: 'Имаме линк за теб! localhost:3001/verify', // plain text body
+                    html: '<b>Имаме линк за теб!</b><br><a href="localhost:3001/verify">Натисни тук за верификация!</a>' // html body
+                };
 
-                // transporter.sendMail(mailOptions, (error, info) => {
-                //     if (error) {
-                //         console.log(error);
-                //         res.status(400).send({success: false})
-                //     } else {
-                //         res.status(200).send({success: true});
-                //         console.log('YAY');
-                //     }
-                // });
-
-                req.flash('success', `Успешна регистрация! Изпратихме ти мейл за верификация на регистрацията! Приятно писане!`);
-
-                res.redirect('back');
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        console.log(error);
+                        res.status(400).send({success: false});
+                    } else {
+                        console.log('YAY');
+                        req.flash('success', `Успешна регистрация! Изпратихме ти мейл за верификация на регистрацията! Приятно писане!`);
+                        res.redirect('back');
+                    }
+                });
               });
             });
           }
