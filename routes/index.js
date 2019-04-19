@@ -72,6 +72,8 @@ router.post('/', (req, res) => {
           }
           else{
             bcrypt.hash(rpwd, bcryptSaltRounds, (err, hash) => {
+              req.session.hashedPassword = hash;
+
               if(err) throw err;
               db.query("Insert Into Users (username, pass, Email, Verified) Values (?, ?, ?, 'Y')", [rusername, hash, remail], (err, result) => {
                 if (err) throw err;
@@ -80,8 +82,8 @@ router.post('/', (req, res) => {
                     from: '"Feather Company" <feathers.land.original@gmail.com>', // sender address
                     to: remail, // list of receivers
                     subject: 'Здравей! :D', // Subject line
-                    text: 'Имаме линк за теб! localhost:3001/verify', // plain text body
-                    html: '<b>Имаме линк за теб!</b><br><a href="localhost:3001/verify">Натисни тук за верификация!</a>' // html body
+                    text: 'Имаме линк за теб! localhost:3001/verify/?p=' + hash, // plain text body
+                    html: `<b>Имаме линк за теб!</b><br><a href="http://localhost:3001/verify/?p=${hash}">Натисни тук за верификация!</a>` // html body
                 };
 
                 transporter.sendMail(mailOptions, (error, info) => {
