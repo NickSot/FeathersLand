@@ -78,10 +78,14 @@ body {
   left: 0;
 }
 
-#fullscreenBtn{
+#textHolder #fullscreenBtn{
+
+  margin-left: 96%;
+}
+
+#fullscreen_png{
   width: 30px;
   height: 30px;
-
 }
 .com {
   border-radius: 30px;
