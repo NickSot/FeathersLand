@@ -19,6 +19,11 @@ h1{
   align-content:center;
   flex-direction:row;
 }
+
+.projectHolder:hover{
+  animation: hover 2s;
+}
+
 .projectIcon{
   /* margin-right: 2vw; */
   /* margin-top: 12px; */
