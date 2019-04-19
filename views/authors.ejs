@@ -12,15 +12,14 @@
             <ul id = "listOfUsers">
                 <%if (users != null){%>
                     <%users.forEach((user) => {%>
-                        <div class = "userHolderWrapper">
-                            <li class = "userHolder">
-
-                                <i class="fas fa-feather-alt authorIcon"></i>
-                                <a href="<%-'/author/' + user.ID + '/show/'-%>">
-                                    <%=user.username%>
-                                </a>
-                            </li>
-                        </div>
+                      <div class = "userHolderWrapper">
+                          <li class = "userHolder">
+                              <i class="fas fa-feather-alt authorIcon"></i>          
+                              <a href="<%-'/author/' + user.ID + '/show/'-%>">
+                                  <%=user.username%>
+                              </a>
+                          </li>
+                      </div>
                     <%});%>
                 <%}%>
             </ul>
