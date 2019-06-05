@@ -3,6 +3,7 @@ var router = express.Router();
 var db = require('../config/database');
 var bcrypt = require('bcrypt');
 var transporter = require('../config/mailing');
+const {check, validationResult} = require('express-validator/check');
 
 var bcryptSaltRounds = 10;
 
@@ -13,6 +14,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', (req, res) => {
+  // const errors = validationResult(req);
+
+  // if (!errors.isEmpty()){
+  //   return res.status(422).json({errors: errors.array()});
+  // }
+
   res.locals.authenticated = req.session.authenticated;
   let rusername = req.body.runame;
   let rpwd = req.body.rpsw;
@@ -31,7 +38,7 @@ router.post('/', (req, res) => {
 
         if(result.length == 0){
           req.flash('error', 'Грешен никнейм, мейл или парола!');          
-          res.redirect('back'); 
+          res.redirect(401, 'back'); 
         }else{
           bcrypt.compare(lpwd, result[0].pass, (err, isPasswordCorrect) => {
             if(isPasswordCorrect){
@@ -50,7 +57,7 @@ router.post('/', (req, res) => {
             }else{
               console.log("Fail my friend!");
               req.flash('error', 'Грешен никнейм, мейл или парола!');
-              res.redirect('back');
+              res.redirect(401, 'back');
             }
           });
         }
@@ -59,7 +66,7 @@ router.post('/', (req, res) => {
     else if (lusername == undefined && lpwd == undefined){ // REGISTER HANDLE
       if (rreppsw != rpwd){
         req.flash('error', 'Паролите не съответстват!');
-        res.redirect('back');
+        res.redirect(400, 'back');
       }
       else{
 
@@ -68,7 +75,7 @@ router.post('/', (req, res) => {
 
           if (result.length != 0){
             req.flash('error', "Вече има съществуващ акаунт с този мейл или никнейм!");
-            res.redirect('back');
+            res.redirect(401, 'back');
           }
           else{
             bcrypt.hash(rpwd, bcryptSaltRounds, (err, hash) => {
@@ -93,7 +100,7 @@ router.post('/', (req, res) => {
                     } else {
                         console.log('YAY');
                         req.flash('success', `Успешна регистрация! Изпратихме ти мейл за верификация на регистрацията! Приятно писане!`);
-                        res.redirect('back');
+                        res.redirect(200, 'back');
                     }
                 });
               });

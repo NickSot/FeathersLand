@@ -34,6 +34,13 @@ CREATE TABLE Chapters(
     foreign key(BookId) references Books(Id) ON DELETE CASCADE
 );
 
+Create Table Likes(
+	UserId Integer Not NULL,
+    ChapterId Integer Not NUll,
+    Foreign Key (UserId) References Users(ID),
+    Foreign Key (ChapterId) References Chapters(Id)
+);
+
 CREATE TABLE BookComments(
 	Id int primary key auto_increment not null,
     Content Text,

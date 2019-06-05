@@ -30,9 +30,12 @@ router.get('/:bookId/like', (req, res) => {
     }).catch((reason) => {
         req.flash('error', reason.message);
         res.redirect('/');
-    });
+    }).then((result) => {
+        db.query('Insert Into ', [], () => {
 
-})
+        });
+    });
+});
 
 router.get('/:id/dislike', (req, res) => {
     if (chapterId == undefined && req.session.user == undefined){
@@ -157,7 +160,7 @@ router.get('/:id/post', (req, res) => {
                         result.forEach(element => {
                             emailExistence.check(element.email, (err, response) => {
                                 if (err)
-                                    throw err;
+                                    throw err;  
         
                                 if (response){
                                     let mailOptions = {
@@ -165,7 +168,7 @@ router.get('/:id/post', (req, res) => {
                                         to: element.email, // list of receivers
                                         subject: 'Здравей! :D', // Subject line
                                         //text: `Автор, за когото сте се абонирали на име: ${req.session.user.username}, издаде глава на книга!`, // plain text body
-                                        html: `<h1>Автор, за когото сте се абонирали на име: <a href="localhost:3001/author/${req.session.user.ID}/show/">${req.session.user.username}</a>, издаде глава на книга!<h1>`
+                                        html: `<h1>Автор, за когото сте се абонирали на име: <a href="http://localhost:3001/author/${req.session.user.ID}/show/">${req.session.user.username}</a>, издаде глава на книга!<h1>`
                                     };
                     
                                     transporter.sendMail(mailOptions, (error, info) => {

@@ -1,6 +1,7 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/book.css">
   <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
-      <h1 id = "headingChapters"> <%- book.Title %> </h1>
+      <h1 id = "headingChapters"> <%- book.Title %></h1>
+      <a href= <%- "/book/" + book.Id + "/changeTitle"%>>Променете заглавието...</a>
       <p style="text-align: center;" class="with-font">Рейтинг на книгата: <strong id="book-rating"><%- book.Rating%></strong></p>
       <div id = "bookWrapper">
         <%if(chapters != null && chapters.length > 0){%>

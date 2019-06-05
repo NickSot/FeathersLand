@@ -3,6 +3,7 @@ var router = express.Router();
 var db = require('../config/database');
 var transporter = require('../config/mailing');
 var emailExistence = require('email-existence');
+const { check, validationResult } = require('express-validator/check');
 
 var bookId;
 
@@ -32,7 +33,7 @@ router.get('/post/:id', (req, res) => {
 
         if (req.session.user.ID != book.AuthorId){
             req.flash('error', 'Не можеш да достъпиш този url!');
-            res.redirect('/');
+            res.status(401).redirect('/');
             return;
         }
 
@@ -42,7 +43,6 @@ router.get('/post/:id', (req, res) => {
             `, [bookId], (err, result) => {
                 if(result != undefined && result.length > 0){
                     for (let i = 0; i < result.length; i++){
-                        console.log('HERE');
                         console.log(result[i]);
                         emailExistence.check(result[i].email, (err, response) => {
                             if (response){
@@ -56,9 +56,11 @@ router.get('/post/:id', (req, res) => {
                                 if (result[i].Verified == 'Y'){
                                     transporter.sendMail(mailOptions, (error, info) => {
                                         if (error) {
+                                            res.setHeader('Content-type', 'text/plain; charset=utf-8;');
                                             res.status(400).send({success: false});
                                         } else {
                                             req.flash('success', 'Успешно публикуване на книга!');
+                                            res.setHeader('Content-type', 'text/html; charset=utf-8;');
                                             res.status(200).redirect('/catalog/?page=1');
                                         }
                                     });
@@ -67,12 +69,88 @@ router.get('/post/:id', (req, res) => {
                         });
                     };
                 }else{
-                    req.flash('success', 'Успешно издадена книга!')
+                    req.flash('success', 'Успешно издадена книга!');
+                    res.setHeader('Content-type', 'text/html; charset=utf-8;');
                     res.status(200).redirect('/catalog?page=1');
                 }
             });
         })
     });
+});
+
+router.get("/:id/changeTitle", (req, res) => {
+    if (!req.session.authenticated){
+        req.flash("error", "Не си се регстрирал/ла!");
+        res.setHeader('Content-type', 'text/html; charset=utf-8;');
+        res.redirect(401, "/");
+        return;
+    }
+
+    db.query("Select * From Books Where Id = ?;", [req.params.id], (err, results) => {
+        if (req.session.user.ID != results[0].AuthorId){
+            req.flash("error", "Не можеш да достъпиш този url!");
+            res.setHeader('Content-type', 'text/html; charset=utf-8;');
+            res.redirect(403, "/");
+            return;
+        }
+        
+        if (err){
+            res.redirect(500, "/");
+            return;
+        }
+
+        console.log(results);
+
+        res.status(200).render("changeTitle", {book: results[0], authenticated: req.session.authenticated});
+    });
+});
+
+router.post("/:id/changeTitle", [
+    check("id").exists(),
+    check("new_title").exists()
+], (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()){
+        res.setHeader('Content-type', 'text/html; charset=utf-8;');
+        return res.redirect(400, "/");
+    }
+
+    if (!req.session.authenticated){
+        req.flash("error", "Не си се регстрирал/ла!");
+        res.setHeader('Content-type', 'text/html; charset=utf-8;');
+        res.redirect(401, "/");
+        return;
+    }
+    db.query("Select * From Books Where Id = ?;", [req.params.id], (err, books) => {
+        if (err){
+            res.setHeader('Content-type', 'text/html; charset=utf-8;');
+            express.redirect(500, "/");
+            console.log(error);
+            return;
+        }
+
+        db.query("Update Books Set Title = ? Where Id = ?;", [req.body.new_title, req.params.id], (err, results) => {
+            if (err){
+                res.setHeader('Content-type', 'text/html; charset=utf-8;');
+                res.redirect(500, "/");
+                console.log(err);    
+                return;
+            }
+    
+            if (req.session.user.ID != books[0].AuthorId){
+                req.flash("error", "Не можеш да достъпиш този url!");
+                res.setHeader('Content-type', 'text/html; charset=utf-8;');
+                res.redirect(403, "/");
+                return;
+            }
+    
+            // res.status(200).json(results);
+            res.setHeader('Content-type', 'text/html; charset=utf-8;');
+            res.redirect(200, "/book/" + req.params.id + "/");
+        });
+    });
+    
 });
 
 router.get('/:id', function(req, res) {

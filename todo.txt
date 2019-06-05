@@ -6,3 +6,13 @@
     -> css needs fixing!
 
 4.Cahpter deletion x
+
+5. Da se pita!
+
+6. Da se redaktira zaglavie
+
+7. status codes!
+
+8. Http headers and status codes...
+
+9. Authentication with header! (With request!)
