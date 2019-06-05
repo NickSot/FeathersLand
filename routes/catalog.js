@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
             res.render('catalog', {books : result, numPages : pagesCount(result.length), startIdx: startIdx, endIdx: endIdx});
         }else{
             req.flash('error', "Изглежда на тази страница няма книги...");
-            res.redirect('/');
+            res.redirect(200, '/');
         }
     });
 });

@@ -16,9 +16,8 @@ router.get('/:page', function(req, res, next) {
             res.render('projects', {books : result});
         }else{
             req.flash('error', "Все още нямаш книги!");
-            res.redirect('/');
+            res.redirect(404, '/');
         }
-
     });
 
 });

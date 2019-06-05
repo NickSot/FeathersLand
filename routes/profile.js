@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const { check, validationResult } = require('express-validator/check');
 
 var db = require('../config/database');
 
@@ -27,7 +28,16 @@ router.get('/', function(req, res, next) {
     }
 });
 
-router.post('/', (req, res) => {
+router.post('/', [
+    check("userBio").exists()
+], (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()){
+        res.setHeader("Content-type", "text/html; charset=utf8");
+        return res.redirect(400, "back");
+    }
+
     if (req.session.authenticated){
         userBio = req.body.userBio;
 
@@ -35,17 +45,17 @@ router.post('/', (req, res) => {
 
         db.query('Update Users Set Bio = ? Where ID = ?', [userBio, user.ID], (err, result) => {
             if (err){
-                throw err
+                res.redirect(500, "back");
             }
         });
         
         res.locals.authenticated = req.session.authenticated;
-        res.redirect('/profile');
+        res.redirect(200, '/profile');
     }
     else{
         req.flash('info', `Трябва да си влязъл в акаунта си, за да достъпиш тази опция!`);
         res.locals.authenticated = req.session.authenticated;
-        res.redirect('/');
+        res.redirect(401, '/');
     }
 });
 

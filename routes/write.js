@@ -14,20 +14,23 @@ router.get('/mybook', (req, res) => {
 
     if (!req.session.authenticated){
         req.flash('error', 'Няма такъв url!');
-        res.redirect('/');
+        res.setHeader("Content-type", "text/html; charset=utf8");
+        res.redirect(401, '/');
         return;
     }
 
     db.query(bookQuery, [bookId], (err, book) => {
         if (book.length == 0){
             req.flash('error', 'Няма такъв url!');
-            res.redirect('/');
+            res.setHeader("Content-type", "text/html; charset=utf8");
+            res.redirect(404, '/');
             return;
         }
 
         if (book[0].AuthorId != req.session.user.ID){
-            req.flash('Няма такъв url!', 'error')
-            res.redirect('/');
+            req.flash('Няма такъв url!', 'error');
+            res.setHeader("Content-type", "text/html; charset=utf8");
+            res.redirect(403, '/');
             return;
         }
 
@@ -69,7 +72,8 @@ router.get('/', (req, res) => {
     let session = req.session;
     if(!session.authenticated){
         req.flash('error', 'Трябва да си в акаунта си за да можеш да твориш');
-        res.redirect("/");
+        res.setHeader("Content-type", "text/html; charset=utf8");
+        res.redirect(401, "/");
     }
     else{
         res.locals.authenticated = session.authenticated;
@@ -89,7 +93,8 @@ var chapter;
 router.get('/:chapterId', (req, res) => {
     if (!req.session.authenticated){
         req.flash('error', 'Неправилен url!');
-        res.redirect('/');
+        res.setHeader("Content-type", "text/html; charset=utf8");
+        res.redirect(401, '/');
     }
     else{
         let userId = req.session.user.ID;
@@ -102,13 +107,15 @@ router.get('/:chapterId', (req, res) => {
         db.query(query, [chapterId], (err, result) => {
             if (result == undefined){
                 req.flash('error', 'Неправилна операция!');
-                res.redirect('/');
+                res.setHeader("Content-type", "text/html; charset=utf8");
+                res.redirect(404, '/');
                 return;
             }
 
             if (result[0].ID != userId) {
                 req.flash('error', 'Не притежаваш тази книга!');
-                res.redirect('/');
+                res.setHeader("Content-type", "text/html; charset=utf8");
+                res.redirect(403, '/');
             }
             else{
                 db.query('Select * From Chapters Where Id = ?', [chapterId], (err, chapters) => {
@@ -131,10 +138,12 @@ router.post('/', (req, res) => {
 
         db.query('Update Chapters Set Content = ? Where Id = ?', [markdown, chapterId], (err) => {
             if (err){
-                throw err;
+                console.log(err);
+                return res.redirect(500, "back");
             }
 
-            res.json({'result': result, chapter: chapter});
+            res.setHeader("Content-type", "text/html; charset=utf8");
+            res.status(200).json({'result': result, chapter: chapter});
         });
     });
 });

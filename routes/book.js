@@ -7,7 +7,16 @@ const { check, validationResult } = require('express-validator/check');
 
 var bookId;
 
-router.get('/post/:id', (req, res) => {
+router.get('/post/:id', [
+    check("id").isInt()
+], (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()){
+        res.setHeader('Content-type', 'text/html; charset=utf-8;');
+        return res.redirect(400, "back");
+    }
+
     bookId = req.params.id;
 
     if (!req.session.authenticated){
@@ -78,7 +87,16 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
-router.get("/:id/changeTitle", (req, res) => {
+router.get("/:id/changeTitle", [
+    check("id").isInt()
+], (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()){
+        res.setHeader('Content-type', 'text/html; charset=utf-8;');
+        return res.redirect(400, "back");
+    }
+
     if (!req.session.authenticated){
         req.flash("error", "Не си се регстрирал/ла!");
         res.setHeader('Content-type', 'text/html; charset=utf-8;');
@@ -95,6 +113,8 @@ router.get("/:id/changeTitle", (req, res) => {
         }
         
         if (err){
+            res.setHeader('Content-type', 'text/html; charset=utf-8;');
+            res.status = 500;
             res.redirect(500, "/");
             return;
         }
@@ -144,8 +164,7 @@ router.post("/:id/changeTitle", [
                 res.redirect(403, "/");
                 return;
             }
-    
-            // res.status(200).json(results);
+
             res.setHeader('Content-type', 'text/html; charset=utf-8;');
             res.redirect(200, "/book/" + req.params.id + "/");
         });
@@ -178,8 +197,6 @@ router.get('/:id', function(req, res) {
             db.query('Select * From Chapters Where BookId = ? AND ChapterPosted = "y"', [bookId], (err, chapters) => {
                 db.query('Select * From BookComments bc Inner Join Users On bc.PosterId = Users.ID Where BookId = ? ORDER BY PostedOn ASC', [bookId], (err, commentsUsers) => {
                     if(err) throw err;
-                    // console.log(commentsUsers);
-                    // res.locals.chapters = chapters;
                     
                     if (commentsUsers.length == 0){
                         commentsUsers = [];
@@ -191,14 +208,23 @@ router.get('/:id', function(req, res) {
     });
 });
 
-router.post('/:id/comment', (req, res) => {
+router.post('/:id/comment', [
+    check('comment').exists()
+] ,(req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()){
+        res.setHeader('Content-type', 'text/html; charset=utf-8;');
+        return res.redirect(400, 'back');
+    }
+
     let text = req.body.comment;
     console.log("Trying to comment, my friend...: " + text);
     let id  = req.params.id;
 
     if (!req.session.authenticated){
         req.flash('error', 'Не можеш да пишеш коментари, ако не си в акаунта си!');
-        res.redirect('/');
+        res.redirect(401, '/');
     }
     else{
         db.query('Insert Into BookComments (Content, BookID, PosterId) Values (?, ?, ?)', [text, id, req.session.user.ID], (err, result) => {
@@ -206,7 +232,7 @@ router.post('/:id/comment', (req, res) => {
                 throw err;
             }
             req.flash('success', 'Добавен коментар!');
-            res.redirect('/book/' + id);
+            res.redirect(200, '/book/' + id);
         });
     }
 });

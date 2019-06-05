@@ -29,6 +29,8 @@ router.post('/', (req, res) => {
   let lpwd = req.body.lpsw;
   
   if (!req.session.authenticated){
+    // if (rusername != undefined && rpwd != undefined && rreppsw != undefined && )
+
     if (rusername == undefined && rpwd == undefined){ /// LOGIN HANDLE
 
       let query = `Select * from Users WHERE username = ?`;
@@ -37,7 +39,8 @@ router.post('/', (req, res) => {
         if(err) throw err;
 
         if(result.length == 0){
-          req.flash('error', 'Грешен никнейм, мейл или парола!');          
+          req.flash('error', 'Грешен никнейм, мейл или парола!');    
+          res.setHeader('Content-type', 'text/html; charset=utf-8;');      
           res.redirect(401, 'back'); 
         }else{
           bcrypt.compare(lpwd, result[0].pass, (err, isPasswordCorrect) => {
@@ -53,10 +56,12 @@ router.post('/', (req, res) => {
               req.flash('success', `Добре дошъл/ла отново, ${lusername}!`);
               req.session.authenticated = true;
               req.session.user = result[0];
-              res.redirect('back');
+              res.setHeader('Content-type', 'text/html; charset=utf-8;');
+              res.redirect(200, 'back');
             }else{
               console.log("Fail my friend!");
               req.flash('error', 'Грешен никнейм, мейл или парола!');
+              res.setHeader('Content-type', 'text/html; charset=utf-8;');
               res.redirect(401, 'back');
             }
           });
@@ -75,6 +80,7 @@ router.post('/', (req, res) => {
 
           if (result.length != 0){
             req.flash('error', "Вече има съществуващ акаунт с този мейл или никнейм!");
+            res.setHeader('Content-type', 'text/html; charset=utf-8;');
             res.redirect(401, 'back');
           }
           else{
@@ -96,10 +102,12 @@ router.post('/', (req, res) => {
                 transporter.sendMail(mailOptions, (error, info) => {
                     if (error) {
                         console.log(error);
+                        res.setHeader('Content-type', 'text/html; charset=utf-8;');
                         res.status(400).send({success: false});
                     } else {
                         console.log('YAY');
                         req.flash('success', `Успешна регистрация! Изпратихме ти мейл за верификация на регистрацията! Приятно писане!`);
+                        res.setHeader('Content-type', 'text/html; charset=utf-8;');
                         res.redirect(200, 'back');
                     }
                 });

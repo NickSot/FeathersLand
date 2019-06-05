@@ -4,6 +4,7 @@ var db = require('../config/database');
 var nodePandoc = require('node-pandoc');
 var emailExistence = require('email-existence');
 var transporter = require('../config/mailing');
+const { check, validationResult } = require('express-validator/check');
 
 var chapterId;
 
@@ -31,9 +32,11 @@ router.get('/:bookId/like', (req, res) => {
         req.flash('error', reason.message);
         res.redirect('/');
     }).then((result) => {
-        db.query('Insert Into ', [], () => {
+        //DAFUQ???
 
-        });
+        // db.query('Insert Into ', [], () => {
+
+        // });
     });
 });
 
@@ -46,7 +49,7 @@ router.get('/:id/dislike', (req, res) => {
     db.query('Select * From Chapters Where Id = ?', [chapterId], (err, chapters) => {
         if (chapters[0].ChapterPosted != 'Y' && chapters[0].ChapterPosted != 'y'){
             req.flash('error', 'Няма таквъв url!');
-            res.redirect('/');
+            res.redirect(404, '/');
             return;
         }
     });
@@ -64,7 +67,7 @@ router.get('/:id', (req, res) => {
     db.query('Select * From Chapters Inner Join Books On Books.Id = Chapters.BookId Where Chapters.Id = ?', [chapterId], (err, chapters) => {
         if (chapters.length == 0){
             req.flash('error', 'Няма таквъв url!');
-            res.redirect('/');
+            res.redirect(404, '/');
             return;
         }
 
@@ -75,7 +78,7 @@ router.get('/:id', (req, res) => {
         if (chapter.ChapterPosted != 'Y' && chapter.ChapterPosted != 'y'){
             if (req.session.user.ID != chapters[0].AuthorId){
                 req.flash('error', 'Няма таквъв url!');
-                res.redirect('/');
+                res.redirect(404, '/');
                 return;
             }
         }
@@ -86,7 +89,7 @@ router.get('/:id', (req, res) => {
             
             if (chapter == undefined){
                 req.flash('error', 'Няма таквъв url!');
-                res.redirect('back');
+                res.redirect(404, 'back');
                 return;
             }
 
@@ -115,13 +118,21 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/:id', (req, res) => {
+router.post('/:id', [
+    check("comment").exists()
+], (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()){
+        return res.redirect(400, "back");
+    }
+
     console.log('Commented!');
     let text = req.body.comment;
 
     if (!req.session.authenticated){
         req.flash('error', 'Не можеш да пишеш коментари, ако не си в акаунта си!');
-        res.redirect('/chapter/' + chapterId);
+        res.redirect(401, '/chapter/' + chapterId);
     }
     else{
         db.query('Insert Into ChapterComments (Content, ChapterID, PosterId) Values (?, ?, ?)', [text, chapterId, req.session.user.ID], (err, result) => {
@@ -129,7 +140,7 @@ router.post('/:id', (req, res) => {
                 throw err;
             }
 
-            res.redirect('/chapter/' + chapterId);
+            res.redirect(200, '/chapter/' + chapterId);
         });
     }
 
@@ -141,15 +152,12 @@ router.get('/:id/post', (req, res) => {
     db.query('Select * From Books Inner Join Chapters On Books.Id = Chapters.BookId Where Chapters.Id = ?', [chapterId], (err, chapter) => {
         if (!req.session.authenticated || req.session.user.ID != chapter[0].AuthorId){
             req.flash('Неправилен url!', 'success');
-            res.redirect(`/chapter/${chapterId}`);
+            res.redirect(403, `/chapter/${chapterId}`);
         }
         else{
             db.query(`Update Chapters Set ChapterPosted = 'Y' Where Id = ?`, [chapterId], (err, updateResult) => {
                 if (err)
                     throw err;
-
-                console.log('UPDATED!');
-                console.log(updateResult);
 
                 db.query(`Select * From Chapters Inner Join Books On Books.Id = Chapters.BookId Inner Join Followers On Followers.FollowingId = Books.AuthorId
             Inner Join Users On Users.ID = Followers.FollowerId Where Chapters.Id = ?
@@ -186,12 +194,12 @@ router.get('/:id/post', (req, res) => {
                     }
                     else{
                         req.flash('success', 'Успешно публикуване на глава!');
-                        res.status(200).redirect('back');
+                        res.redirect(200, 'back');
                     }
                 }
                 else{
                     req.flash('success', 'Успешно публикуване на глава!');
-                    res.status(200).redirect('back');
+                    res.redirect(200, 'back');
                 }
             });
         });
@@ -260,12 +268,12 @@ router.get('/:id/delete', (req, res) => {
                                     throw err;
 
                                 req.flash('success', 'Успешно изтриване на книга!');
-                                res.redirect('/write');
+                                res.redirect(200, '/write');
                             });
                         }
                         else{
                             req.flash('success', 'Успешно изтриване на глава!');
-                            res.redirect('/write/mybook?bookId=' + bookId[0].Id );
+                            res.redirect(200, '/write/mybook?bookId=' + bookId[0].Id );
                         }
                     });
                 });
